@@ -8,20 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------------- */
-    /* 1. PALETA Y VARIABLES (MODERNA)       */
-    /* ------------------------------------- */
     :root{
       --color-primario:#003366;
       --color-secundario:#C49449;
       --color-fondo-claro:#F8F8F8;
       --color-texto-principal:#333;
       --color-texto-inverso:#FFF;
+      --logo-name-size:clamp(1.35rem,1.1vw + 1rem,2rem);
+      --logo-plane-size:calc(var(--logo-name-size)*1.15);
     }
 
-    /* ------------------------------------- */
-    /* 2. RESET Y TIPOGRAFÍA BASE            */
-    /* ------------------------------------- */
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -37,59 +33,52 @@
     }
     .container{max-width:1200px;margin:0 auto;padding:0 40px}
     a{color:var(--color-primario);text-decoration:none;transition:.3s}
-
-    /* Evita que el header sticky tape secciones al navegar por anclas */
     section{padding:100px 0;text-align:center;scroll-margin-top:90px}
 
-    /* ------------------------------------- */
-    /* 3. CABECERA Y NAVEGACIÓN (HEADER)     */
-    /* ------------------------------------- */
+    /* CABECERA */
     header{
-      background:var(--color-texto-inverso);
+      background:#FFF;
       padding:12px 0;
       box-shadow:0 1px 10px rgba(0,0,0,.08);
       position:sticky;top:0;z-index:2000;
     }
     .nav-content{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-    /* Logo proporcional */
-    .logo{display:flex;align-items:center;gap:10px;color:var(--color-primario)}
-    .logo .plane{font-size:1.5em;color:var(--color-secundario);line-height:1}
-    .brand{line-height:1.1;display:flex;flex-direction:column}
-    .brand .name{font-weight:800;font-size:1.35rem;letter-spacing:.3px}
-    .brand .tagline{font-weight:700;font-size:.72rem;color:#355a85;text-transform:uppercase;opacity:.9}
 
-    /* Menú */
+    /* Logo proporcional */
+    .logo{display:flex;align-items:center;gap:12px;color:var(--color-primario)}
+    .logo .brand{line-height:1.05;display:flex;flex-direction:column}
+    .logo .brand .name{font-weight:800;font-size:var(--logo-name-size);letter-spacing:.3px}
+    .logo .brand .tagline{font-weight:700;font-size:.72rem;color:#355a85;text-transform:uppercase;opacity:.9}
+    .logo .plane{
+      width:var(--logo-plane-size);
+      height:var(--logo-plane-size);
+      color:var(--color-secundario);
+      flex:0 0 auto;
+      transform:translateY(2px);
+    }
+
     nav ul{list-style:none;display:flex;gap:28px;align-items:center}
     nav a{font-weight:600;padding:5px 0;text-transform:uppercase;font-size:.9em}
-
-    /* Botones header (no se superponen) */
     .cta-header{display:flex;gap:10px;flex-wrap:wrap}
     .btn-contacto{
       padding:9px 16px;border-radius:6px;font-weight:700;
       text-transform:uppercase;letter-spacing:.5px;transition:.3s;display:inline-block
     }
     .whatsapp{background:var(--color-secundario);color:var(--color-primario);border:2px solid var(--color-secundario)}
-    .email{background:var(--color-primario);color:var(--color-texto-inverso);border:2px solid var(--color-primario)}
+    .email{background:var(--color-primario);color:#FFF;border:2px solid var(--color-primario)}
 
-    /* ------------------------------------- */
-    /* 4. HERO                               */
-    /* ------------------------------------- */
+    /* HERO */
     #inicio{background:linear-gradient(135deg,var(--color-primario) 0%,#004d99 100%);color:var(--color-fondo-claro);padding:150px 0}
     #inicio h1{color:var(--color-secundario);font-size:3.6em;margin-bottom:20px;line-height:1.1}
     #inicio p{font-size:1.15em;max-width:800px;margin:0 auto 40px;text-align:center}
     .btn-hero{padding:15px 35px;font-size:1.05em;border-radius:6px;display:inline-block}
 
-    /* ------------------------------------- */
-    /* 5. SECCIONES                          */
-    /* ------------------------------------- */
+    /* SECCIONES */
     .section-intro{max-width:800px;margin:0 auto}
-    .section-intro h2{font-size:2.3em;margin-bottom:6px}
+    .section-intro h2{font-size:2.05em;margin-bottom:6px}
     .section-intro p{font-size:1.05em;margin-bottom:42px;color:#555;text-align:center}
 
-    /* Título de “Soluciones…” un poco más pequeño */
-    #servicios .section-intro h2{font-size:2.05em}
-
-    /* Servicios - Grid */
+    /* SERVICIOS */
     .servicios-grid{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
       gap:34px 26px
@@ -106,41 +95,39 @@
       margin-bottom:14px;border:1px solid #e3e7ee
     }
     .servicio-card h3{font-size:1.2em;color:var(--color-primario);margin-bottom:8px}
-    /* Viñetas claras para mejor lectura */
     .servicio-card ul{margin-left:1.1em;display:grid;gap:6px}
     .servicio-card li{list-style:disc;font-size:.98em;color:#444;line-height:1.55}
 
-    /* Sobre mí (sin foto) */
+    /* SOBRE MI */
     #sobre-mi{background:#FFF}
     .perfil-content{max-width:900px;margin:0 auto}
     .perfil-text{text-align:left}
-    .perfil-text h2{font-size:2.05em;text-align:center}
+    #sobre-mi .perfil-text h2{
+      font-size:clamp(1.5rem,1.6vw + 1rem,2rem);
+      font-weight:800;line-height:1.2;letter-spacing:.2px;
+      margin-bottom:14px;text-align:center;
+    }
     .perfil-text p,.perfil-text ul{max-width:900px;margin:0 auto;text-align:justify}
-    .perfil-text ul{margin-top:10px;display:grid;gap:8px}
+    .perfil-text ul{margin-top:12px;display:grid;gap:8px}
     .perfil-text li{list-style:disc;margin-left:1.2em}
 
-    /* Contacto */
-    #contacto{background:linear-gradient(90deg,#003366 0%,#004d99 100%);color:var(--color-fondo-claro);padding:80px 0}
+    /* CONTACTO */
+    #contacto{background:linear-gradient(90deg,#003366 0%,#004d99 100%);color:#F8F8F8;padding:80px 0}
 
-    /* Footer */
-    footer{background:var(--color-primario);color:var(--color-fondo-claro);padding:30px 0;font-size:.9em}
+    /* FOOTER */
+    footer{background:#003366;color:#FFF;padding:30px 0;font-size:.9em}
 
-    /* ------------------------------------- */
-    /* 6. MENÚ MÓVIL                         */
-    /* ------------------------------------- */
+    /* RESPONSIVO */
     .menu-toggle{display:none;font-size:30px;cursor:pointer;color:var(--color-primario);line-height:1;padding:5px}
-    @media (max-width:950px){
+    @media(max-width:950px){
       .menu-toggle{display:block}
       nav{display:none;flex-direction:column;width:100%;order:3;box-shadow:0 5px 10px rgba(0,0,0,.1)}
       nav.open{display:flex}
       nav ul{flex-direction:column;padding:10px 0;gap:5px}
       nav a{padding:10px 0;display:block;border-bottom:1px solid var(--color-fondo-claro)}
       .cta-header{order:2;width:100%;justify-content:center}
-      .brand .name{font-size:1.15rem}
-      .brand .tagline{font-size:.7rem}
-      .servicio-card{text-align:left}
     }
-    @media (max-width:600px){
+    @media(max-width:600px){
       .container{padding:0 20px}
       #inicio h1{font-size:2.5em}
     }
@@ -150,7 +137,9 @@
   <header>
     <div class="container nav-content">
       <div class="logo">
-        <span class="plane">✈</span>
+        <svg class="plane" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M21 16.5l-7.2-2.1-3.9 3.4.9-4.4L4 11.6l1.2-1.3 5.3.2 3.8-6 1.3.4-1.7 6 6.1 2.7z"/>
+        </svg>
         <div class="brand">
           <div class="name">EDUARDO ESPINAL</div>
           <div class="tagline">CONSULTOR DE MIGRACIÓN</div>
@@ -169,10 +158,8 @@
       </nav>
 
       <div class="cta-header">
-        <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración."
-           target="_blank" class="btn-contacto whatsapp">WhatsApp</a>
-        <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web"
-           class="btn-contacto email">Correo</a>
+        <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración." target="_blank" class="btn-contacto whatsapp">WhatsApp</a>
+        <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web" class="btn-contacto email">Correo</a>
       </div>
     </div>
   </header>
@@ -195,13 +182,9 @@
       </div>
 
       <div class="servicios-grid">
-        <!-- RD -->
         <div class="servicio-card">
-          <div class="icono" aria-hidden="true">
-            <!-- Pasaporte -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="2" width="14" height="20" rx="2"/><path d="M7 6h6M7 10h6M7 14h4"/>
-            </svg>
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="20" rx="2"/><path d="M7 6h6M7 10h6M7 14h4"/></svg>
           </div>
           <h3>Residencia y Visado Dominicano</h3>
           <ul>
@@ -211,13 +194,9 @@
           </ul>
         </div>
 
-        <!-- UE -->
         <div class="servicio-card">
-          <div class="icono" aria-hidden="true">
-            <!-- Estrella/UE -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15 8.5 22 9 17 13.5 18.5 20 12 16.8 5.5 20 7 13.5 2 9 9 8.5 12 2"/>
-            </svg>
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9 17 13.5 18.5 20 12 16.8 5.5 20 7 13.5 2 9 9 8.5 12 2"/></svg>
           </div>
           <h3>Residencia y Visado Europeo</h3>
           <ul>
@@ -227,14 +206,9 @@
           </ul>
         </div>
 
-        <!-- USA -->
         <div class="servicio-card">
-          <div class="icono" aria-hidden="true">
-            <!-- Maletín negocio -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="2" y="7" width="20" height="13" rx="2"/>
-              <path d="M2 12h20"/>
-            </svg>
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 12h20"/></svg>
           </div>
           <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
           <ul>
@@ -244,13 +218,9 @@
           </ul>
         </div>
 
-        <!-- Homologación -->
         <div class="servicio-card">
-          <div class="icono" aria-hidden="true">
-            <!-- Diploma -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M21 10v6"/><path d="M3 10v6"/><path d="M7 21l5-2 5 2"/>
-            </svg>
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M21 10v6"/><path d="M3 10v6"/><path d="M7 21l5-2 5 2"/></svg>
           </div>
           <h3>Homologación de Estudios y Títulos</h3>
           <ul>
@@ -260,13 +230,9 @@
           </ul>
         </div>
 
-        <!-- Ciudadanía -->
         <div class="servicio-card">
-          <div class="icono" aria-hidden="true">
-            <!-- Escudo -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3>Procesos de Ciudadanía y Naturalización</h3>
           <ul>
@@ -276,7 +242,6 @@
           </ul>
         </div>
       </div>
-
       <a href="#contacto" class="btn-contacto email" style="margin-top:40px;padding:15px 35px;border-radius:6px;">Quiero Iniciar mi Proceso</a>
     </div>
   </section>
@@ -303,12 +268,10 @@
         El primer paso para tu migración global es una consulta estratégica.
       </p>
       <div class="cta-header" style="justify-content:center;gap:20px">
-        <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración."
-           target="_blank" class="btn-contacto whatsapp" style="padding:15px 35px;font-size:1.05em;border-radius:6px">
+        <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración." target="_blank" class="btn-contacto whatsapp" style="padding:15px 35px;font-size:1.05em;border-radius:6px">
           Chat Directo por WhatsApp
         </a>
-        <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web"
-           class="btn-contacto email" style="padding:15px 35px;font-size:1.05em;border-radius:6px;background:transparent;color:var(--color-secundario);border-color:var(--color-secundario)">
+        <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web" class="btn-contacto email" style="padding:15px 35px;font-size:1.05em;border-radius:6px;background:transparent;color:var(--color-secundario);border-color:var(--color-secundario)">
           Enviar Consulta por Correo
         </a>
       </div>
@@ -323,7 +286,6 @@
   </footer>
 
   <script>
-    // Desplazamiento suave y cierre de menú en móvil
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const target=document.querySelector(a.getAttribute('href'));
@@ -332,7 +294,6 @@
         if(nav.classList.contains('open')) nav.classList.remove('open');
       });
     });
-    // Menú hamburguesa
     document.getElementById('menu-toggle').addEventListener('click',()=>{
       document.getElementById('main-nav').classList.toggle('open');
     });
