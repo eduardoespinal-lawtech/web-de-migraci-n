@@ -12,72 +12,98 @@
       --c-prim:#0B3766;
       --c-sec:#C49449;
       --c-white:#fff;
+      --c-bg:#F6F7F9;
       --c-text:#253040;
-      --logo-name-size:clamp(1.8rem,1.5vw + 1rem,2.4rem);
-      --logo-tag-size:.84rem;
-      --logo-plane-size:calc(var(--logo-name-size)*1.25);
       --radius:14px;
+      --logo-name-size:clamp(1.8rem,1.4vw + 1.2rem,2.4rem);
+      --logo-plane-size:calc(var(--logo-name-size)*1.25);
     }
-
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Montserrat',sans-serif;color:var(--c-text);background:#F6F7F9;line-height:1.6;}
+    body{font-family:'Montserrat',sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.7;}
     html{scroll-behavior:smooth}
 
-    /* ===== HEADER ===== */
+    /* HEADER */
     header{
       position:sticky;top:0;z-index:1000;
       background:var(--c-white);
       border-bottom:3px solid var(--c-prim);
-      box-shadow:0 1px 10px rgba(0,0,0,.05);
+      box-shadow:0 1px 8px rgba(0,0,0,.06);
       padding:14px 0;
     }
     .container{max-width:1300px;margin:0 auto;padding:0 50px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
-    /* LOGO */
     .brand{display:flex;align-items:center;gap:16px;color:var(--c-prim);flex:0 0 auto}
-    .brand .plane{width:var(--logo-plane-size);height:var(--logo-plane-size);color:var(--c-sec);}
+    .brand .plane{width:var(--logo-plane-size);height:var(--logo-plane-size);color:var(--c-sec)}
     .brand .lockup{display:flex;flex-direction:column;line-height:1.05;}
     .brand .name{font-weight:800;font-size:var(--logo-name-size);}
-    .brand .tag{font-weight:700;font-size:var(--logo-tag-size);letter-spacing:.18em;text-transform:uppercase;color:#3e5a84;}
+    .brand .tag{font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:#3e5a84;}
 
     /* MENÚ */
-    #main-nav{flex:1 1 auto;display:flex;justify-content:center;}
+    #main-nav{flex:1 1 auto;display:flex;justify-content:center}
     #main-nav ul{
-      list-style:none;
-      display:flex;
-      gap:clamp(24px,5vw,80px);
-      align-items:center;
-      margin:0;padding:0;
+      list-style:none;display:flex;align-items:center;
+      gap:clamp(26px,5vw,85px);margin:0;padding:0;
     }
     #main-nav a{
-      font-weight:700;
+      font-weight:700;text-transform:uppercase;
       font-size:clamp(.9rem,.8vw + .5rem,1.05rem);
-      text-transform:uppercase;
-      color:var(--c-prim);
-      letter-spacing:.04em;
+      letter-spacing:.05em;color:var(--c-prim);
     }
     #main-nav a:hover{opacity:.75}
 
     /* BOTONES */
-    .cta{display:flex;gap:18px;flex:0 0 auto;}
+    .cta{display:flex;gap:16px;flex:0 0 auto}
     .btn{
-      display:inline-block;
-      padding:13px 22px;
+      display:inline-block;padding:12px 22px;
       border-radius:var(--radius);
-      font-weight:800;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-      border:2px solid transparent;
+      font-weight:800;text-transform:uppercase;
+      border:2px solid transparent;letter-spacing:.05em;
     }
     .btn.whatsapp{background:var(--c-sec);color:var(--c-prim);}
     .btn.email{background:var(--c-prim);color:var(--c-white);}
     .btn:hover{filter:brightness(0.97);transform:translateY(-1px);}
-    .btn:active{transform:translateY(0);}
+
+    /* HERO */
+    #inicio{background:linear-gradient(135deg,#0B3766 0%,#14549b 100%);color:var(--c-white);text-align:center;padding:140px 0}
+    #inicio h1{color:var(--c-sec);font-size:clamp(2.4rem,3vw + 1rem,3.8rem);margin-bottom:18px;line-height:1.1;}
+    #inicio p{max-width:800px;margin:0 auto 36px;font-size:1.1rem;}
+    .btn-hero{padding:14px 32px;border-radius:var(--radius);font-size:1rem;}
+
+    /* SECCIONES */
+    section{padding:90px 0;}
+    .section-intro{max-width:820px;margin:0 auto;text-align:center;}
+    .section-intro h2{font-size:clamp(1.6rem,1.2vw + 1rem,2.05rem);color:var(--c-prim);margin-bottom:8px;}
+    .section-intro p{color:#516078;margin-bottom:38px;}
+
+    /* SERVICIOS */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px 24px;}
+    .card{background:var(--c-white);border-radius:14px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06);border-bottom:5px solid var(--c-sec);}
+    .ico{width:52px;height:52px;border-radius:12px;background:#eef2f7;border:1px solid #e1e7ef;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+    .card h3{font-size:1.15rem;color:var(--c-prim);margin-bottom:10px;font-weight:800;}
+    .card ul{margin-left:1.2em;display:grid;gap:6px;}
+    .card li{list-style:disc;color:#39475b;font-size:.98rem;}
+
+    /* SOBRE MI */
+    #sobre-mi{background:var(--c-white);}
+    #sobre-mi h2{text-align:center;font-weight:800;font-size:clamp(1.5rem,1.4vw + 1rem,2rem);margin-bottom:14px;}
+    .perfil{max-width:900px;margin:0 auto;}
+    .perfil p{text-align:justify;margin-bottom:10px;}
+    .perfil ul{margin-top:10px;display:grid;gap:8px;}
+    .perfil li{list-style:disc;margin-left:1.2em;}
+
+    /* CONTACTO */
+    #contacto{background:linear-gradient(90deg,#0B3766 0%,#14549b 100%);color:var(--c-white);text-align:center;}
+    #contacto h2{color:var(--c-sec);}
+    #contacto p{max-width:720px;margin:0 auto 30px;}
+
+    /* FOOTER */
+    footer{background:var(--c-prim);color:var(--c-white);text-align:center;padding:26px 0;}
+    footer .mark{color:var(--c-sec);font-weight:800;letter-spacing:.02em;}
 
     /* RESPONSIVO */
     .menu-toggle{display:none;font-size:30px;cursor:pointer;color:var(--c-prim);}
-    @media (max-width:1100px){
+    @media(max-width:1100px){
       .menu-toggle{display:block;}
       #main-nav{display:none;}
       #main-nav.open{display:flex;}
@@ -87,49 +113,166 @@
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container nav">
-    <!-- LOGO -->
-    <a href="#inicio" class="brand">
-      <svg class="plane" viewBox="0 0 64 64" aria-hidden="true">
-        <path fill="currentColor" d="M58 42.5L35.4 36l-12 10 2.6-12.9L6.3 29l3.3-3.7 15.9.7 11.5-18 3.8 1.1-5.2 18.2 19 8.4z"/>
-      </svg>
-      <span class="lockup">
-        <span class="name">EDUARDO ESPINAL</span>
-        <span class="tag">CONSULTOR DE MIGRACIÓN</span>
-      </span>
-    </a>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <svg class="plane" viewBox="0 0 64 64" aria-hidden="true">
+          <path fill="currentColor" d="M58 42.5L35.4 36l-12 10 2.6-12.9L6.3 29l3.3-3.7 15.9.7 11.5-18 3.8 1.1-5.2 18.2 19 8.4z"/>
+        </svg>
+        <span class="lockup">
+          <span class="name">EDUARDO ESPINAL</span>
+          <span class="tag">CONSULTOR DE MIGRACIÓN</span>
+        </span>
+      </a>
 
-    <!-- MENÚ -->
-    <div class="menu-toggle" id="menu-toggle">☰</div>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
 
-    <nav id="main-nav">
-      <ul>
-        <li><a href="#inicio">INICIO</a></li>
-        <li><a href="#servicios">SERVICIOS</a></li>
-        <li><a href="#sobre-mi">SOBRE MÍ</a></li>
-        <li><a href="#contacto">CONTACTO</a></li>
-      </ul>
-    </nav>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="#inicio">INICIO</a></li>
+          <li><a href="#servicios">SERVICIOS</a></li>
+          <li><a href="#sobre-mi">SOBRE MÍ</a></li>
+          <li><a href="#contacto">CONTACTO</a></li>
+        </ul>
+      </nav>
 
-    <!-- BOTONES -->
-    <div class="cta">
-      <a class="btn whatsapp" target="_blank"
-         href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración.">WHATSAPP</a>
-      <a class="btn email"
-         href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web">CORREO</a>
+      <div class="cta">
+        <a class="btn whatsapp" target="_blank"
+           href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta.">WHATSAPP</a>
+        <a class="btn email"
+           href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria">CORREO</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<script>
-  // Menú móvil
-  document.getElementById('menu-toggle').addEventListener('click',()=>{
-    document.getElementById('main-nav').classList.toggle('open');
-  });
-</script>
+  <!-- ===== HERO ===== -->
+  <section id="inicio">
+    <div class="container">
+      <h1>Tu Estrategia Migratoria Global Comienza Aquí.</h1>
+      <p>Obtén Visas, Residencias y la Homologación de tus Estudios con asesoría legal rigurosa y personalizada para <strong>República Dominicana</strong>, <strong>Europa</strong> y <strong>Estados Unidos</strong>.</p>
+      <a href="#contacto" class="btn btn-hero whatsapp">Agenda tu Consulta Estratégica</a>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Soluciones Legales para tu Movilidad Global</h2>
+        <p>Planificación estratégica, cumplimiento estricto y transparencia total.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3766" stroke-width="2"><rect x="3" y="2" width="14" height="20" rx="2"/><path d="M7 6h6M7 10h6M7 14h4"/></svg>
+          </div>
+          <h3>Residencia y Visado Dominicano</h3>
+          <ul>
+            <li>Residencia por inversión, rentista y pensionado.</li>
+            <li>Visas de trabajo y reunificación familiar.</li>
+            <li>Gestión integral y cumplimiento documental.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3766" stroke-width="2"><polygon points="12 2 15 8.5 22 9 17 13.5 18.5 20 12 16.8 5.5 20 7 13.5 2 9 9 8.5 12 2"/></svg>
+          </div>
+          <h3>Residencia y Visado Europeo</h3>
+          <ul>
+            <li>Schengen y residencias por inversión (Golden Visa).</li>
+            <li>Permisos para nómadas digitales.</li>
+            <li>Estrategia de entrada a la Unión Europea.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3766" stroke-width="2"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
+          <ul>
+            <li>E-2 (inversionista) y L-1 (transferencia ejecutiva).</li>
+            <li>B1/B2 con cumplimiento de USCIS.</li>
+            <li>Diseño de plan y evidencia probatoria.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3766" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M21 10v6"/><path d="M3 10v6"/><path d="M7 21l5-2 5 2"/></svg>
+          </div>
+          <h3>Homologación de Estudios y Títulos</h3>
+          <ul>
+            <li>Reconocimiento oficial y equivalencias académicas.</li>
+            <li>Trámite en RD, Europa y Estados Unidos.</li>
+            <li>Gestión de requisitos y validaciones.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3766" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Procesos de Ciudadanía y Naturalización</h3>
+          <ul>
+            <li>Evaluación de elegibilidad y rutas disponibles.</li>
+            <li>Por inversión, matrimonio o residencia prolongada.</li>
+            <li>Acompañamiento completo hasta juramento.</li>
+          </ul>
+        </article>
+      </div>
+
+      <a href="#contacto" class="btn email" style="margin-top:34px;">Quiero Iniciar mi Proceso</a>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE MI ===== -->
+  <section id="sobre-mi">
+    <div class="container">
+      <h2>Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
+      <div class="perfil">
+        <p>Mi misión va más allá del simple trámite. Como abogado experto en migración, diseño una <strong>ruta legal optimizada y transparente</strong> que minimiza riesgos y acelera tu objetivo de residencia o visado global. Compromiso total con la ley y contigo.</p>
+        <ul>
+          <li><strong>Estrategia Personalizada:</strong> análisis de tu caso para elegir la mejor vía.</li>
+          <li><strong>Transparencia de Costos:</strong> precios claros, sin sorpresas.</li>
+          <li><strong>Comunicación Directa:</strong> contacto permanente con tu consultor.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto">
+    <div class="container">
+      <h2>Hablemos de tu Próximo Destino</h2>
+      <p>El primer paso para tu migración global es una consulta estratégica.</p>
+      <div class="cta" style="justify-content:center;">
+        <a class="btn whatsapp" target="_blank"
+           href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta.">Chat por WhatsApp</a>
+        <a class="btn email" href="mailto:eduardoespinaldeaza@gmail.com" style="background:transparent;color:var(--c-sec);border:2px solid var(--c-sec);">Enviar Correo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p class="mark">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
+      <p>&copy; 2025 Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click',()=>{
+      document.getElementById('main-nav').classList.toggle('open');
+    });
+  </script>
 
 </body>
 </html>
