@@ -21,10 +21,6 @@ Crear una base técnica sólida para presentar servicios de migración empresari
 - Generación de PDFs con metadatos legales
 - Cumplimiento normativo con Ley No. 285-04 y estándares internacionales
 
-## 🚀 Despliegue
-
-Este sitio está activo en:  
-**https://eduardospinal-laweth.github.io/web-de-migraci-n/**
 
 ## 📌 Próximos pasos
 
