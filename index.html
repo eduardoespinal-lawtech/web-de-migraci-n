@@ -5,28 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Eduardo Espinal | Consultor de Migración Internacional</title>
 
-  <!-- SEO básico -->
-  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa."/>
-  <meta name="keywords" content="abogado migración, consultor migratorio, visa Estados Unidos, residencia República Dominicana, ciudadanía, homologación de títulos, Unión Europea"/>
-  <meta name="author" content="Eduardo Espinal"/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://tu-dominio.com/"/>
+  <!-- SEO -->
+  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa.">
+  <meta name="keywords" content="abogado migración, consultor migratorio, visa Estados Unidos, residencia República Dominicana, ciudadanía, homologación de títulos, Unión Europea">
+  <meta name="author" content="Eduardo Espinal">
+  <meta name="robots" content="index, follow">
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Eduardo Espinal | Consultor de Migración Internacional"/>
-  <meta property="og:description" content="Asesoría profesional en Visas, Residencias, Homologación y Ciudadanía para RD, EE. UU. y Europa."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://tu-dominio.com/"/>
-  <meta property="og:image" content="https://flagcdn.com/w640/do.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <!-- Favicon con letras EE -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <rect width='100' height='100' fill='%230B3766'/>
+    <text x='50%' y='58%' font-family='Arial, sans-serif' font-size='55' fill='%23C49449' text-anchor='middle' font-weight='bold'>EE</text>
+  </svg>">
 
-  <!-- Rendimiento fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Eduardo Espinal | Consultor de Migración Internacional">
+  <meta property="og:description" content="Asesoría profesional en Visas, Residencias, Homologación y Ciudadanía para República Dominicana, Estados Unidos y Europa.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://flagcdn.com/w640/do.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    :root{
       --azul:#0B3766;
       --oro:#C49449;
       --azul-suave:#EAF0F7;
@@ -40,8 +43,9 @@
 
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--b-font);color:var(--texto);background:#fff;line-height:1.7}
-    a{text-decoration:none;color:var(--azul)}
     img{max-width:100%;height:auto;display:block}
+    a{color:var(--azul);text-decoration:none}
+    a:hover{color:var(--oro)}
 
     .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
     h1,h2,h3{font-family:var(--h-font);color:var(--azul)}
@@ -49,18 +53,15 @@
     h2{text-align:center;font-size:2em;margin-bottom:.8em}
     p{text-align:justify}
 
-    /* Header (igual diseño) */
     header{text-align:center;border-bottom:3px solid var(--azul);background:#fdfdfd;padding:25px 0}
     .brand-title{font:700 2.4em var(--h-font);color:var(--azul)}
     .brand-sub{text-transform:uppercase;font-weight:600;letter-spacing:.1em;color:var(--muted);font-size:.9em;margin-top:6px}
 
-    /* Nav (igual diseño) */
     nav{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff}
     nav ul{display:flex;justify-content:center;gap:60px;list-style:none;padding:10px 0;flex-wrap:wrap}
     nav a{font-weight:600;text-transform:uppercase;font-size:.9em;color:var(--azul)}
     nav a:hover{color:var(--oro)}
 
-    /* Secciones (igual diseño) */
     section{padding:70px 0}
     #inicio{background:linear-gradient(180deg,#fff,var(--azul-suave))}
     #inicio p{text-align:center;max-width:800px;margin:0 auto 20px;color:var(--muted)}
@@ -69,29 +70,17 @@
     .btn.primary{background:var(--azul);color:#fff}
     .btn:hover{opacity:.9}
 
-    /* Tarjetas de Servicios (igual diseño con SVG dorados y banderas en esquina) */
     #servicios{background:#fff}
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
-    .card{
-      border:1px solid #ddd;border-radius:var(--radius);
-      box-shadow:var(--shadow);padding:24px 20px 20px;
-      background:#fff;position:relative;
-      transition:all .2s;text-align:left;
-    }
+    .card{border:1px solid #ddd;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 20px 20px;background:#fff;position:relative;transition:all .2s;text-align:left}
     .card:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(11,55,102,.1)}
     .card h3{margin-bottom:10px;font-size:1.15em;text-align:left}
     .card ul{margin-left:18px;margin-top:8px;list-style:disc}
-    .flag{
-      width:30px;height:20px;position:absolute;
-      top:18px;right:20px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25);
-    }
-    .icon{
-      width:42px;height:42px;display:grid;place-items:center;
-      background:rgba(196,148,73,.1);border-radius:10px;margin-bottom:10px;
-    }
-    .icon svg{width:26px;height:26px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
-    /* Sobre mí y Contacto (igual diseño) */
+    .flag{width:30px;height:20px;position:absolute;top:18px;right:20px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+    .icon{width:42px;height:42px;display:grid;place-items:center;background:rgba(196,148,73,.1);border-radius:10px;margin-bottom:10px}
+    .icon svg{width:26px;height:26px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
     #sobre-mi{background:var(--azul-suave)}
     #sobre-mi h2,#contacto h2{text-align:center}
     #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 20px}
@@ -101,15 +90,10 @@
     #contacto p{color:var(--muted);max-width:700px;margin:0 auto 20px;text-align:center}
     #contacto .btn{margin:6px}
 
-    /* Footer TODO blanco y centrado (igual diseño solicitado) */
-    footer{
-      background:var(--azul);color:#fff;text-align:center;
-      padding:28px 15px;font-size:.9em;
-    }
+    footer{background:var(--azul);color:#fff;text-align:center;padding:28px 15px;font-size:.9em}
     footer .marca{color:#fff;font-weight:700;font-size:1em;margin-bottom:4px}
     footer p{text-align:center;margin:4px 0;color:#fff}
 
-    /* Mobile (sin cambiar la estética) */
     @media (max-width:768px){
       .brand-title{font-size:2em}
       h1{font-size:1.9em}
@@ -120,185 +104,121 @@
     }
   </style>
 </head>
+
 <body>
-
-<header role="banner">
-  <div class="wrap">
-    <div class="brand-title">EDUARDO ESPINAL</div>
-    <div class="brand-sub">Consultor de Migración</div>
-  </div>
-</header>
-
-<nav aria-label="Navegación principal">
-  <ul>
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#sobre-mi">Sobre Mí</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-
-<main id="contenido-principal">
-  <!-- HERO -->
-  <section id="inicio">
+  <header>
     <div class="wrap">
-      <h1>Tu Estrategia Migratoria Global Comienza Aquí</h1>
-      <p>Consultoría migratoria profesional en <strong>Visas, Residencias, Homologación de Estudios y Ciudadanía</strong> con asesoría personalizada en <strong>República Dominicana, Europa</strong> y <strong>Estados Unidos</strong>.</p>
-      <div class="cta"><a href="#contacto" class="btn primary" aria-label="Agendar consulta migratoria">Agenda tu Consulta</a></div>
+      <div class="brand-title">EDUARDO ESPINAL</div>
+      <div class="brand-sub">Consultor de Migración</div>
     </div>
-  </section>
+  </header>
 
-  <!-- SERVICIOS (sin cambios visuales, con semántica + alt + schema Service) -->
-  <section id="servicios" aria-labelledby="titulo-servicios">
-    <div class="wrap">
-      <h2 id="titulo-servicios">Soluciones Legales para tu Movilidad Global</h2>
-      <div class="cards">
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre Mí</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-        <article class="card" itemscope itemtype="https://schema.org/Service">
-          <img src="https://flagcdn.com/w40/do.png" width="40" height="27" loading="lazy" alt="Bandera de República Dominicana" class="flag">
-          <div class="icon" aria-hidden="true">
-            <!-- Pasaporte -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Pasaporte (República Dominicana)">
-              <rect x="4" y="3" width="16" height="18" rx="2"/>
-              <path d="M8 7h8M8 11h8M8 15h5"/>
-            </svg>
-          </div>
-          <h3 itemprop="name">Residencia y Visado Dominicano</h3>
-          <ul itemprop="description">
-            <li>Residencia por inversión, rentista y pensionado.</li>
-            <li>Visas de trabajo y reunificación familiar.</li>
-            <li>Gestión legal migratoria completa.</li>
-          </ul>
-        </article>
-
-        <article class="card" itemscope itemtype="https://schema.org/Service">
-          <img src="https://flagcdn.com/w40/eu.png" width="40" height="27" loading="lazy" alt="Bandera de la Unión Europea" class="flag">
-          <div class="icon" aria-hidden="true">
-            <!-- Globo / Europa -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Globo Europa">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
-            </svg>
-          </div>
-          <h3 itemprop="name">Residencia y Visado Europeo</h3>
-          <ul itemprop="description">
-            <li>Golden Visa y Visas Schengen.</li>
-            <li>Permisos para nómadas digitales.</li>
-            <li>Estrategia de entrada legal a la UE.</li>
-          </ul>
-        </article>
-
-        <article class="card" itemscope itemtype="https://schema.org/Service">
-          <img src="https://flagcdn.com/w40/us.png" width="40" height="27" loading="lazy" alt="Bandera de Estados Unidos" class="flag">
-          <div class="icon" aria-hidden="true">
-            <!-- Maletín -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Maletín (negocios EE. UU.)">
-              <path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/>
-              <rect x="3" y="7" width="18" height="14" rx="2"/>
-              <path d="M3 13h18"/>
-            </svg>
-          </div>
-          <h3 itemprop="name">Visas de Inversión y Negocios (EE. UU.)</h3>
-          <ul itemprop="description">
-            <li>Visas E-2, L-1 y B1/B2 con asesoría empresarial.</li>
-            <li>Diseño de evidencia y cumplimiento USCIS.</li>
-            <li>Plan migratorio empresarial integral.</li>
-          </ul>
-        </article>
-
-        <article class="card" itemscope itemtype="https://schema.org/Service">
-          <div class="icon" aria-hidden="true">
-            <!-- Diploma -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Diploma">
-              <path d="M2 7l10-5 10 5-10 5-10-5z"/>
-              <path d="M12 12v10M12 22l5-3 5 3M12 22l-5-3-5 3"/>
-            </svg>
-          </div>
-          <h3 itemprop="name">Homologación de Estudios y Títulos</h3>
-          <ul itemprop="description">
-            <li>Reconocimiento académico oficial.</li>
-            <li>Gestión en RD, EE. UU. y Europa.</li>
-            <li>Tramitación y validación institucional.</li>
-          </ul>
-        </article>
-
-        <article class="card" itemscope itemtype="https://schema.org/Service">
-          <div class="icon" aria-hidden="true">
-            <!-- Escudo -->
-            <svg viewBox="0 0 24 24" role="img" aria-label="Escudo">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 itemprop="name">Procesos de Ciudadanía y Naturalización</h3>
-          <ul itemprop="description">
-            <li>Evaluación de elegibilidad y rutas legales.</li>
-            <li>Ciudadanía por inversión, matrimonio o residencia.</li>
-            <li>Acompañamiento hasta juramento final.</li>
-          </ul>
-        </article>
-
+  <main>
+    <section id="inicio">
+      <div class="wrap">
+        <h1>Tu Estrategia Migratoria Global Comienza Aquí</h1>
+        <p>Consultoría migratoria profesional en <strong>Visas, Residencias, Homologación de Estudios y Ciudadanía</strong> con asesoría personalizada en <strong>República Dominicana, Europa</strong> y <strong>Estados Unidos</strong>.</p>
+        <div class="cta"><a href="#contacto" class="btn primary">Agenda tu Consulta</a></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="sobre-mi" aria-labelledby="titulo-sobremi">
-    <div class="wrap">
-      <h2 id="titulo-sobremi">Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
-      <p>Como abogado y consultor migratorio, ofrezco una <strong>asesoría jurídica transparente</strong> que optimiza tu proceso migratorio internacional. Mi objetivo es acompañarte legalmente hasta lograr tu residencia o ciudadanía, con cumplimiento y eficiencia.</p>
-      <ul>
-        <li><strong>Estrategia Personalizada:</strong> análisis de tu perfil y objetivos.</li>
-        <li><strong>Transparencia:</strong> costos y tiempos claros desde el inicio.</li>
-        <li><strong>Atención Directa:</strong> trato profesional y continuo con tu consultor.</li>
-      </ul>
-    </div>
-  </section>
+    <section id="servicios">
+      <div class="wrap">
+        <h2>Soluciones Legales para tu Movilidad Global</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="https://flagcdn.com/w40/do.png" alt="Bandera RD" class="flag">
+            <div class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
+            <h3>Residencia y Visado Dominicano</h3>
+            <ul>
+              <li>Residencia por inversión, rentista y pensionado.</li>
+              <li>Visas de trabajo y reunificación familiar.</li>
+              <li>Gestión legal migratoria completa.</li>
+            </ul>
+          </article>
 
-  <section id="contacto" aria-labelledby="titulo-contacto">
-    <div class="wrap">
-      <h2 id="titulo-contacto">Hablemos de tu Próximo Destino</h2>
-      <p>Contáctame para una consulta legal personalizada sobre tu proceso migratorio. Atención a clientes en República Dominicana, Estados Unidos y Europa.</p>
-      <div class="cta" role="group" aria-label="Opciones de contacto">
-        <a href="https://wa.me/18294424222" target="_blank" rel="noopener" class="btn" aria-label="Abrir chat de WhatsApp">WhatsApp</a>
-        <a href="mailto:eduardoespinaldeaza@gmail.com" class="btn primary" aria-label="Enviar correo electrónico">Correo</a>
+          <article class="card">
+            <img src="https://flagcdn.com/w40/eu.png" alt="Bandera UE" class="flag">
+            <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+            <h3>Residencia y Visado Europeo</h3>
+            <ul>
+              <li>Golden Visa y Visas Schengen.</li>
+              <li>Permisos para nómadas digitales.</li>
+              <li>Estrategia de entrada legal a la UE.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="https://flagcdn.com/w40/us.png" alt="Bandera EE.UU" class="flag">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 13h18"/></svg></div>
+            <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
+            <ul>
+              <li>Visas E-2, L-1 y B1/B2 con asesoría empresarial.</li>
+              <li>Diseño de evidencia y cumplimiento USCIS.</li>
+              <li>Plan migratorio empresarial integral.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5-10 5-10-5z"/><path d="M12 12v10M12 22l5-3 5 3M12 22l-5-3-5 3"/></svg></div>
+            <h3>Homologación de Estudios y Títulos</h3>
+            <ul>
+              <li>Reconocimiento académico oficial.</li>
+              <li>Gestión en RD, EE. UU. y Europa.</li>
+              <li>Tramitación y validación institucional.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>Procesos de Ciudadanía y Naturalización</h3>
+            <ul>
+              <li>Evaluación de elegibilidad y rutas legales.</li>
+              <li>Ciudadanía por inversión, matrimonio o residencia.</li>
+              <li>Acompañamiento hasta juramento final.</li>
+            </ul>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer role="contentinfo">
-  <p class="marca">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
-  <p>&copy; 2025 Todos los derechos reservados. | Santo Domingo, República Dominicana</p>
-  <p><small>Asesoría en Visas · Residencias · Homologación · Ciudadanía</small></p>
-</footer>
+    <section id="sobre-mi">
+      <div class="wrap">
+        <h2>Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
+        <p>Como abogado y consultor migratorio, ofrezco una <strong>asesoría jurídica transparente</strong> que optimiza tu proceso migratorio internacional. Mi objetivo es acompañarte legalmente hasta lograr tu residencia o ciudadanía, con cumplimiento y eficiencia.</p>
+        <ul>
+          <li><strong>Estrategia Personalizada:</strong> análisis de tu perfil y objetivos.</li>
+          <li><strong>Transparencia:</strong> costos y tiempos claros desde el inicio.</li>
+          <li><strong>Atención Directa:</strong> trato profesional y continuo con tu consultor.</li>
+        </ul>
+      </div>
+    </section>
 
-<!-- JSON-LD para SEO (Persona + Servicios) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Eduardo Espinal",
-  "jobTitle": "Consultor de Migración",
-  "url": "https://tu-dominio.com/",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Santo Domingo",
-    "addressCountry": "DO"
-  },
-  "areaServed": ["DO","US","EU"],
-  "brand": "Eduardo Espinal Consultoría Migratoria",
-  "knowsAbout": ["Visas","Residencias","Homologación de estudios","Ciudadanía","UE","EE.UU.","República Dominicana"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servicios de consultoría migratoria",
-    "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Residencia y Visado Dominicano"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Residencia y Visado Europeo"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Visas de Inversión y Negocios (EE. UU.)"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Homologación de Estudios y Títulos"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ciudadanía y Naturalización"}}
-    ]
-  }
-}
-</script>
+    <section id="contacto">
+      <div class="wrap">
+        <h2>Hablemos de tu Próximo Destino</h2>
+        <p>Contáctame para una consulta legal personalizada sobre tu proceso migratorio. Atención a clientes en República Dominicana, Estados Unidos y Europa.</p>
+        <div class="cta">
+          <a href="https://wa.me/18294424222" target="_blank" class="btn">WhatsApp</a>
+          <a href="mailto:eduardoespinaldeaza@gmail.com" class="btn primary">Correo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="marca">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
+    <p>&copy; 2025 Todos los derechos reservados. | Santo Domingo, República Dominicana</p>
+    <p><small>Asesoría en Visas · Residencias · Homologación · Ciudadanía</small></p>
+  </footer>
 </body>
 </html>
