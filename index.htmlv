@@ -1,1 +1,512 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Eduardo Espinal — Consultor de Migración</title>
+  <meta name="description" content="Asesoría profesional en procesos de residencia, visas y homologación académica. Atención a República Dominicana, Estados Unidos y Europa. Consultor de migración con enfoque humano y precisión jurídica.">
+  <meta name="keywords" content="consultor de migración, residencia dominicana, naturalización, homologación académica, visas Estados Unidos, visas Europa, asesor migratorio, República Dominicana, immigration consultant, visas and residence, Dominican residency, credential evaluation, MESCyT">
+  <meta name="author" content="Eduardo Espinal">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Eduardo Espinal — Consultor de Migración">
+  <meta property="og:description" content="Residencias, visas, homologación académica y naturalizaciones. Asesoría profesional con enfoque humano e institucional.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_DO">
+
+  <!-- Favicon (SVG data URI con iniciales EE) -->
+  <link rel="icon" href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+    <rect width='64' height='64' rx='12' fill='%230048FF'/>
+    <text x='50%' y='54%' text-anchor='middle' font-family='Manrope,Arial' font-size='28' font-weight='900' fill='white'>EE</text>
+  </svg>">
+
+  <!-- Fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme:{
+        container:{ center:true, padding:"24px", screens:{ sm:"640px", md:"768px", lg:"1140px", xl:"1140px", "2xl":"1140px" } },
+        extend:{
+          fontFamily:{ display:['Manrope','system-ui','sans-serif'], sans:['Inter Tight','system-ui','sans-serif'] },
+          colors:{ brand:{ 500:'#0048FF', 600:'#2B3DFF' }, night:'#0B0D17', cloud:'#F8FAFC' },
+          boxShadow:{ glow:'0 16px 48px -20px rgba(0,72,255,.55)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html{ scroll-behavior:smooth }
+    :root{
+      --h1: clamp(2.4rem, 6vw, 3.8rem);
+      --h2: clamp(1.6rem, 3vw, 2.1rem);
+      --h3: clamp(1.1rem, 1.8vw, 1.25rem);
+      --lead: clamp(1.05rem, 1.4vw, 1.125rem);
+    }
+    body{ font-family:var(--font-body,'Inter Tight'),system-ui,-apple-system,segoe ui,sans-serif; color:#111827; }
+
+    /* Bilingüe: oculta el idioma opuesto */
+    :root[data-lang="es"] [lang="en"], :root[data-lang="en"] [lang="es"]{ display:none }
+
+    /* Nav */
+    .nav-link{ color:#111827; font-weight:600; transition:color .2s }
+    .nav-link:hover{ color:#0048FF }
+
+    /* Gradiente animado (hero/botones/footer) */
+    .g-anim{
+      background: linear-gradient(90deg, #0F1A3A 0%, #1F2B7A 30%, #4C3FAE 60%, #0048FF 100%);
+      background-size: 200% 200%;
+      animation: gshift 20s ease-in-out infinite alternate;
+    }
+    @keyframes gshift{ to{ background-position: 100% 50% } }
+
+    /* Hero */
+    .hero{ position:relative; isolation:isolate; }
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background: radial-gradient(900px 420px at 10% 20%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 420px at 90% 80%, rgba(255,255,255,.06), transparent 60%);
+      mix-blend-mode: screen;
+    }
+    .hero-content{ position:relative; z-index:1 }
+    .on-dark h1, .on-dark p, .on-dark h2{ color:#F1F5F9 }
+
+    /* Botón primario (WhatsApp) */
+    .btn-primary{
+      background: linear-gradient(90deg, #4C3FAE 0%, #0048FF 100%);
+      color:#fff; border-radius:9999px; padding:.9rem 1.4rem; font-weight:800;
+      box-shadow: 0 10px 28px -14px rgba(0,72,255,.55);
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 20px 40px -18px rgba(76,63,174,.55) }
+
+    /* Secciones */
+    section{ padding: 3.5rem 0; scroll-margin-top: 72px }
+    section h2{ font-family:var(--font-display,'Manrope'); font-size:var(--h2); font-weight:800; letter-spacing:-.015em; color:#1F2937 }
+    .subtle{ color:#4B5563 }
+
+    /* Tarjetas de servicio */
+    .card{
+      background:#fff; border:1px solid #E5E7EB; border-radius:1rem; padding:1.25rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .card:hover{ border-color:rgba(0,72,255,.35); box-shadow:var(--shadow, 0 18px 36px -20px rgba(0,0,0,.25)) }
+    .card h3{ font-family:var(--font-display,'Manrope'); font-size:var(--h3); font-weight:800; color:#111827; margin-bottom:.4rem }
+    .tag{ background:rgba(0,72,255,.08); color:#0048FF; font-weight:800; font-size:.78rem; padding:2px 10px; border-radius:999px; white-space:nowrap }
+    .details{ list-style:none; padding-left:0; margin-top:.5rem }
+    .details li{ position:relative; padding-left:1.2rem; margin:.45rem 0; color:#1F2937 }
+    .details li::before{ content:"✓"; position:absolute; left:0; top:0; color:#0048FF; font-weight:900 }
+
+    /* Testimonios colapsables */
+    #testi-wrap{ max-height:0; opacity:0; overflow:hidden; transition:max-height .5s ease, opacity .5s ease, margin .5s ease }
+    #testi-wrap.active{ max-height:2000px; opacity:1; margin-top:1rem }
+
+    /* Footer */
+    footer{ color:#fff }
+
+    /* Reveal */
+    .reveal{ opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease }
+    .reveal.show{ opacity:1; transform:none }
+  </style>
+
+  <!-- Schema.org: Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Eduardo Espinal",
+    "jobTitle":"Consultor de Migración",
+    "description":"Asesoría profesional en residencias, visas y homologación académica para República Dominicana, Estados Unidos y Europa.",
+    "url":"https://example.com",
+    "areaServed":["DO","US","EU"],
+    "knowsAbout":["Dominican residency","Immigration consulting","Academic credential evaluation","Naturalization"]
+  }
+  </script>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-gray-200 backdrop-blur bg-white/90">
+    <div class="container flex h-16 items-center gap-8">
+      <a href="#inicio" class="flex items-center gap-3">
+        <svg class="w-7 h-7 text-brand-500" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+        </svg>
+        <span class="font-display text-lg font-extrabold tracking-tight">Eduardo Espinal</span>
+        <span class="hidden md:inline text-gray-500 font-semibold">·</span>
+        <span class="hidden md:inline text-gray-700 font-medium" lang="es">Consultor de Migración</span>
+        <span class="hidden md:inline text-gray-700 font-medium" lang="en">Immigration Consultant</span>
+      </a>
+
+      <nav class="ml-auto hidden md:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+        <a class="nav-link" href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+        <a class="nav-link" href="#servicios"><span lang="es">Servicios</span><span lang="en">Services</span></a>
+        <a class="nav-link" href="#proceso"><span lang="es">Proceso</span><span lang="en">Process</span></a>
+        <a class="nav-link" href="#testimonios"><span lang="es">Testimonios</span><span lang="en">Testimonials</span></a>
+        <a class="nav-link" href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+
+        <div class="lang-switch flex items-center gap-2 pl-2">
+          <button id="btnES" type="button" class="font-semibold text-gray-900" aria-pressed="true">ES</button>
+          <span class="text-gray-400">/</span>
+          <button id="btnEN" type="button" class="text-gray-600" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+
+      <button id="menu-toggle" type="button" class="ml-auto md:hidden p-2 text-gray-900" aria-label="Abrir menú" aria-controls="menu-mobile" aria-expanded="false">
+        <!-- Íconos sencillos (sin librerías) -->
+        <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6l-12 12"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="menu-mobile" class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-6 bg-white/95 backdrop-blur-lg md:hidden" role="dialog" aria-modal="true" aria-label="Menú móvil">
+    <a href="#sobre-mi" class="text-lg font-medium hover:text-brand-500">Sobre mí / About</a>
+    <a href="#servicios" class="text-lg font-medium hover:text-brand-500">Servicios / Services</a>
+    <a href="#proceso" class="text-lg font-medium hover:text-brand-500">Proceso / Process</a>
+    <a href="#testimonios" class="text-lg font-medium hover:text-brand-500">Testimonios / Testimonials</a>
+    <a href="#contacto" class="text-lg font-medium hover:text-brand-500">Contacto / Contact</a>
+    <span class="h-px w-16 bg-gray-300"></span>
+    <div class="lang-switch flex items-center gap-3 text-lg">
+      <button id="btnES-mobile" type="button" class="font-semibold text-gray-900">ES</button>
+      <span class="text-gray-400">/</span>
+      <button id="btnEN-mobile" type="button" class="text-gray-600">EN</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero g-anim on-dark text-white">
+    <div class="container hero-content py-20 md:py-24">
+      <h1 class="font-display leading-tight tracking-tight text-center" style="font-size:var(--h1)">
+        <span lang="es">Eduardo Espinal — Consultor de Migración</span>
+        <span lang="en">Eduardo Espinal — Immigration Consultant</span>
+      </h1>
+      <p class="max-w-3xl mx-auto mt-4 text-center text-white/85" style="font-size:var(--lead)">
+        <span lang="es">Asesoría profesional en residencias, visas, naturalizaciones y homologación académica. Enfoque humano, claridad y precisión.</span>
+        <span lang="en">Professional guidance for residencies, visas, naturalizations and academic credential evaluation. Human approach, clarity and precision.</span>
+      </p>
+      <div class="mt-7 flex justify-center gap-3">
+        <a class="btn-primary" href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria." target="_blank" rel="noopener" lang="es">Solicitar Consulta Profesional</a>
+        <a class="btn-primary" href="https://wa.me/18294424222?text=Hello%2C%20I%27d%20like%20an%20immigration%20consultation." target="_blank" rel="noopener" lang="en">Request Professional Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi" class="bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center mb-8 reveal">
+        <h2 lang="es">Sobre mí</h2>
+        <h2 lang="en">About Me</h2>
+        <p class="subtle mt-2" lang="es">
+          Abogado y consultor de migración con más de una década de experiencia en procesos de residencia, naturalización y movilidad internacional entre República Dominicana, Estados Unidos y Europa. Mi práctica combina precisión documental, estrategia jurídica y acompañamiento cercano.
+        </p>
+        <p class="subtle mt-2" lang="en">
+          Lawyer and immigration consultant with over a decade of experience handling residency, naturalization and international mobility across the Dominican Republic, the United States and Europe. My work blends document precision, legal strategy and close client support.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="bg-cloud">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center mb-8 reveal">
+        <h2 lang="es">Servicios</h2>
+        <h2 lang="en">Services</h2>
+        <p class="subtle mt-2" lang="es">Soluciones claras y confiables, enfocadas en resultados.</p>
+        <p class="subtle mt-2" lang="en">Clear, reliable solutions focused on outcomes.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- RD -->
+        <article class="card reveal">
+          <div class="flex items-start justify-between gap-3">
+            <h3 lang="es">Migración en República Dominicana</h3>
+            <span class="tag" lang="es">Rep. Dominicana</span>
+            <h3 lang="en" class="hidden">Dominican Republic Immigration</h3>
+            <span class="tag hidden" lang="en">Dominican Republic</span>
+          </div>
+          <p lang="es">Residencias temporales, permanentes y definitivas · Naturalización · Visas dominicanas (negocios, trabajo, estudios) · Regularización y prórrogas · Legalización/apostilla.</p>
+          <p lang="en" class="hidden">Temporary, permanent and definitive residencies · Naturalization · Dominican visas (business, work, study) · Status regularization and extensions · Legalization/apostille.</p>
+          <ul class="details mt-2" lang="es">
+            <li>Residencia por inversión, matrimonio o vínculo familiar.</li>
+            <li>Recursos administrativos ante DGM.</li>
+            <li>Checklist documental y cronograma claro.</li>
+          </ul>
+          <ul class="details mt-2 hidden" lang="en">
+            <li>Residency through investment, marriage or family ties.</li>
+            <li>Administrative remedies before DGM.</li>
+            <li>Document checklist and clear timeline.</li>
+          </ul>
+        </article>
+
+        <!-- US & Europe -->
+        <article class="card reveal" style="transition-delay:.05s">
+          <div class="flex items-start justify-between gap-3">
+            <h3 lang="es">Asesoría en Visas y Residencias para Estados Unidos y Europa</h3>
+            <span class="tag" lang="es">US · EU</span>
+            <h3 lang="en" class="hidden">Visa & Residency Guidance for the United States and Europe</h3>
+            <span class="tag hidden" lang="en">US · EU</span>
+          </div>
+          <p lang="es">Análisis de elegibilidad · Preparación de expedientes · Acompañamiento en entrevistas consulares · Estrategias para inadmisibilidad/denegaciones.</p>
+          <p lang="en" class="hidden">Eligibility analysis · Dossier preparation · Consular interview support · Strategies for inadmissibility/denials.</p>
+          <ul class="details mt-2" lang="es">
+            <li>Trabajo, estudio, inversión y reunificación familiar.</li>
+            <li>Planificación migratoria personal o empresarial.</li>
+            <li>Validación de documentación civil y laboral.</li>
+          </ul>
+          <ul class="details mt-2 hidden" lang="en">
+            <li>Work, study, investment and family reunification.</li>
+            <li>Personal or corporate immigration planning.</li>
+            <li>Civil and employment documentation validation.</li>
+          </ul>
+        </article>
+
+        <!-- Homologación -->
+        <article class="card reveal" style="transition-delay:.1s">
+          <div class="flex items-start justify-between gap-3">
+            <h3 lang="es">Homologación y Equivalencia Académica</h3>
+            <span class="tag" lang="es">Estudios</span>
+            <h3 lang="en" class="hidden">Academic Credential Evaluation</h3>
+            <span class="tag hidden" lang="en">Credentials</span>
+          </div>
+          <p lang="es">Gestión ante MESCyT y agencias internacionales (WES, ECE, ANECA) · Traducción jurada · Apostilla · Verificación universitaria.</p>
+          <p lang="en" class="hidden">Processing with MESCyT and international agencies (WES, ECE, ANECA) · Certified translation · Apostille · University verification.</p>
+          <ul class="details mt-2" lang="es">
+            <li>Guía de requisitos y formatos.</li>
+            <li>Revisión de programas y carga académica.</li>
+            <li>Enlace con objetivos migratorios o laborales.</li>
+          </ul>
+          <ul class="details mt-2 hidden" lang="en">
+            <li>Requirements and format guidance.</li>
+            <li>Curriculum and coursework review.</li>
+            <li>Alignment with immigration or employment goals.</li>
+          </ul>
+        </article>
+
+        <!-- Consular & Strategy -->
+        <article class="card reveal" style="transition-delay:.15s">
+          <div class="flex items-start justify-between gap-3">
+            <h3 lang="es">Asesoría Consular y Estrategia Migratoria</h3>
+            <span class="tag" lang="es">Estrategia</span>
+            <h3 lang="en" class="hidden">Consular Support & Immigration Strategy</h3>
+            <span class="tag hidden" lang="en">Strategy</span>
+          </div>
+          <p lang="es">Preparación para entrevista · Subsanación documental · Presentación de reconsideraciones · Diseño de ruta migratoria realista.</p>
+          <p lang="en" class="hidden">Interview preparation · Document remediation · Reconsideration submissions · Realistic immigration roadmaps.</p>
+          <ul class="details mt-2" lang="es">
+            <li>Análisis de riesgo y alternativas.</li>
+            <li>Acompañamiento ético y transparente.</li>
+            <li>Cronograma y hitos verificables.</li>
+          </ul>
+          <ul class="details mt-2 hidden" lang="en">
+            <li>Risk analysis and alternatives.</li>
+            <li>Ethical, transparent guidance.</li>
+            <li>Timeline with verifiable milestones.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section id="proceso" class="bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center mb-8 reveal">
+        <h2 lang="es">Cómo trabajo</h2>
+        <h2 lang="en">Process</h2>
+        <p class="subtle mt-2" lang="es">Estructura clara, acompañamiento constante y plazos definidos.</p>
+        <p class="subtle mt-2" lang="en">Clear structure, continuous support and defined timelines.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card reveal">
+          <h3 lang="es">1) Diagnóstico</h3><h3 class="hidden" lang="en">1) Assessment</h3>
+          <p class="subtle">📄 <span lang="es">Revisión de objetivos y documentación disponible.</span><span lang="en" class="hidden">Review of goals and available documents.</span></p>
+        </div>
+        <div class="card reveal" style="transition-delay:.06s">
+          <h3 lang="es">2) Plan</h3><h3 class="hidden" lang="en">2) Strategy</h3>
+          <p class="subtle">🧭 <span lang="es">Ruta migratoria elegible y checklist de requisitos.</span><span lang="en" class="hidden">Eligible route and requirements checklist.</span></p>
+        </div>
+        <div class="card reveal" style="transition-delay:.12s">
+          <h3 lang="es">3) Acompañamiento</h3><h3 class="hidden" lang="en">3) Guidance</h3>
+          <p class="subtle">🤝 <span lang="es">Preparación de expediente y apoyo en entrevista.</span><span lang="en" class="hidden">Dossier preparation and interview support.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="bg-cloud">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center mb-6 reveal">
+        <h2 lang="es">Testimonios</h2>
+        <h2 lang="en">Testimonials</h2>
+        <p class="subtle mt-2" lang="es">Experiencias reales, procesos claros y resultados concretos.</p>
+        <p class="subtle mt-2" lang="en">Real experiences, clear processes and concrete results.</p>
+
+        <button id="toggle-test" class="btn-primary text-sm px-6 py-2 mt-3" lang="es">Mostrar Testimonios (3)</button>
+        <button id="toggle-test-en" class="btn-primary text-sm px-6 py-2 mt-3 hidden" lang="en">Show Testimonials (3)</button>
+      </div>
+
+      <div id="testi-wrap" class="grid md:grid-cols-3 gap-4">
+        <article class="bg-white rounded-xl p-4 border border-gray-200 reveal">
+          <p class="italic text-sm text-gray-700" lang="es">“Excelente guía en cada paso; entendí mi proceso y lo sentí bajo control.”</p>
+          <p class="italic text-sm text-gray-700 hidden" lang="en">“Excellent guidance at every step; I understood my case and felt in control.”</p>
+          <div class="mt-3 pt-3 border-t border-gray-100">
+            <h3 class="text-xs font-semibold text-gray-900">María G.</h3>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl p-4 border border-gray-200 reveal" style="transition-delay:.06s">
+          <p class="italic text-sm text-gray-700" lang="es">“Acompañamiento humano y precisión documental. Recomendado.”</p>
+          <p class="italic text-sm text-gray-700 hidden" lang="en">“Human support with precise documentation. Highly recommended.”</p>
+          <div class="mt-3 pt-3 border-t border-gray-100">
+            <h3 class="text-xs font-semibold text-gray-900">Luis A.</h3>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl p-4 border border-gray-200 reveal" style="transition-delay:.12s">
+          <p class="italic text-sm text-gray-700" lang="es">“Su explicación clara evitó errores y aceleró mi entrevista consular.”</p>
+          <p class="italic text-sm text-gray-700 hidden" lang="en">“Clear explanations prevented mistakes and sped up my consular interview.”</p>
+          <div class="mt-3 pt-3 border-t border-gray-100">
+            <h3 class="text-xs font-semibold text-gray-900">Andrea V.</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto / CTA -->
+  <section id="contacto" class="on-dark g-anim">
+    <div class="container text-center py-12">
+      <h2 class="font-display font-extrabold mb-3" style="font-size:var(--h2)" lang="es">¿Listo para comenzar?</h2>
+      <h2 class="font-display font-extrabold mb-3" style="font-size:var(--h2)" lang="en">Ready to get started?</h2>
+      <p class="text-white/85 max-w-2xl mx-auto mb-6" lang="es">Agenda una consulta profesional y traza tu ruta migratoria con claridad y confianza.</p>
+      <p class="text-white/85 max-w-2xl mx-auto mb-6 hidden" lang="en">Book a professional consultation and map your immigration path with clarity and confidence.</p>
+      <div class="flex justify-center">
+        <a class="btn-primary" href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria." target="_blank" rel="noopener" lang="es">Solicitar Consulta Profesional</a>
+        <a class="btn-primary hidden" href="https://wa.me/18294424222?text=Hello%2C%20I%27d%20like%20an%20immigration%20consultation." target="_blank" rel="noopener" lang="en">Request Professional Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="g-anim">
+    <div class="container py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-6">
+        <a href="#inicio" class="flex items-center gap-3" aria-label="Volver al inicio / Back to top">
+          <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+          </svg>
+          <span class="font-display text-white font-extrabold tracking-tight">Eduardo Espinal</span>
+        </a>
+
+        <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 text-sm font-medium text-white/85" aria-label="Footer">
+          <a href="#sobre-mi" class="hover:text-white transition"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+          <a href="#servicios" class="hover:text-white transition"><span lang="es">Servicios</span><span lang="en">Services</span></a>
+          <a href="#proceso" class="hover:text-white transition"><span lang="es">Proceso</span><span lang="en">Process</span></a>
+          <a href="#testimonios" class="hover:text-white transition"><span lang="es">Testimonios</span><span lang="en">Testimonials</span></a>
+          <a href="#contacto" class="hover:text-white transition"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+        </nav>
+      </div>
+
+      <div class="text-center text-xs text-white/80 pt-4 border-t border-white/20">
+        © <span id="year">2025</span> · <span lang="es">Eduardo Espinal · Consultor de Migración y Movilidad Internacional</span>
+        <span class="hidden" lang="en">Eduardo Espinal · Immigration & International Mobility Consultant</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.documentElement;
+    const body = document.body;
+
+    // Año dinámico
+    const y = new Date().getFullYear();
+    document.querySelectorAll('#year').forEach(n => n.textContent = y);
+
+    // Idioma
+    const langBtns = [document.getElementById('btnES'), document.getElementById('btnEN'),
+                      document.getElementById('btnES-mobile'), document.getElementById('btnEN-mobile')].filter(Boolean);
+    const testiBtnES = document.getElementById('toggle-test');
+    const testiBtnEN = document.getElementById('toggle-test-en');
+
+    const setLang = (lang) => {
+      root.setAttribute('data-lang', lang);
+      root.setAttribute('lang', lang);
+      try{ localStorage.setItem('lang', lang) }catch(e){}
+
+      // Toggle botones testimonios y CTA
+      if (testiBtnES && testiBtnEN){
+        if (lang === 'es'){ testiBtnES.classList.remove('hidden'); testiBtnEN.classList.add('hidden'); }
+        else { testiBtnES.classList.add('hidden'); testiBtnEN.classList.remove('hidden'); }
+      }
+      // WhatsApp CTA en contacto
+      document.querySelectorAll('#contacto a.btn-primary').forEach(a=>{
+        const isES = (lang === 'es');
+        a.classList.toggle('hidden', (isES && a.getAttribute('lang')==='en') || (!isES && a.getAttribute('lang')==='es'));
+      });
+
+      // Pintar estado visual en header
+      langBtns.forEach(b=>{
+        const isES = b.id.includes('ES');
+        const active = (isES && lang==='es') || (!isES && lang==='en');
+        b.classList.toggle('font-semibold', active);
+        b.classList.toggle('text-gray-900', active);
+        b.classList.toggle('text-gray-600', !active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+    };
+    let storedLang = 'es'; try{ storedLang = localStorage.getItem('lang') || 'es' }catch(e){}
+    setLang(storedLang);
+    langBtns.forEach(b => b.addEventListener('click', ()=> setLang(b.id.includes('ES') ? 'es' : 'en')));
+
+    // Menú móvil
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuMobile = document.getElementById('menu-mobile');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('#menu-mobile a, #menu-mobile button');
+
+    const toggleMenu = (forceOpen=null) => {
+      const isOpen = forceOpen!==null ? forceOpen : menuMobile.classList.contains('hidden');
+      menuMobile.classList.toggle('hidden', !isOpen);
+      menuMobile.classList.toggle('flex', isOpen);
+      iconOpen.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      body.style.overflow = isOpen ? 'hidden' : '';
+    };
+    if(menuToggle && menuMobile){
+      menuToggle.addEventListener('click', ()=> toggleMenu());
+      mobileLinks.forEach(el => el.addEventListener('click', ()=> toggleMenu(false)));
+    }
+
+    // Testimonios toggle
+    const testiWrap = document.getElementById('testi-wrap');
+    if (testiWrap) testiWrap.classList.remove('active');
+    const initES = testiBtnES ? testiBtnES.textContent.trim() : 'Mostrar Testimonios (3)';
+    const initEN = testiBtnEN ? testiBtnEN.textContent.trim() : 'Show Testimonials (3)';
+    const toggleTest = () => {
+      const active = testiWrap.classList.toggle('active');
+      if (testiBtnES) testiBtnES.textContent = active ? 'Ocultar Testimonios' : initES;
+      if (testiBtnEN) testiBtnEN.textContent = active ? 'Hide Testimonials' : initEN;
+    };
+    if (testiBtnES) testiBtnES.addEventListener('click', toggleTest);
+    if (testiBtnEN) testiBtnEN.addEventListener('click', toggleTest);
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target) }});
+    }, { threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  });
+  </script>
+</body>
+</html>
