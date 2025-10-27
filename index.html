@@ -12,7 +12,6 @@
       --azul:#0B3766;
       --oro:#C49449;
       --azul-suave:#EAF0F7;
-      --gris-3:#E5E6E8;
       --texto:#2B2F33;
       --muted:#5A6673;
       --h-font:'Merriweather',serif;
@@ -26,50 +25,64 @@
     a{text-decoration:none;color:var(--azul)}
     .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
     h1,h2,h3{font-family:var(--h-font);color:var(--azul)}
-    h1{text-align:center;font-size:2.5em;margin-bottom:.4em}
+    h1{text-align:center;font-size:2.6em;margin-bottom:.4em}
     h2{text-align:center;font-size:2em;margin-bottom:.8em}
     p{text-align:justify}
 
     /* Header */
-    header{text-align:center;border-bottom:3px solid var(--azul);background:#fdfdfd;padding:20px 0}
-    .brand-title{font:700 2.2em var(--h-font);color:var(--azul)}
-    .brand-sub{text-transform:uppercase;font-weight:600;letter-spacing:.1em;color:var(--muted);font-size:.9em;margin-top:5px}
+    header{text-align:center;border-bottom:3px solid var(--azul);background:#fdfdfd;padding:25px 0}
+    .brand-title{font:700 2.4em var(--h-font);color:var(--azul)}
+    .brand-sub{text-transform:uppercase;font-weight:600;letter-spacing:.1em;color:var(--muted);font-size:.9em;margin-top:6px}
 
-    nav{border-top:1px solid var(--gris-3);border-bottom:1px solid var(--gris-3);background:#fff}
+    nav{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff}
     nav ul{display:flex;justify-content:center;gap:60px;list-style:none;padding:10px 0}
-    nav a{font-weight:600;text-transform:uppercase;font-size:.9em}
+    nav a{font-weight:600;text-transform:uppercase;font-size:.9em;color:var(--azul)}
 
     section{padding:70px 0}
     #inicio{background:linear-gradient(180deg,#fff,var(--azul-suave))}
     #inicio p{text-align:center;max-width:800px;margin:0 auto 20px;color:var(--muted)}
-    .cta{text-align:center;margin-top:20px}
+    .cta{text-align:center;margin-top:25px}
     .btn{display:inline-block;padding:12px 24px;border-radius:8px;border:1px solid var(--azul);font-weight:600;text-transform:uppercase}
     .btn.primary{background:var(--azul);color:#fff}
     .btn:hover{opacity:.9}
 
-    /* Servicios con tarjetas */
+    /* Tarjetas de Servicios */
     #servicios{background:#fff}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-    .card{border:1px solid #ddd;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;background:#fff;text-align:center;transition:all .2s}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+    .card{
+      border:1px solid #ddd;border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:22px 20px 20px;
+      background:#fff;position:relative;
+      transition:all .2s;text-align:left;
+    }
     .card:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(11,55,102,.1)}
-    .icon{font-size:2.5em;margin-bottom:10px;color:var(--oro)}
-    .flag{width:26px;height:18px;margin-left:6px;vertical-align:middle;border:1px solid #ccc;border-radius:3px}
-    .card h3{margin-bottom:10px;font-size:1.2em}
-    .card ul{text-align:left;margin-top:10px;margin-left:20px;list-style:disc}
+    .card h3{margin-bottom:10px;font-size:1.15em;text-align:left}
+    .card ul{margin-left:18px;margin-top:8px;list-style:disc}
+    .icon{
+      font-size:2.6em;color:var(--oro);
+      display:block;margin-bottom:10px;text-align:left;
+    }
+    .flag{
+      width:30px;height:20px;position:absolute;
+      top:16px;right:18px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25);
+    }
 
-    /* Sobre mí */
+    /* Secciones restantes */
     #sobre-mi{background:var(--azul-suave)}
-    #sobre-mi ul{margin-top:10px;margin-left:20px;list-style:disc}
-    #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 15px}
+    #sobre-mi h2,#contacto h2{text-align:center}
+    #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 20px}
+    #sobre-mi ul{margin-left:20px;list-style:disc}
 
-    /* Contacto */
     #contacto{text-align:center;background:#fff}
-    #contacto p{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 20px}
+    #contacto p{color:var(--muted);max-width:700px;margin:0 auto 20px;text-align:center}
     #contacto .btn{margin:6px}
 
-    /* Footer */
-    footer{background:var(--azul);color:#fff;text-align:center;padding:25px 0;font-size:.9em}
-    footer .marca{color:var(--oro);font-weight:700}
+    footer{
+      background:var(--azul);color:#fff;
+      text-align:center;padding:28px 0;font-size:.9em;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+    }
+    footer .marca{color:var(--oro);font-weight:700;font-size:1em;margin-bottom:4px}
   </style>
 </head>
 <body>
@@ -102,49 +115,61 @@
     <div class="wrap">
       <h2>Soluciones Legales para tu Movilidad Global</h2>
       <div class="cards">
+        <!-- RD -->
         <div class="card">
+          <img src="https://flagcdn.com/w40/do.png" alt="Bandera República Dominicana" class="flag">
           <div class="icon">📘</div>
           <h3>Residencia y Visado Dominicano</h3>
           <ul>
             <li>Residencia por inversión, rentista y pensionado.</li>
             <li>Visas de trabajo y reunificación familiar.</li>
-            <li>Gestión integral y cumplimiento legal.</li>
+            <li>Gestión integral con cumplimiento legal y migratorio.</li>
           </ul>
         </div>
+
+        <!-- UE -->
         <div class="card">
-          <div class="icon">🇪🇺</div>
-          <h3>Residencia y Visado Europeo <img src="https://flagcdn.com/w20/eu.png" class="flag" alt="UE"></h3>
+          <img src="https://flagcdn.com/w40/eu.png" alt="Bandera Unión Europea" class="flag">
+          <div class="icon">🌍</div>
+          <h3>Residencia y Visado Europeo</h3>
           <ul>
             <li>Schengen y residencias por inversión (Golden Visa).</li>
-            <li>Permisos para nómadas digitales.</li>
-            <li>Planificación de entrada a la Unión Europea.</li>
+            <li>Permisos para nómadas digitales y trabajadores remotos.</li>
+            <li>Estrategia de entrada y documentación para la UE.</li>
           </ul>
         </div>
+
+        <!-- EE.UU -->
         <div class="card">
+          <img src="https://flagcdn.com/w40/us.png" alt="Bandera Estados Unidos" class="flag">
           <div class="icon">💼</div>
-          <h3>Visas de Inversión y Negocios (EE. UU.) <img src="https://flagcdn.com/w20/us.png" class="flag" alt="EE. UU."></h3>
+          <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
           <ul>
             <li>E-2 (inversionista) y L-1 (transferencia ejecutiva).</li>
-            <li>B1/B2 con cumplimiento de USCIS.</li>
-            <li>Diseño de evidencia empresarial sólida.</li>
+            <li>B1/B2 con preparación de evidencia conforme a USCIS.</li>
+            <li>Asesoría en estrategias empresariales internacionales.</li>
           </ul>
         </div>
+
+        <!-- Homologación -->
         <div class="card">
           <div class="icon">🎓</div>
           <h3>Homologación de Estudios y Títulos</h3>
           <ul>
             <li>Reconocimiento oficial y equivalencias académicas.</li>
             <li>Trámite en RD, Europa y Estados Unidos.</li>
-            <li>Gestión completa y validación institucional.</li>
+            <li>Validación institucional y seguimiento completo.</li>
           </ul>
         </div>
+
+        <!-- Ciudadanía -->
         <div class="card">
           <div class="icon">🛡️</div>
           <h3>Procesos de Ciudadanía y Naturalización</h3>
           <ul>
             <li>Evaluación de elegibilidad y rutas disponibles.</li>
             <li>Por inversión, matrimonio o residencia prolongada.</li>
-            <li>Acompañamiento hasta juramento.</li>
+            <li>Acompañamiento hasta el acto de juramento.</li>
           </ul>
         </div>
       </div>
@@ -175,10 +200,9 @@
   </section>
 
   <footer>
-    <div class="wrap">
-      <p class="marca">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
-      <p>&copy; 2025 Todos los derechos reservados.</p>
-    </div>
+    <p class="marca">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
+    <p>&copy; 2025 Todos los derechos reservados.</p>
   </footer>
+
 </body>
 </html>
