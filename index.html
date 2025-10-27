@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eduardo Espinal | Consultoría Migratoria & Homologación de Estudios</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
         /* ------------------------------------- */
@@ -20,7 +20,7 @@
         }
 
         /* ------------------------------------- */
-        /* 2. RESET Y TIPOGRAFÍA BASE            */
+        /* 2. RESET Y TIPOGRAFÍA BASE (Centrada) */
         /* ------------------------------------- */
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             font-family: 'Open Sans', sans-serif;
             color: var(--color-texto-principal);
             background-color: var(--color-fondo-claro);
-            line-height: 1.6;
+            line-height: 1.7; /* Mayor interlineado para mejorar la lectura */
             scroll-behavior: smooth;
         }
 
@@ -45,7 +45,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 25px; /* Más padding para más espacio */
+            padding: 0 40px; /* Más padding horizontal */
         }
         
         a {
@@ -53,7 +53,19 @@
             color: var(--color-primario);
             transition: color 0.3s;
         }
-
+        
+        /* Justificación y centrado de texto en secciones */
+        section .container {
+            text-align: center;
+        }
+        
+        section p, section ul, .perfil-text {
+            max-width: 900px; /* Limita ancho para mejor lectura en secciones */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left; /* Justificado dentro del bloque */
+        }
+        
         /* ------------------------------------- */
         /* 3. CABECERA Y NAVEGACIÓN (HEADER)     */
         /* ------------------------------------- */
@@ -74,8 +86,19 @@
 
         .logo {
             font-size: 1.6em;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--color-primario);
+            display: flex;
+            align-items: center;
+            line-height: 1.2;
+        }
+        
+        /* Logo de Avión de Papel Estilizado (Unicode) */
+        .logo span {
+            font-size: 1.5em;
+            color: var(--color-secundario);
+            margin-right: 8px;
+            line-height: 1;
         }
 
         /* Menú de Escritorio */
@@ -87,23 +110,21 @@
         }
 
         nav a {
-            font-weight: 500;
+            font-weight: 600;
             padding: 5px 0;
+            text-transform: uppercase;
+            font-size: 0.9em;
         }
 
-        nav a:hover {
-            color: var(--color-secundario);
-        }
-
-        /* Botones de Contacto en Header */
+        /* Botones de Contacto en Header (Simplificados) */
         .cta-header {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .btn-contacto {
-            padding: 10px 20px;
-            border-radius: 50px; /* Bordes más redondeados = Moderno */
+            padding: 8px 15px;
+            border-radius: 5px; 
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -115,35 +136,28 @@
             color: var(--color-primario);
             border: 2px solid var(--color-secundario);
         }
-
-        .whatsapp:hover {
-            background-color: var(--color-primario);
-            color: var(--color-texto-inverso);
-            border-color: var(--color-primario);
-        }
-
+        /* Color inverso para el botón de correo en el header */
         .email {
             background-color: var(--color-primario);
             color: var(--color-texto-inverso);
             border: 2px solid var(--color-primario);
         }
 
-        .email:hover {
-            background-color: var(--color-secundario);
-            border-color: var(--color-secundario);
-            color: var(--color-primario);
-        }
-
         /* ------------------------------------- */
         /* 4. SECCIONES (FLOW Y ESTILO)          */
         /* ------------------------------------- */
         section {
-            padding: 100px 0; /* Mayor padding para un diseño más limpio */
+            padding: 100px 0;
             text-align: center;
+        }
+        
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .section-intro h2 {
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin-bottom: 5px;
         }
 
@@ -151,9 +165,10 @@
             font-size: 1.1em;
             margin-bottom: 50px;
             color: #555;
+            text-align: center;
         }
 
-        /* HERO (Inicio) - Impactante */
+        /* HERO (Inicio) - Centrado */
         #inicio {
             background: linear-gradient(135deg, var(--color-primario) 0%, #004d99 100%);
             color: var(--color-fondo-claro);
@@ -162,65 +177,44 @@
 
         #inicio h1 {
             color: var(--color-secundario);
-            font-size: 4em;
+            font-size: 3.8em;
             margin-bottom: 20px;
+            line-height: 1.1;
         }
 
         #inicio p {
-            font-size: 1.5em;
+            font-size: 1.3em;
             max-width: 800px;
+            text-align: center;
             margin: 0 auto 40px auto;
         }
         
         /* Servicios - Grid */
         .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px 30px; /* Más espacio vertical, menos horizontal */
         }
 
         .servicio-card {
             background-color: var(--color-texto-inverso);
-            padding: 40px;
+            padding: 30px;
             border-radius: 10px;
-            text-align: left;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
             border-bottom: 5px solid var(--color-secundario);
-        }
-
-        .servicio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centra el contenido de la tarjeta */
         }
 
         .servicio-card h3 {
-            font-size: 1.6em;
+            font-size: 1.4em;
             color: var(--color-primario);
             margin-bottom: 10px;
         }
-
-        .servicio-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
         
-        .servicio-card li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 5px;
+        .servicio-card p {
+            text-align: center; /* Centra el texto descriptivo */
             font-size: 0.95em;
-        }
-        
-        .servicio-card li::before {
-            content: '•';
-            color: var(--color-secundario);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-            position: absolute;
-            left: 0;
         }
 
         /* Sobre Mí - Diseño de credibilidad */
@@ -232,37 +226,43 @@
             display: flex;
             align-items: center;
             text-align: left;
-            gap: 60px;
+            gap: 50px;
             max-width: 1000px;
             margin: 0 auto;
+            /* Flex-wrap para evitar que se apilen antes de tiempo */
+            flex-wrap: wrap; 
         }
 
         .perfil-text {
             flex: 2;
+            min-width: 300px; /* Mínimo para asegurar legibilidad */
+        }
+        
+        /* Ajuste para justificar texto en el perfil */
+        .perfil-text p, .perfil-text ul {
+            text-align: justify;
         }
 
         .perfil-image {
             flex: 1;
             min-width: 250px;
+            text-align: center;
         }
 
         .perfil-image img {
             width: 100%;
             height: auto;
-            border-radius: 8px; /* Borde cuadrado suave */
+            max-width: 300px;
+            border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             border: 3px solid var(--color-secundario);
         }
-        
-        /* Contacto - Última CTA */
+
+        /* Contacto - Centrado */
         #contacto {
             background: linear-gradient(90deg, #003366 0%, #004d99 100%);
             color: var(--color-fondo-claro);
             padding: 80px 0;
-        }
-
-        #contacto h2 {
-            color: var(--color-secundario);
         }
         
         /* FOOTER */
@@ -273,70 +273,60 @@
             font-size: 0.9em;
         }
 
-        footer p {
-            margin-top: 10px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
         /* ------------------------------------- */
-        /* 5. DISEÑO RESPONSIVO Y MENÚ HAMBURGUESA */
+        /* 5. DISEÑO RESPONSIVO Y MENÚ           */
         /* ------------------------------------- */
         
         .menu-toggle {
-            display: none; /* Oculto en escritorio */
+            display: none;
             font-size: 30px;
             cursor: pointer;
             color: var(--color-primario);
             line-height: 1;
+            padding: 5px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             
-            /* Habilitar botón de hamburguesa */
+            .nav-content {
+                flex-wrap: wrap; /* Permite que los elementos se muevan */
+                justify-content: space-around;
+            }
+
+            .cta-header {
+                order: 3; /* Mueve los botones a una nueva fila */
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            nav {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                order: 2;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+            
             .menu-toggle {
                 display: block;
             }
-            
-            /* Ocultar menú y botones de contacto */
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--color-texto-inverso);
-                position: absolute;
-                top: 80px; /* Justo debajo del header */
-                left: 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
+
             nav.open {
                 display: flex;
             }
-
+            
             nav ul {
                 flex-direction: column;
-                padding: 20px 0;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            nav ul li {
-                width: 100%;
-            }
-
-            nav a {
-                display: block;
                 padding: 10px 0;
+                gap: 5px;
+            }
+            
+            nav a {
+                padding: 10px 0;
+                display: block;
                 border-bottom: 1px solid var(--color-fondo-claro);
-            }
-            
-            .cta-header {
-                display: none; /* Ocultamos los botones en el header móvil */
-            }
-            
-            /* Ajustes de contenido */
-            #inicio h1 {
-                font-size: 3em;
             }
             
             .perfil-content {
@@ -345,22 +335,20 @@
             }
             
             .perfil-image {
-                min-width: 200px;
-                max-width: 300px;
                 margin-bottom: 30px;
             }
             
-            .perfil-text h2 {
-                 text-align: center;
+            .perfil-text p, .perfil-text ul {
+                text-align: center; /* Centrar texto en móvil */
             }
         }
         
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 20px;
+            }
             #inicio h1 {
                 font-size: 2.5em;
-            }
-            .btn-contacto {
-                padding: 10px 15px;
             }
         }
     </style>
@@ -369,7 +357,9 @@
 
     <header>
         <div class="container nav-content">
-            <div class="logo">EDUARDO ESPINAL<br>CONSULTOR DE MIGRACIÓN</div>
+            <div class="logo">
+                <span>✈</span> EDUARDO ESPINAL<br>CONSULTOR DE MIGRACIÓN
+            </div>
             
             <div class="menu-toggle" id="menu-toggle">☰</div>
 
@@ -399,8 +389,8 @@
     <section id="inicio">
         <div class="container">
             <h1>Tu Estrategia Migratoria Global Comienza Aquí.</h1>
-            <p>Obtén Visas, Residencias y la **Homologación de tus Estudios** con la asesoría legal más rigurosa y personalizada para República Dominicana, Europa y Estados Unidos.</p>
-            <a href="#contacto" class="btn-contacto whatsapp" style="padding: 15px 35px; font-size: 1.1em; border-radius: 50px;">
+            <p>Obtén Visas, Residencias y la Homologación de tus Estudios con la asesoría legal más rigurosa y personalizada para **República Dominicana, Europa** y **Estados Unidos**.</p>
+            <a href="#contacto" class="btn-contacto whatsapp" style="padding: 15px 35px; font-size: 1.1em; border-radius: 5px;">
                 Agenda tu Consulta Estratégica
             </a>
         </div>
@@ -409,46 +399,43 @@
     <section id="servicios">
         <div class="container">
             <div class="section-intro">
-                <h2>Servicios Especializados de Migración y Estudios</h2>
-                <p>Nuestra consultoría se enfoca en la planificación estratégica para garantizar tu éxito legal y profesional en el extranjero.</p>
+                <h2>Soluciones Legales para tu Movilidad Global</h2>
+                <p>Nuestra consultoría se basa en la planificación estratégica, el cumplimiento riguroso de la ley y la transparencia total. Ofrecemos asistencia en las siguientes áreas clave:</p>
             </div>
 
             <div class="servicios-grid">
                 
                 <div class="servicio-card">
-                    <h3>Residencia y Homologación en República Dominicana</h3>
-                    <p>**Migración:** Residencias por Inversión, Rentistas y Visas de Trabajo. Proceso ágil y seguro.</p>
-                    <ul>
-                        <li>Visado de Residencia Temporal/Permanente.</li>
-                        <li>Gestión de Residencia por Inversión.</li>
-                        <li>**Homologación de Títulos Profesionales (SEP).**</li>
-                    </ul>
-                    <a href="#contacto" class="btn-contacto email" style="margin-top: 15px; padding: 10px 20px;">Consultar RD →</a>
+                    <h3>Residencia y Visado Dominicano</h3>
+                    <p>Tramitación de Visas de Residencia por Inversión, Rentistas y Pensionados. Gestión de Visas de Trabajo y reagrupación familiar. Proceso eficiente y seguro para establecerte legalmente en RD.</p>
                 </div>
 
                 <div class="servicio-card">
-                    <h3>Acceso a Europa: Visados y Reconocimiento de Títulos</h3>
-                    <p>**Migración:** Golden Visas, Visas Schengen y permisos de Residencia por Emprendimiento o Digital Nomad.</p>
-                    <ul>
-                        <li>Evaluación de elegibilidad para Residencias por Inversión.</li>
-                        <li>Asesoría para permisos de Nómada Digital.</li>
-                        <li>**Reconocimiento y Homologación de Títulos Universitarios.**</li>
-                    </ul>
-                    <a href="#contacto" class="btn-contacto email" style="margin-top: 15px; padding: 10px 20px;">Consultar Europa →</a>
+                    <h3>Residencia y Visado Europeo</h3>
+                    <p>Asesoría en la obtención de Visas Schengen, Visas de Inversor (Golden Visas) en jurisdicciones clave y permisos para Nómadas Digitales. Te guiamos a la puerta de la Unión Europea.</p>
                 </div>
 
                 <div class="servicio-card">
-                    <h3>Estrategia Empresarial y Equivalencia de Estudios en EE. UU.</h3>
-                    <p>**Migración:** Enfoque en Visas E-2 (Inversor) y L-1 (Transferencia Ejecutiva). Manejo de trámites complejos.</p>
-                    <ul>
-                        <li>Asesoría integral en Visas de Inversor (E).</li>
-                        <li>Visas de Negocios y Transferencia (L).</li>
-                        <li>**Evaluación de Credenciales y Equivalencia Académica.**</li>
-                    </ul>
-                    <a href="#contacto" class="btn-contacto email" style="margin-top: 15px; padding: 10px 20px;">Consultar EE. UU. →</a>
+                    <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
+                    <p>Enfoque especializado en las Visas E-2 (Inversor por Tratado), L-1 (Transferencia Ejecutiva) y B1/B2. Diseño de estrategias para asegurar el cumplimiento de los estándares de USCIS.</p>
+                </div>
+
+                <div class="servicio-card">
+                    <h3>Homologación de Estudios y Títulos</h3>
+                    <p>Asistencia completa para el reconocimiento oficial de tus títulos universitarios y profesionales. Tramitamos la equivalencia académica en República Dominicana, Europa y Estados Unidos.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <h3>Procesos de Ciudadanía y Naturalización</h3>
+                    <p>Evaluación de elegibilidad y acompañamiento en los procesos de naturalización y obtención de ciudadanía por diversas vías (inversión, matrimonio, residencia prolongada) en las jurisdicciones de enfoque.</p>
                 </div>
 
             </div>
+            
+            <a href="#contacto" class="btn-contacto email" style="margin-top: 40px; padding: 15px 35px; border-radius: 5px;">
+                Quiero Iniciar mi Proceso
+            </a>
+            
         </div>
     </section>
 
@@ -459,28 +446,31 @@
             </div>
             
             <div class="perfil-text">
-                <h2 style="font-size: 2.2em;">Eduardo Espinal: Estrategia, Confianza y Transparencia</h2>
-                <p>Soy tu socio estratégico en cada paso del proceso migratorio. Mi enfoque como abogado se centra en **minimizar riesgos y maximizar la eficiencia**, ofreciendo soluciones legales claras y fundamentadas, lejos de promesas vacías.</p>
-                <p>Mi compromiso es diseñar una estrategia que no solo cumpla con la ley, sino que también se alinee perfectamente con tus objetivos personales y profesionales.</p>
-                
-                <a href="#contacto" class="btn-contacto whatsapp" style="margin-top: 25px;">Verificar Mi Credibilidad</a>
+                <h2 style="font-size: 2.2em; text-align: center;">Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
+                <p>Mi misión va más allá del simple trámite. Como abogado experto en migración, mi trabajo es diseñar una **ruta legal optimizada y transparente** que minimice tu riesgo y acelere tu objetivo de residencia o visado global. Mi compromiso es contigo y con el cumplimiento estricto de la ley.</p>
+                <p>Enfoco mi servicio en:</p>
+                <ul>
+                    <li>**Estrategia Personalizada:** Análisis de tu caso específico para elegir la mejor vía legal.</li>
+                    <li>**Transparencia de Costos:** Precios claros, sin sorpresas ni tarifas ocultas.</li>
+                    <li>**Comunicación Directa:** Siempre tendrás contacto directo con tu consultor legal.</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section id="contacto">
         <div class="container">
-            <h2 style="color: var(--color-secundario);">Establezcamos Tu Estrategia Migratoria</h2>
-            <p style="color: var(--color-fondo-claro); font-size: 1.2em; margin-bottom: 40px;">Tu futuro global es una inversión. Contáctame directamente sin intermediarios.</p>
+            <h2 style="color: var(--color-secundario);">Hablemos de tu Próximo Destino</h2>
+            <p style="color: var(--color-fondo-claro); font-size: 1.2em; margin-bottom: 40px; text-align: center;">El primer paso para tu migración global es una consulta estratégica.</p>
             
             <div class="cta-header" style="justify-content: center; gap: 20px;">
                  <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración." 
                    target="_blank" 
-                   class="btn-contacto whatsapp" style="padding: 15px 35px; font-size: 1.1em; border-radius: 50px;">
+                   class="btn-contacto whatsapp" style="padding: 15px 35px; font-size: 1.1em; border-radius: 5px;">
                     Chat Directo por WhatsApp
                 </a>
                 <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web" 
-                   class="btn-contacto email" style="padding: 15px 35px; font-size: 1.1em; border-radius: 50px; background-color: transparent; color: var(--color-secundario); border-color: var(--color-secundario);">
+                   class="btn-contacto email" style="padding: 15px 35px; font-size: 1.1em; border-radius: 5px; background-color: transparent; color: var(--color-secundario); border-color: var(--color-secundario);">
                     Enviar Consulta por Correo
                 </a>
             </div>
@@ -490,7 +480,7 @@
     <footer>
         <div class="container">
             <p style="color: var(--color-secundario); font-weight: 700;">EDUARDO ESPINAL CONSULTOR DE MIGRACIÓN</p>
-            <p>&copy; 2025 Eduardo Espinal. Todos los derechos reservados. | Asesoría Legal Estricta.</p>
+            <p>&copy; 2025 Todos los derechos reservados. | Asesoría Legal Estricta.</p>
         </div>
     </footer>
     
@@ -502,7 +492,7 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Cerrar menú móvil después de hacer clic
+                // Cierra el menú móvil después de hacer clic
                 const nav = document.getElementById('main-nav');
                 if (nav.classList.contains('open')) {
                     nav.classList.remove('open');
