@@ -1,163 +1,219 @@
-<!doctype html>
-<html lang="es" data-lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eduardo Espinal — Consultor de Migración</title>
-  <meta name="description" content="Consultor de migración y movilidad internacional. Asesoría profesional en residencias, visas, homologación de estudios y naturalización. Bilingüe ES/EN.">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Asesoría migratoria profesional: residencias, visas, homologación académica y naturalización. Atención personalizada y resultados comprobables.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background-color: #FAFAF7; color: #1A1A1A; }
-
-    header { background-color: #FFFFFF; box-shadow: 0 1px 5px rgba(0,0,0,0.06); }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #0D1B2A; }
-    .btn-main {
-      background: linear-gradient(135deg, #0D1B2A 0%, #C8A95D 100%);
-      color: #fff;
-      padding: 0.9rem 2rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background-color:#FAFAF7;
+      color:#0D1B2A;
+      line-height:1.6;
     }
-    .btn-main:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    .lang-switch button { font-weight: 600; color: #0D1B2A; }
-    .lang-switch .active { color: #C8A95D; }
-
-    section { padding: 5rem 1rem; }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    footer { background-color: #0D1B2A; color: #fff; padding: 3rem 1rem; text-align: center; }
-    footer p { font-size: 0.9rem; color: #E5E5E5; }
-
-    :root[data-lang="es"] [lang="en"], :root[data-lang="en"] [lang="es"] { display: none; }
+    header{
+      position:fixed;
+      top:0;left:0;width:100%;
+      background:#fff;
+      box-shadow:0 1px 6px rgba(0,0,0,0.08);
+      z-index:999;
+    }
+    header .container{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1rem 2rem;
+    }
+    .logo{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:700;
+      color:#C8A95D;
+      font-size:1.8rem;
+      letter-spacing:1px;
+    }
+    nav a{
+      color:#0D1B2A;
+      text-decoration:none;
+      margin:0 1rem;
+      font-weight:500;
+      transition:0.3s;
+    }
+    nav a:hover{color:#C8A95D}
+    .btn{
+      background:#0D1B2A;
+      color:#fff;
+      padding:0.8rem 1.6rem;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+    .btn:hover{background:#C8A95D;color:#0D1B2A}
+    section{
+      padding:6rem 2rem;
+      max-width:1100px;
+      margin:auto;
+    }
+    h1,h2,h3{
+      font-family:'Cormorant Garamond',serif;
+      color:#0D1B2A;
+    }
+    h1{font-size:2.8rem;margin-bottom:1rem}
+    h2{font-size:2rem;margin-bottom:1.2rem;text-align:center}
+    h3{font-size:1.3rem;margin-bottom:0.6rem}
+    p{color:#333;margin-bottom:1rem;font-size:1.05rem}
+    #hero{
+      background:linear-gradient(135deg,#0D1B2A,#1E2F45);
+      color:#fff;
+      text-align:center;
+      padding:10rem 2rem 8rem;
+    }
+    #hero h1{color:#fff;font-size:3rem;margin-bottom:1rem}
+    #hero p{color:#E5E5E5;font-size:1.2rem;margin-bottom:2rem}
+    #about{text-align:center}
+    #services .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:12px;
+      padding:2rem;
+      transition:all .3s;
+    }
+    .card:hover{box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+    #process .steps{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+    .step{
+      border:1px solid #ddd;
+      border-radius:12px;
+      padding:2rem;
+      background:#fff;
+      transition:.3s;
+    }
+    .step:hover{background:#FAFAF7;box-shadow:0 3px 8px rgba(0,0,0,0.05)}
+    .step-number{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.5rem;
+      color:#C8A95D;
+      margin-bottom:0.6rem;
+    }
+    #contact{
+      text-align:center;
+      background:#0D1B2A;
+      color:#fff;
+      padding:6rem 2rem;
+    }
+    #contact p{color:#ccc;margin-bottom:2rem}
+    footer{
+      background:#0D1B2A;
+      color:#ccc;
+      text-align:center;
+      padding:2rem 1rem;
+      font-size:0.9rem;
+    }
+    .fade{opacity:0;transform:translateY(30px);transition:all 1s ease;}
+    .fade.visible{opacity:1;transform:translateY(0);}
   </style>
 </head>
 <body>
 
-<header class="sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-4">
-    <div class="flex items-center gap-2">
-      <div class="text-2xl font-bold text-[#C8A95D] tracking-tight">EE</div>
-      <span class="text-lg font-semibold text-[#0D1B2A]">Eduardo Espinal</span>
-    </div>
-    <nav class="hidden md:flex gap-6 text-sm font-medium">
-      <a href="#about" class="hover:text-[#C8A95D]"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
-      <a href="#services" class="hover:text-[#C8A95D]"><span lang="es">Servicios</span><span lang="en">Services</span></a>
-      <a href="#process" class="hover:text-[#C8A95D]"><span lang="es">Proceso</span><span lang="en">Process</span></a>
-      <a href="#testimonials" class="hover:text-[#C8A95D]"><span lang="es">Testimonios</span><span lang="en">Testimonials</span></a>
-      <a href="#contact" class="hover:text-[#C8A95D]"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+<header>
+  <div class="container">
+    <div class="logo">EE</div>
+    <nav>
+      <a href="#about">Sobre mí</a>
+      <a href="#services">Servicios</a>
+      <a href="#process">Proceso</a>
+      <a href="#contact">Contacto</a>
     </nav>
-    <div class="lang-switch flex items-center gap-2 text-sm">
-      <button id="btnES" class="active">ES</button>
-      <span>/</span>
-      <button id="btnEN">EN</button>
-    </div>
+    <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Consulta</a>
   </div>
 </header>
 
-<section id="hero" class="text-center fade-in" style="background:linear-gradient(145deg,#0D1B2A,#1E2F45);color:white;padding:8rem 1rem;">
-  <h1 class="text-4xl md:text-5xl font-bold mb-4">Eduardo Espinal</h1>
-  <p class="text-xl md:text-2xl mb-6" lang="es">Consultor de Migración y Movilidad Internacional</p>
-  <p class="text-xl md:text-2xl mb-6" lang="en">Immigration and International Mobility Consultant</p>
-  <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn-main inline-block mt-4" lang="es">Solicitar Consulta Profesional</a>
-  <a href="https://wa.me/18294424222?text=Hello%2C%20I%20would%20like%20a%20migration%20consultation" class="btn-main inline-block mt-4" lang="en">Request a Professional Consultation</a>
+<section id="hero">
+  <h1>Eduardo Espinal</h1>
+  <p>Consultor de Migración y Movilidad Internacional</p>
+  <a href="https://wa.me/18294424222?text=Hola%2C%20quiero%20una%20consulta%20migratoria" class="btn">Solicitar Consulta</a>
 </section>
 
-<section id="about" class="fade-in max-w-4xl mx-auto text-center">
-  <h2 class="text-3xl font-semibold mb-4" lang="es">Asesoría migratoria con enfoque humano y estratégico</h2>
-  <h2 class="text-3xl font-semibold mb-4" lang="en">Migration consulting with a human and strategic focus</h2>
-  <p class="text-gray-700 text-lg" lang="es">Más de una década de experiencia guiando procesos migratorios, residencias y homologaciones académicas para profesionales, inversionistas y familias que buscan establecerse en nuevos destinos.</p>
-  <p class="text-gray-700 text-lg" lang="en">Over a decade of experience guiding migration, residence, and academic equivalency processes for professionals, investors, and families seeking to settle in new destinations.</p>
+<section id="about" class="fade">
+  <h2>Sobre mí</h2>
+  <p>Con más de diez años de experiencia en procesos migratorios y homologaciones académicas, acompaño a profesionales, inversionistas y familias a establecerse de manera legal y segura en la República Dominicana. Mi enfoque combina claridad legal, estrategia personalizada y acompañamiento humano.</p>
 </section>
 
-<section id="services" class="fade-in max-w-6xl mx-auto text-center">
-  <h2 class="text-3xl font-semibold mb-10" lang="es">Servicios</h2>
-  <h2 class="text-3xl font-semibold mb-10" lang="en">Services</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="es">Residencia Dominicana</h3>
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="en">Dominican Residence</h3>
-      <p class="text-gray-700 mt-2" lang="es">Gestión completa de residencias temporales, permanentes y por inversión, con acompañamiento integral ante la DGM.</p>
-      <p class="text-gray-700 mt-2" lang="en">Complete management of temporary, permanent, and investment residence applications, with full support before DGM.</p>
+<section id="services" class="fade">
+  <h2>Servicios Migratorios</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Residencia Dominicana</h3>
+      <p>Gestión completa de residencias temporales, permanentes o por inversión ante la Dirección General de Migración, con asesoría legal y seguimiento personalizado.</p>
     </div>
-    <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="es">Homologación Académica</h3>
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="en">Academic Equivalency</h3>
-      <p class="text-gray-700 mt-2" lang="es">Asesoría y tramitación ante el MESCyT para el reconocimiento de títulos universitarios o técnicos obtenidos en el extranjero.</p>
-      <p class="text-gray-700 mt-2" lang="en">Advisory and processing before MESCyT for recognition of foreign university or technical degrees.</p>
+    <div class="card">
+      <h3>Homologación Académica</h3>
+      <p>Tramitación ante el MESCyT para el reconocimiento de títulos universitarios o técnicos obtenidos en el extranjero.</p>
     </div>
-    <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="es">Visas y Movilidad Internacional</h3>
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="en">Visas & Global Mobility</h3>
-      <p class="text-gray-700 mt-2" lang="es">Consultoría en solicitudes de visa para Estados Unidos y Europa, programas de trabajo, estudio e inversión.</p>
-      <p class="text-gray-700 mt-2" lang="en">Consulting for visa applications to the United States and Europe, including work, study, and investment programs.</p>
+    <div class="card">
+      <h3>Visas y Movilidad Internacional</h3>
+      <p>Asesoría en solicitudes de visa para Estados Unidos y Europa, así como en programas de estudio, trabajo e inversión internacional.</p>
     </div>
-    <div class="bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition">
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="es">Naturalización y Ciudadanía</h3>
-      <h3 class="text-xl font-semibold text-[#0D1B2A]" lang="en">Naturalization & Citizenship</h3>
-      <p class="text-gray-700 mt-2" lang="es">Acompañamiento en procesos de obtención de ciudadanía dominicana y doble nacionalidad, según legislación vigente.</p>
-      <p class="text-gray-700 mt-2" lang="en">Support for obtaining Dominican citizenship and dual nationality under current legal frameworks.</p>
+    <div class="card">
+      <h3>Naturalización y Ciudadanía</h3>
+      <p>Acompañamiento en procesos de naturalización, obtención de ciudadanía dominicana y doble nacionalidad conforme a la legislación vigente.</p>
     </div>
   </div>
 </section>
 
-<section id="process" class="fade-in max-w-4xl mx-auto text-center">
-  <h2 class="text-3xl font-semibold mb-4" lang="es">Cómo Trabajo</h2>
-  <h2 class="text-3xl font-semibold mb-4" lang="en">How I Work</h2>
-  <p class="text-gray-700 text-lg" lang="es">Cada caso migratorio es único. Mi enfoque combina análisis legal, empatía y estrategia personalizada para alcanzar resultados seguros y eficientes.</p>
-  <p class="text-gray-700 text-lg" lang="en">Each migration case is unique. My approach blends legal analysis, empathy, and personalized strategy to achieve safe and efficient results.</p>
-</section>
-
-<section id="testimonials" class="fade-in max-w-5xl mx-auto text-center">
-  <h2 class="text-3xl font-semibold mb-10" lang="es">Testimonios</h2>
-  <h2 class="text-3xl font-semibold mb-10" lang="en">Testimonials</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-      <p class="italic text-gray-700" lang="es">“Gracias a su orientación logré obtener mi residencia sin complicaciones. Su acompañamiento fue profesional y humano.”</p>
-      <p class="italic text-gray-700" lang="en">“Thanks to his guidance I obtained my residence smoothly. His support was professional and human.”</p>
-      <p class="mt-3 text-sm font-semibold text-[#0D1B2A]">— María G., Empresaria</p>
+<section id="process" class="fade">
+  <h2>Proceso de Trabajo</h2>
+  <p>Ofrezco un proceso claro, eficiente y adaptado a cada caso migratorio.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Evaluación Inicial</h3>
+      <p>Análisis detallado de su situación y objetivos migratorios.</p>
     </div>
-    <div class="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-      <p class="italic text-gray-700" lang="es">“Su manejo en homologación académica fue impecable. Ahora puedo ejercer legalmente en el país.”</p>
-      <p class="italic text-gray-700" lang="en">“His handling of my academic equivalency was impeccable. Now I can legally practice in the country.”</p>
-      <p class="mt-3 text-sm font-semibold text-[#0D1B2A]">— Luis R., Ingeniero</p>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Estrategia Personalizada</h3>
+      <p>Diseño del plan más adecuado según su perfil y legislación aplicable.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Acompañamiento Completo</h3>
+      <p>Gestión integral y seguimiento hasta la obtención de resultados exitosos.</p>
     </div>
   </div>
 </section>
 
-<section id="contact" class="fade-in text-center">
-  <h2 class="text-3xl font-semibold mb-4" lang="es">¿Listo para comenzar su proceso migratorio?</h2>
-  <h2 class="text-3xl font-semibold mb-4" lang="en">Ready to begin your migration process?</h2>
-  <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn-main inline-block" lang="es">Solicitar Consulta Profesional</a>
-  <a href="https://wa.me/18294424222?text=Hello%2C%20I%20would%20like%20a%20migration%20consultation" class="btn-main inline-block" lang="en">Request Consultation</a>
+<section id="contact" class="fade">
+  <h2>Contacto</h2>
+  <p>¿Listo para iniciar su proceso migratorio? Reciba una consulta profesional personalizada.</p>
+  <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Solicitar Consulta</a>
 </section>
 
 <footer>
-  <p lang="es">© 2025 Eduardo Espinal · Consultor de Migración y Movilidad Internacional</p>
-  <p lang="en">© 2025 Eduardo Espinal · Immigration and International Mobility Consultant</p>
+  © 2025 Eduardo Espinal · Consultor de Migración y Movilidad Internacional
 </footer>
 
 <script>
-const root=document.documentElement;
-document.addEventListener("DOMContentLoaded",()=>{
-  const observer=new IntersectionObserver(entries=>{
+  const observer=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
   },{threshold:0.2});
-  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-  const langBtns=document.querySelectorAll('.lang-switch button');
-  const setLang=lang=>{
-    root.setAttribute('data-lang',lang);
-    langBtns.forEach(b=>b.classList.toggle('active',b.id.includes(lang.toUpperCase())));
-    localStorage.setItem('lang',lang);
-  };
-  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.id.includes('ES')?'es':'en')));
-  setLang(localStorage.getItem('lang')||'es');
-});
+  document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 </script>
 
 </body>
