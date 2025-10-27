@@ -29,7 +29,7 @@
             color: var(--color-texto);
             background-color: var(--color-fondo);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Desplazamiento suave para los enlaces ancla */
         }
 
         h1, h2, h3 {
@@ -50,7 +50,7 @@
             padding: 0 20px;
         }
 
-        /* HEADER y Navegación (Tradicional y Limpio) */
+        /* HEADER y Navegación */
         header {
             background-color: var(--color-blanco);
             padding: 20px 0;
@@ -86,26 +86,11 @@
             position: relative;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--color-acento);
-            transition: width 0.3s ease-in-out;
-        }
-
-        nav a:hover, nav a.active {
+        nav a:hover {
             color: var(--color-acento);
         }
         
-        nav a:hover::after, nav a.active::after {
-            width: 100%;
-        }
-
-        /* Botones de Contacto (Estilo Premium) */
+        /* Botones de Contacto (Derecha del Header) */
         .cta-header {
             display: flex;
             gap: 10px;
@@ -180,6 +165,10 @@
         }
         
         /* SECCIÓN SERVICIOS */
+        #servicios {
+            background-color: var(--color-fondo);
+        }
+
         .servicios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -260,9 +249,15 @@
             margin-left: -1.5em;
         }
 
+        /* SECCIÓN CONTACTO */
+        #contacto {
+            background-color: var(--color-primario); 
+            color: var(--color-fondo);
+        }
+        
         /* FOOTER */
         footer {
-            background-color: var(--color-primario);
+            background-color: #111; /* Un negro/gris muy oscuro */
             color: var(--color-fondo);
             padding: 40px 0;
             font-size: 0.9em;
@@ -282,7 +277,7 @@
             color: var(--color-acento);
         }
 
-        /* RESPONSIVE DESIGN (Moderno y Esencial) */
+        /* RESPONSIVE DESIGN (Ajustes para móviles) */
         @media (max-width: 768px) {
             .nav-content {
                 flex-direction: column;
@@ -306,10 +301,6 @@
             
             #inicio h1 {
                 font-size: 2.5em;
-            }
-
-            #inicio p {
-                font-size: 1.1em;
             }
 
             .perfil-content {
@@ -336,7 +327,7 @@
             
             <nav>
                 <ul>
-                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#sobre-mi">Sobre Mí</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -378,20 +369,20 @@
                 
                 <div class="servicio-card">
                     <h3>Establece tu Hogar en el Caribe: República Dominicana</h3>
-                    <p>Te guiamos a través de la vía más rápida y segura para obtener tu estatus legal en el país. Asesoría especializada en Visas de Residencia por Inversión, Rentistas y Visas de Trabajo.</p>
-                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Saber Más →</a>
+                    <p>Te guiamos a través de la vía más rápida y segura para obtener tu estatus legal. Asesoría especializada en Visas de Residencia por Inversión, Rentistas y Visas de Trabajo.</p>
+                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Iniciar Proceso →</a>
                 </div>
 
                 <div class="servicio-card">
                     <h3>Tu Puerta de Acceso a la Unión Europea</h3>
                     <p>Análisis de perfil para la jurisdicción europea ideal. Asesoría en Visas Schengen, Residencias por Inversión (**Golden Visas**) y permisos especiales para emprendedores y nómadas digitales.</p>
-                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Saber Más →</a>
+                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Iniciar Proceso →</a>
                 </div>
 
                 <div class="servicio-card">
                     <h3>Oportunidades y Visas de Inversión (EE. UU.)</h3>
                     <p>Navegamos la complejidad de las categorías de visas (E-2, L-1, etc.) para asegurar que tu proyecto empresarial o familiar cumpla con los rigurosos estándares de USCIS. Enfocados en la estrategia y la precisión.</p>
-                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Saber Más →</a>
+                    <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Iniciar Proceso →</a>
                 </div>
 
             </div>
@@ -407,7 +398,7 @@
             <div class="perfil-text">
                 <h2>Eduardo Espinal: Estrategia, Confianza y Resultados</h2>
                 <p>Soy abogado especializado en migración con una visión centrada en el cliente. Mi misión no es solo llenar formularios; es diseñar una **estrategia migratoria personalizada** que alinee tus objetivos de vida con las leyes internacionales.</p>
-                <p><strong>Mi Compromiso:</strong></p>
+                <p><strong>Mi Compromiso Contigo:</strong></p>
                 <ul>
                     <li>Claridad total en cada paso del proceso.</li>
                     <li>Experiencia comprobada en jurisdicciones complejas.</li>
@@ -418,10 +409,10 @@
         </div>
     </section>
 
-    <section id="contacto" style="background-color: var(--color-primario); color: var(--color-fondo);">
+    <section id="contacto">
         <div class="container">
             <h2 style="color: var(--color-acento);">Inicia tu Proceso Migratorio Hoy</h2>
-            <p style="font-size: 1.2em; margin-bottom: 40px;">No más dudas. Obtén la información clara y profesional que necesitas para asegurar tu futuro.</p>
+            <p style="color: var(--color-fondo); font-size: 1.2em; margin-bottom: 40px;">No más dudas. Obtén la información clara y profesional que necesitas para asegurar tu futuro.</p>
             
             <div class="cta-header" style="justify-content: center;">
                  <a href="https://wa.me/18294424222?text=Hola%20Eduardo,%20me%20gustaría%20agendar%20una%20consulta%20de%20migración." 
@@ -430,7 +421,7 @@
                     Chat Directo por WhatsApp
                 </a>
                 <a href="mailto:eduardoespinaldeaza@gmail.com?subject=Consulta%20Migratoria%20Desde%20Web" 
-                   class="btn-contacto email" style="padding: 15px 35px; font-size: 1.1em;">
+                   class="btn-contacto email" style="padding: 15px 35px; font-size: 1.1em; background-color: transparent; color: var(--color-acento); border-color: var(--color-acento);">
                     Enviar Consulta por Correo
                 </a>
             </div>
@@ -441,16 +432,17 @@
         <div class="container">
             <div class="footer-logo">EDUARDO ESPINAL CONSULTOR DE MIGRACIÓN</div>
             <p>&copy; 2025 Eduardo Espinal. Todos los derechos reservados.</p>
-            <p>Asesoría Migratoria y Legal. [Tu Ciudad/País].</p>
+            <p>Asesoría Migratoria y Legal. **Tu Ciudad/País**.</p>
         </div>
     </footer>
     
     <script>
-        // Opcional: Script para marcar el enlace activo en la navegación al hacer click
-        document.querySelectorAll('nav a').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
