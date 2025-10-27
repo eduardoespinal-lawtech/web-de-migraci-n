@@ -3,128 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eduardo Espinal — Consultor de Migración</title>
-  <meta name="description" content="Asesoría migratoria profesional: residencias, visas, homologación académica y naturalización. Atención personalizada y resultados comprobables.">
+  <title>Eduardo Espinal — Consultor de Migración Internacional</title>
+  <meta name="description" content="Consultoría migratoria profesional e integral. Residencias, naturalización, homologación académica y movilidad internacional. Atención personalizada y acompañamiento completo.">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       font-family:'Inter',sans-serif;
-      background-color:#FAFAF7;
+      background:#FAFAF7;
       color:#0D1B2A;
-      line-height:1.6;
+      line-height:1.7;
     }
     header{
-      position:fixed;
-      top:0;left:0;width:100%;
+      position:fixed;top:0;left:0;width:100%;
       background:#fff;
-      box-shadow:0 1px 6px rgba(0,0,0,0.08);
-      z-index:999;
+      box-shadow:0 2px 8px rgba(0,0,0,0.07);
+      z-index:1000;
     }
     header .container{
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      max-width:1200px;margin:auto;
+      display:flex;justify-content:space-between;align-items:center;
       padding:1rem 2rem;
     }
     .logo{
       font-family:'Cormorant Garamond',serif;
       font-weight:700;
-      color:#C8A95D;
       font-size:1.8rem;
+      color:#C8A95D;
       letter-spacing:1px;
     }
     nav a{
-      color:#0D1B2A;
-      text-decoration:none;
-      margin:0 1rem;
-      font-weight:500;
-      transition:0.3s;
+      margin:0 1rem;text-decoration:none;color:#0D1B2A;
+      font-weight:500;transition:0.3s;
     }
     nav a:hover{color:#C8A95D}
     .btn{
-      background:#0D1B2A;
-      color:#fff;
-      padding:0.8rem 1.6rem;
-      border-radius:50px;
-      text-decoration:none;
-      font-weight:600;
+      background:#0D1B2A;color:#fff;
+      padding:0.8rem 1.6rem;border-radius:40px;
+      text-decoration:none;font-weight:600;
       transition:0.3s;
     }
     .btn:hover{background:#C8A95D;color:#0D1B2A}
-    section{
-      padding:6rem 2rem;
-      max-width:1100px;
-      margin:auto;
-    }
-    h1,h2,h3{
-      font-family:'Cormorant Garamond',serif;
-      color:#0D1B2A;
-    }
-    h1{font-size:2.8rem;margin-bottom:1rem}
-    h2{font-size:2rem;margin-bottom:1.2rem;text-align:center}
-    h3{font-size:1.3rem;margin-bottom:0.6rem}
-    p{color:#333;margin-bottom:1rem;font-size:1.05rem}
+    section{padding:7rem 2rem;max-width:1200px;margin:auto;}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:#0D1B2A}
+    h1{font-size:3rem;margin-bottom:1rem}
+    h2{font-size:2rem;margin-bottom:1.5rem;text-align:center}
+    h3{font-size:1.3rem;margin-bottom:0.5rem}
+    p{font-size:1.05rem;color:#333;margin-bottom:1rem}
     #hero{
       background:linear-gradient(135deg,#0D1B2A,#1E2F45);
-      color:#fff;
-      text-align:center;
-      padding:10rem 2rem 8rem;
+      color:#fff;text-align:center;
+      padding:12rem 2rem 9rem;
     }
-    #hero h1{color:#fff;font-size:3rem;margin-bottom:1rem}
-    #hero p{color:#E5E5E5;font-size:1.2rem;margin-bottom:2rem}
-    #about{text-align:center}
-    #services .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:1.5rem;
-      margin-top:2rem;
-    }
+    #hero h1{color:#fff;font-size:3.2rem}
+    #hero p{color:#ddd;font-size:1.2rem;margin-bottom:2rem;max-width:700px;margin:auto}
+    #hero .btn{background:#C8A95D;color:#0D1B2A;font-weight:700}
+    #hero .btn:hover{background:#fff;color:#0D1B2A}
+    #about{text-align:center;max-width:900px}
+    #mission{background:#fff;padding:7rem 2rem;border-top:1px solid #eee;border-bottom:1px solid #eee}
+    #mission .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem;text-align:center}
+    #services .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.8rem;margin-top:2rem}
     .card{
-      background:#fff;
-      border:1px solid #eee;
-      border-radius:12px;
-      padding:2rem;
-      transition:all .3s;
+      background:#fff;padding:2rem;border-radius:14px;
+      border:1px solid #eee;transition:0.3s;
     }
-    .card:hover{box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+    .card:hover{box-shadow:0 5px 15px rgba(0,0,0,0.07)}
     #process .steps{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:2rem;
-      margin-top:2rem;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:2rem
     }
-    .step{
-      border:1px solid #ddd;
-      border-radius:12px;
-      padding:2rem;
-      background:#fff;
-      transition:.3s;
-    }
-    .step:hover{background:#FAFAF7;box-shadow:0 3px 8px rgba(0,0,0,0.05)}
-    .step-number{
-      font-family:'Cormorant Garamond',serif;
-      font-size:2.5rem;
-      color:#C8A95D;
-      margin-bottom:0.6rem;
-    }
-    #contact{
-      text-align:center;
-      background:#0D1B2A;
-      color:#fff;
-      padding:6rem 2rem;
-    }
-    #contact p{color:#ccc;margin-bottom:2rem}
-    footer{
-      background:#0D1B2A;
-      color:#ccc;
-      text-align:center;
-      padding:2rem 1rem;
-      font-size:0.9rem;
-    }
+    .step{background:#fff;border:1px solid #eee;border-radius:14px;padding:2rem;text-align:center;transition:.3s}
+    .step:hover{box-shadow:0 5px 15px rgba(0,0,0,0.07)}
+    .step-number{font-size:2.8rem;color:#C8A95D;font-family:'Cormorant Garamond',serif;margin-bottom:0.6rem}
+    #testimonials{background:#FAFAF7;border-top:1px solid #eee;border-bottom:1px solid #eee}
+    .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2rem}
+    .testimonial{background:#fff;border:1px solid #eee;padding:2rem;border-radius:14px;font-style:italic}
+    #faq{max-width:900px;margin:auto;text-align:left}
+    details{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1rem;margin-bottom:1rem;cursor:pointer}
+    details summary{font-weight:600;color:#0D1B2A}
+    details p{margin-top:0.5rem}
+    #contact{background:#0D1B2A;color:#fff;text-align:center;padding:7rem 2rem}
+    #contact p{color:#ccc}
+    footer{background:#0D1B2A;color:#ccc;text-align:center;padding:2rem 1rem;font-size:0.9rem}
     .fade{opacity:0;transform:translateY(30px);transition:all 1s ease;}
     .fade.visible{opacity:1;transform:translateY(0);}
   </style>
@@ -133,11 +93,12 @@
 
 <header>
   <div class="container">
-    <div class="logo">EE</div>
+    <div class="logo">Eduardo Espinal</div>
     <nav>
       <a href="#about">Sobre mí</a>
       <a href="#services">Servicios</a>
       <a href="#process">Proceso</a>
+      <a href="#testimonials">Casos</a>
       <a href="#contact">Contacto</a>
     </nav>
     <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Consulta</a>
@@ -145,75 +106,133 @@
 </header>
 
 <section id="hero">
-  <h1>Eduardo Espinal</h1>
-  <p>Consultor de Migración y Movilidad Internacional</p>
-  <a href="https://wa.me/18294424222?text=Hola%2C%20quiero%20una%20consulta%20migratoria" class="btn">Solicitar Consulta</a>
+  <h1>Consultoría Migratoria Internacional</h1>
+  <p>Transformo la complejidad migratoria en procesos claros, estratégicos y exitosos. Acompaño a personas, familias y empresas que buscan establecerse, invertir o trabajar legalmente en la República Dominicana.</p>
+  <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Iniciar Evaluación</a>
 </section>
 
 <section id="about" class="fade">
   <h2>Sobre mí</h2>
-  <p>Con más de diez años de experiencia en procesos migratorios y homologaciones académicas, acompaño a profesionales, inversionistas y familias a establecerse de manera legal y segura en la República Dominicana. Mi enfoque combina claridad legal, estrategia personalizada y acompañamiento humano.</p>
+  <p>Soy consultor independiente con especialización en derecho migratorio, homologaciones académicas y movilidad internacional. Desde hace más de una década, brindo acompañamiento legal y estratégico a profesionales, inversionistas y familias que buscan oportunidades seguras en República Dominicana.</p>
+  <p>Mi compromiso es ofrecer claridad, transparencia y resultados, con una atención personalizada que combina conocimiento jurídico, visión internacional y humanidad.</p>
+</section>
+
+<section id="mission" class="fade">
+  <h2>Misión y Valores</h2>
+  <div class="grid">
+    <div>
+      <h3>💼 Excelencia Profesional</h3>
+      <p>Aplicar las mejores prácticas legales y administrativas para cada trámite, garantizando precisión y seguridad jurídica.</p>
+    </div>
+    <div>
+      <h3>🌎 Ética y Confianza</h3>
+      <p>Basar cada proceso en la honestidad, confidencialidad y respeto a la normativa vigente.</p>
+    </div>
+    <div>
+      <h3>⚖️ Compromiso Humano</h3>
+      <p>Escuchar, orientar y acompañar con empatía durante todo el proceso migratorio y de adaptación.</p>
+    </div>
+  </div>
 </section>
 
 <section id="services" class="fade">
-  <h2>Servicios Migratorios</h2>
+  <h2>Servicios Especializados</h2>
   <div class="grid">
     <div class="card">
       <h3>Residencia Dominicana</h3>
-      <p>Gestión completa de residencias temporales, permanentes o por inversión ante la Dirección General de Migración, con asesoría legal y seguimiento personalizado.</p>
-    </div>
-    <div class="card">
-      <h3>Homologación Académica</h3>
-      <p>Tramitación ante el MESCyT para el reconocimiento de títulos universitarios o técnicos obtenidos en el extranjero.</p>
-    </div>
-    <div class="card">
-      <h3>Visas y Movilidad Internacional</h3>
-      <p>Asesoría en solicitudes de visa para Estados Unidos y Europa, así como en programas de estudio, trabajo e inversión internacional.</p>
+      <p>Tramitación integral de residencias temporales, permanentes o por inversión. Evaluación de requisitos, preparación de expediente y representación ante la Dirección General de Migración.</p>
     </div>
     <div class="card">
       <h3>Naturalización y Ciudadanía</h3>
-      <p>Acompañamiento en procesos de naturalización, obtención de ciudadanía dominicana y doble nacionalidad conforme a la legislación vigente.</p>
+      <p>Asesoría en procesos de obtención de nacionalidad dominicana o doble ciudadanía, conforme a los artículos 18 y 20 de la Constitución y la Ley 1683.</p>
+    </div>
+    <div class="card">
+      <h3>Homologación de Estudios</h3>
+      <p>Gestión ante el MESCyT para el reconocimiento de títulos universitarios o técnicos extranjeros. Incluye revisión documental, legalización y traducción certificada.</p>
+    </div>
+    <div class="card">
+      <h3>Visas y Movilidad Internacional</h3>
+      <p>Preparación y acompañamiento para solicitudes de visa de turismo, trabajo, estudio o inversión hacia EE. UU. y Europa, incluyendo estrategias migratorias personalizadas.</p>
+    </div>
+    <div class="card">
+      <h3>Regularización y Prórrogas</h3>
+      <p>Asistencia en la renovación o regularización migratoria. Solución de casos de estatus vencido y reingresos conforme a la Ley 285-04 sobre Migración.</p>
+    </div>
+    <div class="card">
+      <h3>Consultoría Corporativa</h3>
+      <p>Asesoría a empresas extranjeras en movilidad de personal, contratación de extranjeros, obtención de permisos laborales y cumplimiento migratorio empresarial.</p>
     </div>
   </div>
 </section>
 
 <section id="process" class="fade">
   <h2>Proceso de Trabajo</h2>
-  <p>Ofrezco un proceso claro, eficiente y adaptado a cada caso migratorio.</p>
   <div class="steps">
     <div class="step">
       <div class="step-number">1</div>
-      <h3>Evaluación Inicial</h3>
-      <p>Análisis detallado de su situación y objetivos migratorios.</p>
+      <h3>Diagnóstico Inicial</h3>
+      <p>Análisis de su situación migratoria y definición de la vía más rápida y segura.</p>
     </div>
     <div class="step">
       <div class="step-number">2</div>
-      <h3>Estrategia Personalizada</h3>
-      <p>Diseño del plan más adecuado según su perfil y legislación aplicable.</p>
+      <h3>Plan Personalizado</h3>
+      <p>Diseño del plan de acción con cronograma, requisitos y estimación de tiempo.</p>
     </div>
     <div class="step">
       <div class="step-number">3</div>
-      <h3>Acompañamiento Completo</h3>
-      <p>Gestión integral y seguimiento hasta la obtención de resultados exitosos.</p>
+      <h3>Ejecución y Seguimiento</h3>
+      <p>Gestión documental, presentación oficial y acompañamiento hasta la resolución final.</p>
     </div>
   </div>
 </section>
 
+<section id="testimonials" class="fade">
+  <h2>Casos de Éxito</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      “Gracias al acompañamiento del Sr. Espinal, obtuve mi residencia dominicana en menos de cuatro meses. Su atención fue impecable y siempre con comunicación directa.”
+      <br><strong>— Laura G., Empresaria</strong>
+    </div>
+    <div class="testimonial">
+      “Mi título universitario fue reconocido sin complicaciones. La orientación legal y académica fue clave. Recomiendo su servicio totalmente.”
+      <br><strong>— Andrés P., Ingeniero Civil</strong>
+    </div>
+    <div class="testimonial">
+      “Con su asesoría logré regularizar mi estatus migratorio y obtener la ciudadanía. Profesionalismo absoluto.”
+      <br><strong>— María R., Médica</strong>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="fade">
+  <h2>Preguntas Frecuentes</h2>
+  <details>
+    <summary>¿Cuánto tiempo tarda una residencia dominicana?</summary>
+    <p>Depende del tipo de residencia. La temporal suele tardar entre 3 y 5 meses; la permanente entre 6 y 9, según documentación y revisión de la DGM.</p>
+  </details>
+  <details>
+    <summary>¿Puedo homologar un título técnico extranjero?</summary>
+    <p>Sí. El MESCyT reconoce estudios técnicos siempre que provengan de instituciones acreditadas y estén debidamente legalizados y apostillados.</p>
+  </details>
+  <details>
+    <summary>¿Puedo tener doble nacionalidad en República Dominicana?</summary>
+    <p>Sí. La Constitución permite la doble nacionalidad para ciudadanos que obtengan otra sin renunciar a la dominicana o viceversa.</p>
+  </details>
+</section>
+
 <section id="contact" class="fade">
   <h2>Contacto</h2>
-  <p>¿Listo para iniciar su proceso migratorio? Reciba una consulta profesional personalizada.</p>
+  <p>Inicie su proceso migratorio con orientación profesional y acompañamiento completo.</p>
   <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Solicitar Consulta</a>
 </section>
 
 <footer>
-  © 2025 Eduardo Espinal · Consultor de Migración y Movilidad Internacional
+  © 2025 Eduardo Espinal · Consultor de Migración Internacional · Confidencialidad y Ética Profesional
 </footer>
 
 <script>
-  const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-  },{threshold:0.2});
-  document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.2});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 </script>
 
 </body>
