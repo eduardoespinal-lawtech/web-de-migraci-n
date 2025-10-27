@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eduardo Espinal | Consultor de Migración - Residencias y Visas</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -117,11 +118,11 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            white-space: nowrap; /* Evita que el texto se rompa */
+            white-space: nowrap; 
         }
 
         .whatsapp {
-            background-color: var(--color-acento); /* Oro Pulido */
+            background-color: var(--color-acento); 
             color: var(--color-primario); 
             border: 2px solid var(--color-acento);
         }
@@ -132,7 +133,7 @@
         }
 
         .email {
-            background-color: var(--color-primario); /* Azul Marino */
+            background-color: var(--color-primario); 
             color: var(--color-blanco);
             border: 2px solid var(--color-primario);
         }
@@ -191,7 +192,7 @@
             padding: 30px;
             border-radius: 8px;
             text-align: left;
-            box-shadow: 0 4px 12px rgba(0, 33, 71, 0.1); /* Sombra suave de color primario */
+            box-shadow: 0 4px 12px rgba(0, 33, 71, 0.1); 
             transition: transform 0.3s, box-shadow 0.3s;
             border-top: 4px solid var(--color-acento);
         }
@@ -230,7 +231,7 @@
             width: 250px;
             height: 250px;
             object-fit: cover;
-            border-radius: 50%; /* Foto redonda para toque humano y moderno */
+            border-radius: 50%; 
             border: 5px solid var(--color-acento);
         }
 
@@ -251,7 +252,7 @@
         }
         
         .perfil-text li::before {
-            content: '✓'; /* Icono de checkmark elegante */
+            content: '✓'; 
             color: var(--color-acento);
             font-weight: bold;
             display: inline-block;
@@ -359,7 +360,7 @@
     <section id="inicio">
         <div class="container">
             <h1>Tu camino a la residencia global comienza aquí.</h1>
-            <p>Asesoría migratoria experta y personalizada para República Dominicana, Europa y Estados Unidos.</p>
+            <p>Asesoría migratoria experta y personalizada para **República Dominicana, Europa** y **Estados Unidos**.</p>
             <a href="#contacto" class="btn-contacto whatsapp" style="padding: 15px 35px; font-size: 1.1em;">
                 Agenda tu Consulta Estratégica
             </a>
@@ -383,13 +384,13 @@
 
                 <div class="servicio-card">
                     <h3>Tu Puerta de Acceso a la Unión Europea</h3>
-                    <p>Análisis de perfil para la jurisdicción europea ideal. Asesoría en Visas Schengen, Residencias por Inversión (Golden Visas) y permisos especiales para emprendedores y nómadas digitales.</p>
+                    <p>Análisis de perfil para la jurisdicción europea ideal. Asesoría en Visas Schengen, Residencias por Inversión (**Golden Visas**) y permisos especiales para emprendedores y nómadas digitales.</p>
                     <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Saber Más →</a>
                 </div>
 
                 <div class="servicio-card">
                     <h3>Oportunidades y Visas de Inversión (EE. UU.)</h3>
-                    <p>Navegamos la complejidad de las categorías de visas (B, F, E-2, L-1, etc.) para asegurar que tu proyecto empresarial o familiar cumpla con los rigurosos estándares de USCIS. Enfocados en la estrategia y la precisión.</p>
+                    <p>Navegamos la complejidad de las categorías de visas (E-2, L-1, etc.) para asegurar que tu proyecto empresarial o familiar cumpla con los rigurosos estándares de USCIS. Enfocados en la estrategia y la precisión.</p>
                     <a href="#contacto" style="font-weight: 600; color: var(--color-acento);">Saber Más →</a>
                 </div>
 
@@ -405,7 +406,7 @@
             
             <div class="perfil-text">
                 <h2>Eduardo Espinal: Estrategia, Confianza y Resultados</h2>
-                <p>Soy abogado especializado en migración con una visión centrada en el cliente. Mi misión no es solo llenar formularios; es diseñar una <strong>estrategia migratoria personalizada</strong> que alinee tus objetivos de vida con las leyes internacionales.</p>
+                <p>Soy abogado especializado en migración con una visión centrada en el cliente. Mi misión no es solo llenar formularios; es diseñar una **estrategia migratoria personalizada** que alinee tus objetivos de vida con las leyes internacionales.</p>
                 <p><strong>Mi Compromiso:</strong></p>
                 <ul>
                     <li>Claridad total en cada paso del proceso.</li>
@@ -440,15 +441,14 @@
         <div class="container">
             <div class="footer-logo">EDUARDO ESPINAL CONSULTOR DE MIGRACIÓN</div>
             <p>&copy; 2025 Eduardo Espinal. Todos los derechos reservados.</p>
-            <p>Asesoría Migratoria y Legal. Santo Domingo, República Dominicana.</p>
+            <p>Asesoría Migratoria y Legal. [Tu Ciudad/País].</p>
         </div>
     </footer>
     
     <script>
-        // Opcional: Script para marcar el enlace activo en la navegación
+        // Opcional: Script para marcar el enlace activo en la navegación al hacer click
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // e.preventDefault(); // Descomentar si no quieres el desplazamiento nativo
                 document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
                 this.classList.add('active');
             });
