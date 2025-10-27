@@ -10,127 +10,113 @@
 
   <style>
     :root{
-      /* Paleta institucional sobria */
+      /* Paleta institucional con más color */
       --azul:#0B3766;
-      --oro:#C49449;
+      --oro:#C49449;          /* color principal de iconos */
+      --azul-suave:#EAF0F7;   /* fondo suave para bloques */
       --gris-1:#FAFAFA;
       --gris-2:#F2F2F2;
       --gris-3:#E5E6E8;
       --texto:#2B2F33;
       --muted:#5A6673;
 
-      /* Tipografía y ritmo */
       --h-font:'Merriweather',serif;
       --b-font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      --radius:8px;
 
-      /* Contenedor */
       --wrap:1080px;
       --pad-x:28px;
+      --radius:12px;
+      --shadow:0 8px 20px rgba(11,55,102,.06);
+      --borde-card:1px solid #e6e9ef;
     }
 
-    /* Reset mínimo y accesible */
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--texto); background:#FFF;
-      font:400 16px/1.7 var(--b-font);
-    }
-    img{max-width:100%; height:auto; display:block}
-    a{color:var(--azul); text-decoration:none}
+    body{margin:0;color:var(--texto);background:#FFF;font:400 16px/1.7 var(--b-font)}
+    a{color:var(--azul);text-decoration:none}
     a:hover{text-decoration:underline}
-
-    .wrap{max-width:var(--wrap); margin:0 auto; padding:0 var(--pad-x)}
-    .hr{border:0; border-top:1px solid var(--gris-3); margin:0}
-
-    h1,h2,h3{
-      font-family:var(--h-font); color:var(--azul); margin:0 0 .6em
-    }
-    h1{font-size:clamp(28px,3.2vw,40px); font-weight:700}
-    h2{font-size:clamp(24px,2.2vw,30px); font-weight:700}
-    h3{font-size:18px; font-weight:700}
-
-    p{margin:.6em 0; text-align:justify}
+    .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad-x)}
+    h1,h2,h3{font-family:var(--h-font);color:var(--azul);margin:0 0 .6em}
+    h1{font-size:clamp(28px,3.2vw,40px);font-weight:700}
+    h2{font-size:clamp(24px,2.2vw,30px);font-weight:700}
+    h3{font-size:19px;font-weight:700}
+    p{margin:.6em 0;text-align:justify}
     ul{margin:.4em 0 .8em 1.2em}
     li+li{margin-top:.25em}
 
-    /* ====== Header tradicional modernizado ====== */
-    header{
-      border-bottom:3px solid var(--azul);
-      background:linear-gradient(#FFFFFF,#FCFCFC);
-    }
-    .brand{
-      text-align:center; padding:18px 0 12px;
-    }
-    .brand-title{
-      font:700 22px var(--h-font); letter-spacing:.6px; color:var(--azul)
-    }
-    .brand-sub{
-      text-transform:uppercase; color:var(--muted);
-      font:600 12px/1 var(--b-font); letter-spacing:.16em; margin-top:6px
-    }
+    /* ===== Header ===== */
+    header{border-bottom:3px solid var(--azul);background:linear-gradient(#FFFFFF,#FCFCFC)}
+    .brand{text-align:center;padding:18px 0 12px}
+    .brand-title{font:700 22px var(--h-font);letter-spacing:.6px;color:var(--azul)}
+    .brand-sub{text-transform:uppercase;color:var(--muted);font:600 12px/1 var(--b-font);letter-spacing:.16em;margin-top:6px}
 
-    /* ====== Navegación ====== */
-    .nav{
-      border-top:1px solid var(--gris-3);
-      border-bottom:1px solid var(--gris-3);
-      background:#FFF;
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:center; gap:56px;
-      padding:10px 0;
-    }
-    .nav a{
-      font:700 13px var(--b-font); text-transform:uppercase; letter-spacing:.06em;
-      color:var(--azul);
-    }
-
-    /* Móvil: hamburguesa simple, sin frameworks */
-    .menu-toggle{display:none; background:none; border:1px solid var(--gris-3); border-radius:6px; padding:6px 10px; font:700 12px var(--b-font); color:var(--azul)}
+    .nav{border-top:1px solid var(--gris-3);border-bottom:1px solid var(--gris-3);background:#FFF}
+    .nav-inner{display:flex;align-items:center;justify-content:center;gap:56px;padding:10px 0}
+    .nav a{font:700 13px var(--b-font);text-transform:uppercase;letter-spacing:.06em;color:var(--azul)}
+    .menu-toggle{display:none;background:none;border:1px solid var(--gris-3);border-radius:8px;padding:7px 12px;font:700 12px var(--b-font);color:var(--azul)}
     @media (max-width:900px){
-      .nav-inner{display:none; flex-direction:column; gap:10px; padding:10px 0}
+      .nav-inner{display:none;flex-direction:column;gap:10px;padding:10px 0}
       .nav-inner.open{display:flex}
-      .menu-wrap{display:flex; justify-content:center; padding:10px 0}
+      .menu-wrap{display:flex;justify-content:center;padding:10px 0}
       .menu-toggle{display:inline-block}
     }
 
-    /* ====== Secciones ====== */
-    section{padding:60px 0}
+    /* ===== Secciones ===== */
+    section{padding:64px 0}
     section + section{border-top:1px solid var(--gris-3)}
-    .lead{text-align:center; color:var(--muted)}
+    .lead{text-align:center;color:var(--muted)}
 
-    /* Inicio (hero sobrio, sin degradados) */
-    #inicio{background:var(--gris-1)}
-    #inicio .wrap{padding-top:10px; padding-bottom:10px}
-    #inicio h1{color:var(--azul)}
-    .cta-bar{display:flex; justify-content:center; gap:12px; margin-top:16px}
-    .btn{
-      display:inline-block; padding:10px 18px; border-radius:var(--radius);
-      border:1px solid var(--azul); color:var(--azul); background:#FFF;
-      font:600 13px var(--b-font); text-transform:uppercase; letter-spacing:.04em
+    /* Inicio con color sobrio */
+    #inicio{background:linear-gradient(180deg,#ffffff 0%, var(--azul-suave) 100%)}
+    #inicio .wrap{padding-top:8px;padding-bottom:8px}
+    .cta-bar{display:flex;justify-content:center;gap:12px;margin-top:16px}
+    .btn{display:inline-block;padding:10px 18px;border-radius:10px;border:1px solid var(--azul);color:var(--azul);background:#FFF;font:600 13px var(--b-font);text-transform:uppercase;letter-spacing:.04em}
+    .btn.primary{background:var(--azul);color:#FFF}
+    .btn:hover{text-decoration:none;filter:brightness(0.98)}
+
+    /* ===== SERVICIOS TARJETAS ===== */
+    #servicios{background:#fff}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+      margin-top:18px;
     }
-    .btn.primary{background:var(--azul); color:#FFF}
-    .btn:hover{text-decoration:none; filter:brightness(0.98)}
+    .card{
+      border:var(--borde-card);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:18px 18px 16px;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(11,55,102,.09)}
+    .card-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .icon{
+      width:44px;height:44px;border-radius:10px;
+      display:grid;place-items:center;
+      background:rgba(196,148,73,.12);          /* oro translúcido de fondo */
+      border:1px solid rgba(196,148,73,.28);
+    }
+    .icon svg{display:block}
+    .icon svg *{stroke:var(--oro)}
+    .card h3{margin:0}
+    .card p{margin:.5em 0 .6em 0}
+    .bullets{margin:.35em 0 0 1.1em}
+    .bullets li{list-style:disc}
 
-    /* Servicios (listas con viñetas clásicas) */
-    #servicios .grupo{margin-bottom:28px}
-    #servicios h3{margin-bottom:6px}
+    /* Etiquetas pequeñas (para aclarar) */
+    .hint{display:inline-block;background:var(--azul-suave);color:#25496f;border:1px solid #d4dfec;padding:3px 8px;border-radius:999px;font:600 11px var(--b-font);letter-spacing:.02em;margin:4px 0}
 
-    /* Sobre mí */
-    #sobre-mi h2{margin-bottom:8px}
-    #sobre-mi ul{margin-top:.4em}
-
-    /* Contacto */
-    #contacto{background:var(--gris-2)}
-    #contacto .cta-bar .btn{border-color:var(--azul)}
-    #contacto .btn.alt{border-color:var(--oro); color:var(--oro); background:#FFF}
+    /* Sobre mí y contacto con color suave */
+    #sobre-mi{background:#fff}
+    #contacto{background:linear-gradient(180deg,var(--azul-suave) 0%, #ffffff 100%)}
+    #contacto .btn.alt{border-color:var(--oro);color:var(--oro);background:#fff}
 
     /* Footer */
-    footer{
-      background:var(--azul); color:#FFF; text-align:center; padding:24px 0
-    }
-    footer .marca{color:var(--oro); font-weight:700; letter-spacing:.02em}
-    footer p{margin:.2em 0; text-align:center}
+    footer{background:var(--azul);color:#FFF;text-align:center;padding:24px 0}
+    footer .marca{color:var(--oro);font-weight:700;letter-spacing:.02em}
+    footer p{margin:.2em 0;text-align:center}
   </style>
 </head>
 <body>
@@ -143,9 +129,7 @@
     </div>
     <div class="nav">
       <div class="wrap">
-        <div class="menu-wrap">
-          <button class="menu-toggle" id="menuToggle">MENÚ</button>
-        </div>
+        <div class="menu-wrap"><button class="menu-toggle" id="menuToggle">MENÚ</button></div>
         <nav class="nav-inner" id="mainNav">
           <a href="#inicio">Inicio</a>
           <a href="#servicios">Servicios</a>
@@ -167,54 +151,113 @@
     </div>
   </section>
 
-  <!-- ===== Servicios ===== -->
+  <!-- ===== Servicios (tarjetas con icono en color) ===== -->
   <section id="servicios">
     <div class="wrap">
       <h2>Soluciones Legales para tu Movilidad Global</h2>
 
-      <div class="grupo">
-        <h3>Residencia y Visado Dominicano</h3>
-        <ul>
-          <li>Residencia por inversión, rentista y pensionado.</li>
-          <li>Visas de trabajo y reunificación familiar.</li>
-          <li>Gestión integral y cumplimiento documental.</li>
-        </ul>
-      </div>
+      <div class="cards">
 
-      <div class="grupo">
-        <h3>Residencia y Visado Europeo</h3>
-        <ul>
-          <li>Schengen y residencias por inversión (Golden Visa).</li>
-          <li>Permisos para nómadas digitales.</li>
-          <li>Estrategia de entrada a la Unión Europea.</li>
-        </ul>
-      </div>
+        <!-- RD -->
+        <article class="card">
+          <div class="card-head">
+            <span class="icon" aria-hidden="true">
+              <!-- Pasaporte -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="2" width="14" height="20" rx="2" stroke-width="2"/>
+                <path d="M7 6h6M7 10h6M7 14h4" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3>Residencia y Visado Dominicano</h3>
+          </div>
+          <p class="hint">República Dominicana</p>
+          <ul class="bullets">
+            <li>Residencia por inversión, rentista y pensionado.</li>
+            <li>Visas de trabajo y reunificación familiar.</li>
+            <li>Gestión integral con checklist y tiempos claros.</li>
+          </ul>
+        </article>
 
-      <div class="grupo">
-        <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
-        <ul>
-          <li>E-2 (inversionista) y L-1 (transferencia ejecutiva).</li>
-          <li>B1/B2 con cumplimiento de USCIS.</li>
-          <li>Diseño de plan y evidencia probatoria.</li>
-        </ul>
-      </div>
+        <!-- UE -->
+        <article class="card">
+          <div class="card-head">
+            <span class="icon" aria-hidden="true">
+              <!-- Estrella/UE -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <polygon points="12 2 15 8.5 22 9 17 13.5 18.5 20 12 16.8 5.5 20 7 13.5 2 9 9 8.5 12 2" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>Residencia y Visado Europeo</h3>
+          </div>
+          <p class="hint">Unión Europea</p>
+          <ul class="bullets">
+            <li>Schengen y residencias por inversión (Golden Visa).</li>
+            <li>Permisos para nómadas digitales y trabajadores remotos.</li>
+            <li>Estrategia de entrada y documentos probatorios.</li>
+          </ul>
+        </article>
 
-      <div class="grupo">
-        <h3>Homologación de Estudios y Títulos</h3>
-        <ul>
-          <li>Reconocimiento oficial y equivalencias académicas.</li>
-          <li>Trámite en RD, Europa y Estados Unidos.</li>
-          <li>Gestión de requisitos y validaciones.</li>
-        </ul>
-      </div>
+        <!-- USA Negocios -->
+        <article class="card">
+          <div class="card-head">
+            <span class="icon" aria-hidden="true">
+              <!-- Maletín -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z" stroke-width="2"/>
+                <rect x="2" y="7" width="20" height="13" rx="2" stroke-width="2"/>
+                <path d="M2 12h20" stroke-width="2"/>
+              </svg>
+            </span>
+            <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
+          </div>
+          <p class="hint">E-2 · L-1 · B1/B2</p>
+          <ul class="bullets">
+            <li>E-2 (inversionista por tratado) y L-1 (transferencia ejecutiva).</li>
+            <li>B1/B2 con plan de viaje y soporte documental.</li>
+            <li>Diseño de evidencia: negocio, fondos y experiencia.</li>
+          </ul>
+        </article>
 
-      <div class="grupo">
-        <h3>Procesos de Ciudadanía y Naturalización</h3>
-        <ul>
-          <li>Evaluación de elegibilidad y rutas disponibles.</li>
-          <li>Por inversión, matrimonio o residencia prolongada.</li>
-          <li>Acompañamiento completo hasta juramento.</li>
-        </ul>
+        <!-- Homologación -->
+        <article class="card">
+          <div class="card-head">
+            <span class="icon" aria-hidden="true">
+              <!-- Diploma -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7l9-4 9 4-9 4-9-4z" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M21 10v6M3 10v6" stroke-width="2"/>
+                <path d="M7 21l5-2 5 2" stroke-width="2"/>
+              </svg>
+            </span>
+            <h3>Homologación de Estudios y Títulos</h3>
+          </div>
+          <p class="hint">RD · Europa · EE. UU.</p>
+          <ul class="bullets">
+            <li>Reconocimiento oficial y equivalencias académicas.</li>
+            <li>Revisión de requisitos por país e institución.</li>
+            <li>Tramitación y seguimiento hasta decisión.</li>
+          </ul>
+        </article>
+
+        <!-- Ciudadanía -->
+        <article class="card">
+          <div class="card-head">
+            <span class="icon" aria-hidden="true">
+              <!-- Escudo -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>Procesos de Ciudadanía y Naturalización</h3>
+          </div>
+          <p class="hint">Elegibilidad y rutas</p>
+          <ul class="bullets">
+            <li>Por inversión, matrimonio o residencia prolongada.</li>
+            <li>Checklist de pruebas y preparación de entrevistas.</li>
+            <li>Acompañamiento hasta juramento.</li>
+          </ul>
+        </article>
+
       </div>
     </div>
   </section>
@@ -253,7 +296,7 @@
   </footer>
 
   <script>
-    // Menú móvil simple
+    // Menú móvil
     const toggle = document.getElementById('menuToggle');
     const nav = document.getElementById('mainNav');
     toggle?.addEventListener('click',()=>nav.classList.toggle('open'));
