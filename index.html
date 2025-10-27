@@ -2,230 +2,353 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eduardo Espinal, Consultor de Migración</title>
-  <meta name="description" content="Consultoría migratoria profesional. Residencias, naturalización, homologación académica y movilidad internacional. Atención personalizada, claridad y resultados.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Consultoría migratoria premium en República Dominicana: residencias, naturalización, homologación académica, visas y movilidad internacional. Atención personalizada, claridad y resultados." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --azul: #0B1220;
-      --gris: #1E293B;
-      --dorado: #C8A95D;
-      --blanco: #F8F8F8;
-      --linea: #E5E7EB;
+    :root{
+      --bg:#0B1220; --ink:#111827; --muted:#475569;
+      --paper:#F7F7F6; --card:#FFFFFF; --line:#E5E7EB;
+      --brand:#1E40FF; --gold:#C8A95D; --gray:#1E293B;
+      --radius:16px; --shadow:0 12px 34px rgba(0,0,0,.08);
     }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      font-family:'Inter',sans-serif;
-      color:var(--gris);
-      background:var(--blanco);
-      line-height:1.6;
-    }
-
-    header {
-      position:fixed; top:0; left:0; width:100%;
-      background:rgba(255,255,255,0.9);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--linea);
-      z-index:1000;
-    }
-    header .container {
-      max-width:1200px; margin:auto;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1rem 2rem;
-    }
-    .logo {
-      display:flex; align-items:center; gap:10px;
-      font-family:'Plus Jakarta Sans',sans-serif; font-weight:800;
-      color:var(--gris); text-decoration:none;
-    }
-    .logo span {
-      display:block; font-size:1.4rem; letter-spacing:-.02em;
-    }
-
-    nav a {
-      text-decoration:none; color:var(--gris);
-      margin:0 1rem; font-weight:600;
-      transition:color .3s ease;
-    }
-    nav a:hover { color:var(--dorado); }
-
-    .btn {
-      background:var(--gris);
-      color:#fff; padding:0.7rem 1.4rem;
-      border-radius:40px; font-weight:600;
-      text-decoration:none; transition:.3s;
-    }
-    .btn:hover { background:var(--dorado); color:var(--azul); }
-
-    section { padding:6rem 1.5rem; max-width:1200px; margin:auto; }
-    h1,h2,h3 {
-      font-family:'Plus Jakarta Sans',sans-serif;
-      letter-spacing:-.015em;
-    }
-
-    /* === HERO === */
-    #hero {
-      position:relative;
-      background:url('https://images.unsplash.com/photo-1590490360181-5b9b2d2b0a3a?auto=format&fit=crop&w=1974&q=80') center/cover no-repeat;
-      color:#fff; text-align:center;
-      height:85vh; display:flex; justify-content:center; align-items:center; flex-direction:column;
-      overflow:hidden;
-    }
-    #hero::before {
-      content:""; position:absolute; inset:0;
-      background:rgba(11,18,32,0.75);
-      backdrop-filter:brightness(0.8);
-      z-index:1;
-    }
-    #hero > * { position:relative; z-index:2; }
-    #hero h1 {
-      font-size:3rem; font-weight:800; margin-bottom:1rem;
-    }
-    #hero p {
-      font-size:1.2rem; max-width:700px; margin:auto; color:#E5E7EB;
-      margin-bottom:2rem;
-    }
-
-    /* === SECCIÓN BASE === */
-    .section-head { text-align:center; margin-bottom:2rem; }
-    .section-head h2 { font-size:2rem; font-weight:800; color:var(--gris); }
-    .section-head p { color:#475569; max-width:700px; margin:auto; }
-
-    /* === SERVICIOS === */
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:1.5rem;
-    }
-    .card {
-      background:#fff;
-      border:1px solid var(--linea);
-      border-radius:16px;
-      padding:2rem;
-      text-align:left;
-      transition:all .3s ease;
-    }
-    .card:hover {
-      transform:translateY(-4px);
-      box-shadow:0 10px 25px rgba(0,0,0,0.07);
-      border-color:var(--dorado);
-    }
-    .card svg {
-      width:36px; height:36px;
-      stroke:var(--gris);
-      stroke-width:1.8; fill:none;
-      margin-bottom:1rem;
-    }
-    .card h3 {
-      font-size:1.2rem; font-weight:700; margin-bottom:0.5rem;
-    }
-    .card p { font-size:1rem; color:#374151; }
-
-    /* === CTA === */
-    #contact {
-      background:var(--azul);
-      color:#fff; text-align:center;
-      border-radius:20px; padding:5rem 1.5rem;
-    }
-    #contact h2 { color:#fff; font-size:2rem; margin-bottom:1rem; }
-    #contact p { color:#CBD5E1; margin-bottom:2rem; }
-    #contact .btn { background:var(--dorado); color:var(--azul); font-weight:700; }
-    #contact .btn:hover { background:#fff; }
-
-    /* === FOOTER === */
-    footer {
-      background:var(--azul); color:#ccc;
-      text-align:center; padding:2rem 1rem;
-      font-size:0.9rem;
-      border-top:1px solid #1f2937;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
+    .container{max-width:1200px;margin:auto;padding:0 24px}
+    h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.015em}
+    h2{font-size:clamp(1.7rem,2.5vw,2.2rem);font-weight:800;color:var(--gray)}
+    h3{font-size:1.2rem;font-weight:800;color:var(--gray)}
+    p{font-size:1.05rem;color:#263142}
+    a{text-decoration:none}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .head{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--gray);font-weight:800}
+    .brand-badge{width:36px;height:36px;border-radius:999px;background:conic-gradient(from 210deg, #1E40FF, #2B36FF 40%, #2130D8 70%, #1B2AB8);display:grid;place-items:center;color:#fff;font:800 14px 'Plus Jakarta Sans',sans-serif}
+    .brand-text{font:800 17px 'Plus Jakarta Sans',sans-serif}
+    .nav{display:flex;align-items:center;gap:22px;font-weight:700}
+    .nav a{color:#27324a}
+    .nav a:hover{color:var(--brand)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:.7rem 1.2rem;border-radius:999px;font-weight:800}
+    .btn-solid{background:var(--gray);color:#fff}
+    .btn-solid:hover{background:var(--gold);color:var(--bg)}
+    .btn-outline{border:1px solid var(--line);color:var(--gray)}
+    .btn-outline:hover{border-color:var(--gold)}
+    /* Hero */
+    #hero{position:relative;height:88vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+    #hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1468849931669-62a977cb6f4b?q=80&w=2048&auto=format&fit=crop') center/cover no-repeat}
+    #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,32,.78),rgba(11,18,32,.88))}
+    #hero>*{position:relative;z-index:1}
+    .hero-wrap{max-width:960px;padding:0 24px}
+    .hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:.8rem}
+    .hero p{color:#E8ECFF;font-size:clamp(1.05rem,1.4vw,1.15rem);margin-bottom:1.6rem}
+    .hero-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    /* Sections */
+    section{padding:72px 0}
+    .section-lead{max-width:800px;margin:10px auto 0;color:var(--muted);text-align:center}
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:980px){.grid-2,.grid-3{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:var(--gold)}
+    /* Icons (monocromo) */
+    .icon{width:36px;height:36px;color:var(--gray);margin-bottom:10px}
+    .icon path,.icon circle,.icon rect,.icon line,.icon polyline{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    /* Steps */
+    .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px}
+    .step .num{font:800 1.8rem 'Plus Jakarta Sans',sans-serif;color:var(--brand);margin-bottom:6px}
+    /* Testimonials */
+    .quote{font-style:italic;color:#2b3345}
+    .mutebar{height:1px;background:var(--line);margin:14px 0}
+    /* FAQ */
+    details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+    summary{cursor:pointer;font-weight:800;color:var(--gray)}
+    details p{margin-top:6px}
+    /* CTA final */
+    .cta-final{background:linear-gradient(180deg,#0D1530 0%, #0B1220 100%);color:#fff;border-radius:20px;padding:42px;text-align:center;overflow:hidden;position:relative}
+    .cta-final::before{content:"";position:absolute;inset:auto -20% -40% -20%;height:300px;background:radial-gradient(420px 160px at 50% 20%, #8BA5FF40 0%, transparent 70%)}
+    /* Footer */
+    footer{background:#0B1220;color:#cbd2e8;border-top:1px solid #162040}
+    .foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding:14px 0}
+    .foot a{color:#cbd2e8}
+    .foot a:hover{color:#fff}
+    .copy{padding:18px 0 28px;text-align:center;font-size:.92rem}
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <a href="#hero" class="logo"><span>Eduardo Espinal</span></a>
-    <nav>
-      <a href="#about">Sobre mí</a>
-      <a href="#services">Servicios</a>
-      <a href="#contact">Contacto</a>
-    </nav>
-    <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Consulta</a>
-  </div>
-</header>
-
-<section id="hero">
-  <h1>Consultoría Migratoria Internacional</h1>
-  <p>Transformo la complejidad migratoria en procesos claros, estratégicos y exitosos.<br>
-     Acompaño a personas, familias y empresas en su legalización y movilidad.</p>
-  <a href="#services" class="btn">Ver servicios</a>
-</section>
-
-<section id="about">
-  <div class="section-head">
-    <h2>Sobre mí</h2>
-    <p>Consultor independiente con más de una década de experiencia en derecho migratorio, homologación académica y movilidad internacional. Mi enfoque combina claridad legal, estrategia personalizada y acompañamiento humano.</p>
-  </div>
-</section>
-
-<section id="services">
-  <div class="section-head">
-    <h2>Servicios Especializados</h2>
-    <p>Soluciones integrales para residencias, visas, homologaciones y ciudadanía.</p>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>
-      <h3>Residencia Dominicana</h3>
-      <p>Tramitación completa de residencias temporales, permanentes o por inversión ante la Dirección General de Migración.</p>
+  <!-- Header con WhatsApp en menú -->
+  <header>
+    <div class="container head">
+      <a href="#hero" class="brand" aria-label="Inicio">
+        <span class="brand-badge">EE</span>
+        <span class="brand-text">Eduardo Espinal</span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#about">Sobre mí</a>
+        <a href="#services">Servicios</a>
+        <a href="#process">Proceso</a>
+        <a href="#testimonials">Casos</a>
+        <a href="#faq">FAQ</a>
+        <!-- Botón de WhatsApp en el menú -->
+        <a class="btn btn-solid" href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" target="_blank" rel="noopener" aria-label="WhatsApp: Solicitar consulta">WhatsApp</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
-      <h3>Naturalización y Ciudadanía</h3>
-      <p>Asesoría en procesos de nacionalidad dominicana o doble ciudadanía conforme a la ley vigente.</p>
+  <!-- Portada con imagen de migración -->
+  <section id="hero" class="hero">
+    <div class="hero-wrap">
+      <h1>Consultoría Migratoria Internacional</h1>
+      <p>Transformo la complejidad migratoria en procesos claros, estratégicos y exitosos. Acompaño a personas, familias y empresas que buscan establecerse, invertir o trabajar legalmente en la República Dominicana.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#services">Ver servicios</a>
+        <a class="btn btn-outline" href="#contact">Iniciar evaluación</a>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M3 4h18v4H3z"/><path d="M7 8v12"/></svg>
-      <h3>Homologación de Estudios</h3>
-      <p>Gestión ante el MESCyT para reconocimiento de títulos universitarios o técnicos extranjeros.</p>
+  <!-- Sobre mí -->
+  <section id="about">
+    <div class="container">
+      <h2>Sobre mí</h2>
+      <p class="section-lead">
+        Consultor independiente con especialización en derecho migratorio, homologaciones académicas y movilidad internacional.
+        Desde hace más de una década, brindo acompañamiento legal y estratégico a profesionales, inversionistas y familias.
+        Mi enfoque combina claridad legal, cronogramas realistas y un trato cercano para que cada decisión sea informada y segura.
+      </p>
+      <div class="grid grid-2" style="margin-top:18px">
+        <div class="card">
+          <h3>Enfoque</h3>
+          <p>Diagnóstico honesto, alternativas comparadas y rutas de menor riesgo. Documentos verificados antes de presentar para minimizar reprocesos.</p>
+        </div>
+        <div class="card">
+          <h3>Compromiso</h3>
+          <p>Comunicación directa, seguimiento por hitos y transparencia en requisitos, costos y tiempos estimados durante todo el proceso.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <svg viewBox="0 0 24 24"><path d="M4 21v-8l8-4 8 4v8"/><path d="M12 13v8"/></svg>
-      <h3>Visas y Movilidad Internacional</h3>
-      <p>Preparación y acompañamiento en solicitudes de visa de turismo, trabajo, estudio o inversión hacia EE. UU. y Europa.</p>
+  <!-- Misión y Valores -->
+  <section id="mission" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <h2>Misión y valores</h2>
+      <p class="section-lead">Excelencia profesional, ética y acompañamiento cercano para decisiones migratorias que cambian vidas.</p>
+      <div class="grid grid-3" style="margin-top:18px">
+        <div class="card">
+          <h3>💼 Excelencia profesional</h3>
+          <p>Buenas prácticas legales y administrativas, expedientes completos y presentación rigurosa ante autoridades.</p>
+        </div>
+        <div class="card">
+          <h3>🌎 Ética y confianza</h3>
+          <p>Gestiones en estricto apego normativo y con confidencialidad total de la información del cliente.</p>
+        </div>
+        <div class="card">
+          <h3>🤝 Compromiso humano</h3>
+          <p>Empatía y comunicación clara para avanzar con seguridad en cada fase del proceso.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10"/></svg>
-      <h3>Regularización y Prórrogas</h3>
-      <p>Renovación y regularización de estatus migratorio vencido conforme a la Ley 285-04 sobre Migración.</p>
+  <!-- Servicios Especializados (iconos monocromos) -->
+  <section id="services">
+    <div class="container">
+      <h2>Servicios especializados</h2>
+      <p class="section-lead">Soluciones integrales para residencias, visas, homologaciones y ciudadanía — explicadas con claridad para decidir sin navegar en exceso.</p>
+
+      <div class="grid grid-3" style="margin-top:18px">
+        <article class="card">
+          <!-- Casa (Residencia) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5 10v9h14v-9"></path>
+            <path d="M10 19v-5h4v5"></path>
+          </svg>
+          <h3>Residencia Dominicana</h3>
+          <p>Tramitación integral de residencias temporales, permanentes o por inversión. Evaluación previa de requisitos, armado de expediente y representación ante la Dirección General de Migración.</p>
+        </article>
+
+        <article class="card">
+          <!-- Usuario (Ciudadanía) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"></path>
+          </svg>
+          <h3>Naturalización y ciudadanía</h3>
+          <p>Acompañamiento en procesos para nacionalidad dominicana o doble ciudadanía conforme a la Constitución y normas vigentes. Preparación documental y guía de entrevistas.</p>
+        </article>
+
+        <article class="card">
+          <!-- Diploma (Homologación) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+            <path d="M7 20h10M12 8v4M9 10h6"></path>
+          </svg>
+          <h3>Homologación de estudios</h3>
+          <p>Gestión ante el MESCyT para reconocimiento de títulos universitarios o técnicos extranjeros. Revisión de validez, legalización, apostilla y traducción certificada cuando aplique.</p>
+        </article>
+
+        <article class="card">
+          <!-- Avión (Visas y movilidad) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 16l20-6-8 10-2-6-4 2 1-4-7-2z"></path>
+          </svg>
+          <h3>Visas y movilidad internacional</h3>
+          <p>Asesoría para solicitudes de visa de turismo, estudio, trabajo o inversión hacia EE. UU. y Europa. Estrategia por perfil y checklist por tipo de programa.</p>
+        </article>
+
+        <article class="card">
+          <!-- Documento (Regularización) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+            <path d="M8 7h8M8 11h8M8 15h6"></path>
+          </svg>
+          <h3>Regularización y prórrogas</h3>
+          <p>Renovaciones, prórrogas y solución de estatus vencido conforme a la Ley 285-04. Plan de corrección documental y seguimiento hasta resolución.</p>
+        </article>
+
+        <article class="card">
+          <!-- Portafolio (Corporativo) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="7" width="18" height="12" rx="2"></rect>
+            <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          <h3>Consultoría corporativa</h3>
+          <p>Movilidad de personal extranjero, permisos laborales y cumplimiento migratorio empresarial para compañías que operan en RD.</p>
+        </article>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px">
+        <a class="btn btn-outline" href="#faq">Ver preguntas frecuentes</a>
+        <a class="btn btn-solid" href="#contact">Solicitar evaluación</a>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>
-      <h3>Consultoría Corporativa</h3>
-      <p>Movilidad de personal extranjero, permisos laborales y cumplimiento migratorio empresarial.</p>
+  <!-- Proceso -->
+  <section id="process">
+    <div class="container">
+      <h2>Proceso de trabajo</h2>
+      <p class="section-lead">Tres pasos para avanzar con seguridad, previsión y control.</p>
+      <div class="grid grid-3" style="margin-top:18px">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Diagnóstico inicial</h3>
+          <p>Mapa de opciones según su perfil y objetivos. Lista de documentos y riesgos identificados con anticipación.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Plan personalizado</h3>
+          <p>Cronograma, requisitos, costos estimados y responsables. Preparación técnica del expediente.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Ejecución y seguimiento</h3>
+          <p>Presentación oficial, respuesta a requerimientos y acompañamiento hasta la resolución final.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <h2>¿Listo para iniciar su proceso migratorio?</h2>
-  <p>Reciba una evaluación personalizada y comience con seguridad.</p>
-  <a href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" class="btn">Solicitar consulta</a>
-</section>
+  <!-- Casos de éxito -->
+  <section id="testimonials" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <h2>Casos de éxito</h2>
+      <p class="section-lead">Confianza construida en resultados verificables y comunicación directa.</p>
+      <div class="grid grid-3" style="margin-top:18px">
+        <div class="card">
+          <p class="quote">“Obtuve mi residencia dominicana en menos de cuatro meses. Atención impecable y comunicación en cada etapa.”</p>
+          <div class="mutebar"></div>
+          <p><strong>Laura G.</strong> — Empresaria</p>
+        </div>
+        <div class="card">
+          <p class="quote">“Mi título fue reconocido sin complicaciones. La guía documental fue clave para evitar rechazos.”</p>
+          <div class="mutebar"></div>
+          <p><strong>Andrés P.</strong> — Ingeniero Civil</p>
+        </div>
+        <div class="card">
+          <p class="quote">“Regularicé mi estatus y obtuve la ciudadanía. Profesionalismo absoluto y claridad en todo momento.”</p>
+          <div class="mutebar"></div>
+          <p><strong>María R.</strong> — Médica</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  © 2025 Eduardo Espinal — Consultor de Migración · Confidencialidad y Ética Profesional
-</footer>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container" style="max-width:980px">
+      <h2>Preguntas frecuentes</h2>
+      <p class="section-lead">Respuestas breves para decidir hoy.</p>
+      <div class="grid" style="gap:12px;margin-top:18px">
+        <details>
+          <summary>¿Cuánto tarda una residencia dominicana?</summary>
+          <p>La temporal suele tardar entre 3 y 5 meses; la permanente entre 6 y 9, según documentación y revisión de la DGM.</p>
+        </details>
+        <details>
+          <summary>¿Puedo homologar un título técnico extranjero?</summary>
+          <p>Sí, siempre que provenga de institución acreditada y esté legalizado y apostillado para trámite ante el MESCyT.</p>
+        </details>
+        <details>
+          <summary>¿Es posible la doble nacionalidad?</summary>
+          <p>Sí. La Constitución permite la doble nacionalidad en supuestos establecidos, sin renunciar a la dominicana.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
+  <!-- CTA final y Contacto -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Listo para iniciar su proceso?</h2>
+        <p style="color:#D7DDFB;margin:6px 0 18px">Reciba una evaluación profesional con ruta clara, requisitos y tiempos estimados.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-solid" href="https://wa.me/18294424222?text=Hola%2C%20deseo%20una%20consulta%20migratoria" target="_blank" rel="noopener">WhatsApp · Solicitar consulta</a>
+          <a class="btn btn-outline" href="#services">Volver a servicios</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <a href="#about">Sobre mí</a>
+        <a href="#services">Servicios</a>
+        <a href="#process">Proceso</a>
+        <a href="#testimonials">Casos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contacto</a>
+      </div>
+      <div class="copy">© <span id="year">2025</span> · Eduardo Espinal, Consultor de Migración · Confidencialidad y Ética Profesional</div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scrollspy simple (ilumina el enlace activo)
+    const links = [...document.querySelectorAll('.nav a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        const id = '#' + e.target.id;
+        const link = links.find(a => a.getAttribute('href') === id);
+        if(link && e.isIntersecting){
+          links.forEach(l => l.style.color = '#27324a');
+          link.style.color = '#1E40FF';
+        }
+      });
+    },{rootMargin:'-60% 0px -35% 0px', threshold:0});
+    sections.forEach(s => spy.observe(s));
+  </script>
 </body>
 </html>
