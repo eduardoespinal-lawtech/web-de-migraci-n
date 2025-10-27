@@ -1,221 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Eduardo Espinal | Consultor de Migración</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Tipografías: tradicional (Merriweather) + moderna sobria (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --color-primario: #0B3766;
-      --color-secundario: #C49449;
-      --color-fondo: #ffffff;
-      --color-borde: #dcdcdc;
-      --color-texto: #333333;
+    :root{
+      /* Paleta institucional sobria */
+      --azul:#0B3766;
+      --oro:#C49449;
+      --gris-1:#FAFAFA;
+      --gris-2:#F2F2F2;
+      --gris-3:#E5E6E8;
+      --texto:#2B2F33;
+      --muted:#5A6673;
+
+      /* Tipografía y ritmo */
+      --h-font:'Merriweather',serif;
+      --b-font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      --radius:8px;
+
+      /* Contenedor */
+      --wrap:1080px;
+      --pad-x:28px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Reset mínimo y accesible */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--texto); background:#FFF;
+      font:400 16px/1.7 var(--b-font);
+    }
+    img{max-width:100%; height:auto; display:block}
+    a{color:var(--azul); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:var(--wrap); margin:0 auto; padding:0 var(--pad-x)}
+    .hr{border:0; border-top:1px solid var(--gris-3); margin:0}
+
+    h1,h2,h3{
+      font-family:var(--h-font); color:var(--azul); margin:0 0 .6em
+    }
+    h1{font-size:clamp(28px,3.2vw,40px); font-weight:700}
+    h2{font-size:clamp(24px,2.2vw,30px); font-weight:700}
+    h3{font-size:18px; font-weight:700}
+
+    p{margin:.6em 0; text-align:justify}
+    ul{margin:.4em 0 .8em 1.2em}
+    li+li{margin-top:.25em}
+
+    /* ====== Header tradicional modernizado ====== */
+    header{
+      border-bottom:3px solid var(--azul);
+      background:linear-gradient(#FFFFFF,#FCFCFC);
+    }
+    .brand{
+      text-align:center; padding:18px 0 12px;
+    }
+    .brand-title{
+      font:700 22px var(--h-font); letter-spacing:.6px; color:var(--azul)
+    }
+    .brand-sub{
+      text-transform:uppercase; color:var(--muted);
+      font:600 12px/1 var(--b-font); letter-spacing:.16em; margin-top:6px
     }
 
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: var(--color-fondo);
-      color: var(--color-texto);
-      line-height: 1.7;
+    /* ====== Navegación ====== */
+    .nav{
+      border-top:1px solid var(--gris-3);
+      border-bottom:1px solid var(--gris-3);
+      background:#FFF;
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:center; gap:56px;
+      padding:10px 0;
+    }
+    .nav a{
+      font:700 13px var(--b-font); text-transform:uppercase; letter-spacing:.06em;
+      color:var(--azul);
     }
 
-    h1, h2, h3 {
-      font-family: 'Libre Baskerville', serif;
-      color: var(--color-primario);
-      margin-bottom: 10px;
+    /* Móvil: hamburguesa simple, sin frameworks */
+    .menu-toggle{display:none; background:none; border:1px solid var(--gris-3); border-radius:6px; padding:6px 10px; font:700 12px var(--b-font); color:var(--azul)}
+    @media (max-width:900px){
+      .nav-inner{display:none; flex-direction:column; gap:10px; padding:10px 0}
+      .nav-inner.open{display:flex}
+      .menu-wrap{display:flex; justify-content:center; padding:10px 0}
+      .menu-toggle{display:inline-block}
     }
 
-    p {
-      margin-bottom: 15px;
-      text-align: justify;
-    }
+    /* ====== Secciones ====== */
+    section{padding:60px 0}
+    section + section{border-top:1px solid var(--gris-3)}
+    .lead{text-align:center; color:var(--muted)}
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
+    /* Inicio (hero sobrio, sin degradados) */
+    #inicio{background:var(--gris-1)}
+    #inicio .wrap{padding-top:10px; padding-bottom:10px}
+    #inicio h1{color:var(--azul)}
+    .cta-bar{display:flex; justify-content:center; gap:12px; margin-top:16px}
+    .btn{
+      display:inline-block; padding:10px 18px; border-radius:var(--radius);
+      border:1px solid var(--azul); color:var(--azul); background:#FFF;
+      font:600 13px var(--b-font); text-transform:uppercase; letter-spacing:.04em
     }
+    .btn.primary{background:var(--azul); color:#FFF}
+    .btn:hover{text-decoration:none; filter:brightness(0.98)}
 
-    /* HEADER TRADICIONAL */
-    header {
-      border-bottom: 3px solid var(--color-primario);
-      background-color: #f5f5f5;
-      padding: 15px 0;
-    }
+    /* Servicios (listas con viñetas clásicas) */
+    #servicios .grupo{margin-bottom:28px}
+    #servicios h3{margin-bottom:6px}
 
-    header .title {
-      text-align: center;
-      font-size: 1.8em;
-      color: var(--color-primario);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+    /* Sobre mí */
+    #sobre-mi h2{margin-bottom:8px}
+    #sobre-mi ul{margin-top:.4em}
 
-    header .subtitle {
-      text-align: center;
-      font-size: 1em;
-      color: #555;
-      margin-top: 3px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    /* Contacto */
+    #contacto{background:var(--gris-2)}
+    #contacto .cta-bar .btn{border-color:var(--azul)}
+    #contacto .btn.alt{border-color:var(--oro); color:var(--oro); background:#FFF}
 
-    /* NAVEGACIÓN */
-    nav {
-      border-top: 1px solid var(--color-borde);
-      border-bottom: 1px solid var(--color-borde);
-      background-color: #fdfdfd;
+    /* Footer */
+    footer{
+      background:var(--azul); color:#FFF; text-align:center; padding:24px 0
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: var(--color-primario);
-      font-weight: 600;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-size: 0.95em;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* SECCIONES */
-    section {
-      padding: 60px 0;
-      border-bottom: 1px solid var(--color-borde);
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 1.8em;
-      margin-bottom: 25px;
-    }
-
-    /* SERVICIOS */
-    .servicio {
-      margin-bottom: 40px;
-    }
-
-    .servicio h3 {
-      font-size: 1.2em;
-      color: var(--color-primario);
-      margin-bottom: 8px;
-    }
-
-    .servicio ul {
-      margin-left: 20px;
-      list-style-type: disc;
-    }
-
-    /* SOBRE MI */
-    .perfil ul {
-      margin-left: 20px;
-      list-style-type: disc;
-    }
-
-    /* CONTACTO */
-    #contacto {
-      background-color: #f9f9f9;
-    }
-
-    .botones {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .boton {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 25px;
-      border: 1px solid var(--color-primario);
-      color: var(--color-primario);
-      background-color: var(--color-fondo);
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      border-radius: 3px;
-      transition: background-color 0.2s;
-    }
-
-    .boton:hover {
-      background-color: var(--color-primario);
-      color: white;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      background-color: var(--color-primario);
-      color: white;
-      padding: 25px 0;
-      font-size: 0.9em;
-    }
-
-    footer p:first-child {
-      color: var(--color-secundario);
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
+    footer .marca{color:var(--oro); font-weight:700; letter-spacing:.02em}
+    footer p{margin:.2em 0; text-align:center}
   </style>
 </head>
-
 <body>
 
+  <!-- ===== Header ===== -->
   <header>
-    <div class="container">
-      <div class="title">EDUARDO ESPINAL</div>
-      <div class="subtitle">Consultor de Migración</div>
+    <div class="wrap brand">
+      <div class="brand-title">EDUARDO ESPINAL</div>
+      <div class="brand-sub">Consultor de Migración</div>
+    </div>
+    <div class="nav">
+      <div class="wrap">
+        <div class="menu-wrap">
+          <button class="menu-toggle" id="menuToggle">MENÚ</button>
+        </div>
+        <nav class="nav-inner" id="mainNav">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#sobre-mi">Sobre Mí</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
+  <!-- ===== Inicio ===== -->
   <section id="inicio">
-    <div class="container">
+    <div class="wrap">
       <h1>Tu Estrategia Migratoria Global Comienza Aquí</h1>
-      <p>Obtén Visas, Residencias y la Homologación de tus Estudios con asesoría legal rigurosa y personalizada para <strong>República Dominicana</strong>, <strong>Europa</strong> y <strong>Estados Unidos</strong>.</p>
-      <div class="botones">
-        <a href="#contacto" class="boton">Agenda tu Consulta</a>
+      <p class="lead">Obtén Visas, Residencias y la Homologación de tus Estudios con asesoría legal rigurosa y personalizada para <strong>República Dominicana</strong>, <strong>Europa</strong> y <strong>Estados Unidos</strong>.</p>
+      <div class="cta-bar">
+        <a href="#contacto" class="btn primary">Agenda tu Consulta</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== Servicios ===== -->
   <section id="servicios">
-    <div class="container">
+    <div class="wrap">
       <h2>Soluciones Legales para tu Movilidad Global</h2>
 
-      <div class="servicio">
+      <div class="grupo">
         <h3>Residencia y Visado Dominicano</h3>
         <ul>
           <li>Residencia por inversión, rentista y pensionado.</li>
@@ -224,7 +181,7 @@
         </ul>
       </div>
 
-      <div class="servicio">
+      <div class="grupo">
         <h3>Residencia y Visado Europeo</h3>
         <ul>
           <li>Schengen y residencias por inversión (Golden Visa).</li>
@@ -233,7 +190,7 @@
         </ul>
       </div>
 
-      <div class="servicio">
+      <div class="grupo">
         <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
         <ul>
           <li>E-2 (inversionista) y L-1 (transferencia ejecutiva).</li>
@@ -242,7 +199,7 @@
         </ul>
       </div>
 
-      <div class="servicio">
+      <div class="grupo">
         <h3>Homologación de Estudios y Títulos</h3>
         <ul>
           <li>Reconocimiento oficial y equivalencias académicas.</li>
@@ -251,7 +208,7 @@
         </ul>
       </div>
 
-      <div class="servicio">
+      <div class="grupo">
         <h3>Procesos de Ciudadanía y Naturalización</h3>
         <ul>
           <li>Evaluación de elegibilidad y rutas disponibles.</li>
@@ -262,8 +219,9 @@
     </div>
   </section>
 
+  <!-- ===== Sobre mí ===== -->
   <section id="sobre-mi">
-    <div class="container">
+    <div class="wrap">
       <h2>Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
       <p>Mi misión va más allá del simple trámite. Como abogado experto en migración, diseño una <strong>ruta legal optimizada y transparente</strong> que minimiza riesgos y acelera tu objetivo de residencia o visado global. Compromiso total con la ley y contigo.</p>
       <ul>
@@ -274,21 +232,31 @@
     </div>
   </section>
 
+  <!-- ===== Contacto ===== -->
   <section id="contacto">
-    <div class="container">
+    <div class="wrap">
       <h2>Hablemos de tu Próximo Destino</h2>
-      <p>El primer paso para tu migración global es una consulta estratégica.</p>
-      <div class="botones">
-        <a href="https://wa.me/18294424222" target="_blank" class="boton">WhatsApp</a>
-        <a href="mailto:eduardoespinaldeaza@gmail.com" class="boton">Correo</a>
+      <p class="lead">El primer paso para tu migración global es una consulta estratégica.</p>
+      <div class="cta-bar">
+        <a class="btn" href="https://wa.me/18294424222" target="_blank">WhatsApp</a>
+        <a class="btn alt" href="mailto:eduardoespinaldeaza@gmail.com">Correo</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== Footer ===== -->
   <footer>
-    <p>EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
-    <p>&copy; 2025 Todos los derechos reservados.</p>
+    <div class="wrap">
+      <p class="marca">EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
+      <p>&copy; 2025 Todos los derechos reservados.</p>
+    </div>
   </footer>
 
+  <script>
+    // Menú móvil simple
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle?.addEventListener('click',()=>nav.classList.toggle('open'));
+  </script>
 </body>
 </html>
