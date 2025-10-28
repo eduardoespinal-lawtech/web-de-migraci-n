@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eduardo Espinal | Consultor de Migración Internacional</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa.">
-  <meta name="robots" content="index, follow">
+  <!-- SEO básico -->
+  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa. Asesoría legal rigurosa y personalizada." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tudominio.com/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Eduardo Espinal | Consultor de Migración Internacional" />
+  <meta property="og:description" content="Visas, Residencias, Homologación de Estudios y Ciudadanía en RD, EE. UU. y Europa." />
+  <meta property="og:url" content="https://tudominio.com/" />
+  <meta property="og:image" content="https://tudominio.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eduardo Espinal | Consultor de Migración Internacional" />
+  <meta name="twitter:description" content="Asesoría migratoria profesional para RD, EE. UU. y Europa." />
+  <meta name="twitter:image" content="https://tudominio.com/og-image.jpg" />
 
   <!-- iPhone / Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="theme-color" content="#0B3766">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#0B3766" />
 
   <!-- Favicon EE -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B3766'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial, sans-serif' font-size='55' fill='%23C49449' text-anchor='middle' font-weight='bold'%3EEE%3C/text%3E%3C/svg%3E">
@@ -30,7 +42,8 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--b);color:var(--texto);background:#fff;line-height:1.7}
-    a{color:var(--azul);text-decoration:none} a:hover{color:var(--oro)}
+    a{color:var(--azul);text-decoration:none}
+    a:hover{color:var(--oro)}
     img{max-width:100%;height:auto;display:block}
     .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
     h1,h2,h3{font-family:var(--h);color:var(--azul)}
@@ -38,31 +51,29 @@
     h2{text-align:center;font-size:2em;margin-bottom:.8em}
     p{text-align:justify}
 
-    /* Header + marca */
-    header{position:sticky;top:0;z-index:1000;background:#fdfdfd;border-bottom:3px solid var(--azul);}
+    /* Header + menú */
+    header{position:sticky;top:0;z-index:1000;background:#fdfdfd;border-bottom:3px solid var(--azul)}
     .header-inner{display:flex;align-items:center;justify-content:center;gap:16px;padding:18px 30px;position:relative}
     .brand-title{font:700 2.2em var(--h);color:var(--azul);text-align:center}
     .brand-sub{text-transform:uppercase;font-weight:700;letter-spacing:.1em;color:var(--muted);font-size:.9em;text-align:center}
 
-    /* Menú */
     nav{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff}
     nav ul{display:flex;justify-content:center;gap:60px;list-style:none;padding:10px 0;flex-wrap:wrap;transition:all .3s ease}
     nav a{font-weight:700;text-transform:uppercase;font-size:.9em;color:var(--azul)}
     nav a:hover{color:var(--oro)}
 
-    /* Hamburguesa */
     .menu-toggle{
       position:absolute;right:20px;top:50%;transform:translateY(-50%);
       display:none;background:none;border:none;color:var(--azul);font-size:1.9em;cursor:pointer
     }
     @media (max-width:768px){
       .menu-toggle{display:block}
-      nav ul{flex-direction:column;gap:0;padding:0;display:none}
+      nav ul{flex-direction:column;gap:0;padding:0;margin:0;display:none;background:#fff}
       nav ul.show{display:flex}
       nav li{border-top:1px solid #e6e6e6;text-align:center;padding:12px 0}
     }
 
-    /* Secciones base */
+    /* Secciones */
     section{padding:70px 0}
     #inicio{background:linear-gradient(180deg,#fff,var(--azul-suave))}
     #inicio p{text-align:center;max-width:800px;margin:0 auto 22px;color:var(--muted)}
@@ -70,38 +81,38 @@
     .btn{display:inline-block;padding:12px 24px;border-radius:10px;border:1.5px solid var(--azul);font-weight:700;text-transform:uppercase}
     .btn.primary{background:var(--azul);color:#fff}
 
-    /* Servicios (premium sobrio) */
+    /* === SERVICIOS (chips, sin banderas ni iconos) === */
     #servicios{background:#fff}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(340px,1fr));gap:28px}
-    @media (max-width:960px){.cards{grid-template-columns:1fr}}
-    .card{
-      position:relative;background:#fff;border-radius:var(--r);
-      padding:26px 24px 24px;border:1px solid #e9ecf3;box-shadow:var(--s);
-      transition:.25s ease;overflow:hidden;
+    #servicios h2{margin-bottom:.8em}
+    .svc-grid{max-width:1080px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:repeat(2,minmax(320px,1fr));gap:28px}
+    @media (max-width:960px){.svc-grid{grid-template-columns:1fr;padding:0 18px}}
+    .svc-card{
+      position:relative;background:#fff;border:1px solid #e9ecf3;border-radius:var(--r);
+      padding:26px 24px 24px;box-shadow:var(--s);transition:.25s ease;overflow:hidden
     }
-    .card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:calc(var(--r) - 1px);box-shadow:inset 0 0 0 1px rgba(11,55,102,.04)}
-    .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(11,55,102,.12)}
-    .card-header{display:flex;align-items:center;gap:14px;margin:4px 0 8px}
-    .icon{
-      width:52px;height:52px;border-radius:12px;flex:0 0 52px;display:grid;place-items:center;
-      border:1px solid rgba(196,148,73,.42);
-      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.07));
-    }
-    .icon svg{width:28px;height:28px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    .card h3{font-size:1.18em;margin:0}
-    .card p.lead{color:var(--muted);margin:8px 0 12px}
-    .sub{font-weight:700;color:var(--azul);margin:12px 0 6px}
-    .card ul{margin:0 0 4px 20px;list-style:disc}
-    .card ul li{margin-bottom:6px}
-    .flag{width:34px;height:22px;position:absolute;top:12px;right:14px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+    .svc-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(11,55,102,.12)}
+    .svc-card::after{content:"";position:absolute;inset:0;border-radius:calc(var(--r) - 1px);box-shadow:inset 0 0 0 1px rgba(11,55,102,.04);pointer-events:none}
 
-    /* Destacada */
-    .card.feature{grid-column:1 / -1;border:1.5px solid rgba(196,148,73,.45);padding-left:36px}
-    .card.feature::before{
-      content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
-      background:linear-gradient(180deg,#dcb476,#c49449 60%,#b58637);
-      border-top-left-radius:var(--r);border-bottom-left-radius:var(--r);
+    /* CHIP */
+    .svc-chip{
+      position:absolute;top:12px;left:14px;display:inline-flex;align-items:center;
+      padding:6px 12px;border-radius:18px;background:#f8fafc;color:var(--azul);
+      border:1px solid rgba(196,148,73,.55);box-shadow:0 2px 6px rgba(11,55,102,.06);
+      font:700 .8rem/1 "Inter",sans-serif;letter-spacing:.02em
     }
+
+    .svc-header{margin:30px 0 8px}
+    .svc-title{margin:0;font:700 1.18em var(--h);color:var(--azul)}
+    .svc-lead{color:#5A6673;margin:8px 0 12px;text-align:justify}
+    .svc-sub{font-weight:700;color:var(--azul);margin:12px 0 6px}
+    .svc-list{margin:0 0 4px 20px;list-style:disc}
+    .svc-list li{margin-bottom:6px}
+
+    /* destacada a ancho completo */
+    .svc-card.feature{grid-column:1/-1;border:1.5px solid rgba(196,148,73,.45);padding-left:36px}
+    .svc-card.feature::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
+      background:linear-gradient(180deg,#dcb476,#c49449 60%,#b58637);
+      border-top-left-radius:var(--r);border-bottom-left-radius:var(--r)}
 
     /* Sobre mí */
     #sobre-mi{background:var(--azul-suave)}
@@ -111,35 +122,65 @@
     /* FAQ */
     #faq{background:var(--azul-suave)}
     .faq-item{background:#fff;border:1px solid #e9ecf3;border-radius:var(--r);box-shadow:var(--s);margin-bottom:15px;overflow:hidden}
-    .faq-question{cursor:pointer;padding:18px 20px;font-weight:800;color:var(--azul);display:flex;justify-content:space-between;align-items:center;background:#f6f8fc;transition:.3s}
-    .faq-question:hover{background:#eef3fb}
-    .faq-answer{display:none;padding:15px 20px;color:var(--muted);font-size:.95em;border-top:1px solid #eef2f7}
-    .faq-question span{color:var(--oro);font-size:1.3em;transition:.3s}
+    .faq-question{cursor:pointer;padding:18px 20px;font-weight:800;color:var(--azul);display:flex;justify-content:space-between;align-items:center;background:#f6f8fc}
+    .faq-answer{display:none;padding:15px 20px;color:#5A6673;font-size:.95em;border-top:1px solid #eef2f7}
     .faq-item.active .faq-answer{display:block}
-    .faq-item.active .faq-question span{transform:rotate(45deg)}
 
-    /* Contacto */
+    /* Contacto y footer */
     #contacto{text-align:center}
-    #contacto p{color:var(--muted);max-width:700px;margin:0 auto 20px;text-align:center}
+    #contacto p{color:#5A6673;max-width:700px;margin:0 auto 20px}
     #contacto .btn{margin:6px}
-
-    /* Footer centrado y compacto */
-    footer{
-      background:#0B3766;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;padding:25px 20px
-    }
+    footer{background:#0B3766;color:#fff;text-align:center;padding:25px 20px}
     footer p{margin:3px 0;color:#fff;font-size:0.95em}
     footer p:first-child{font-weight:700;font-size:1.05em}
 
-    /* Microajuste iPhone pequeño */
+    /* iPhone pequeño */
     @media (max-width:480px){
       .wrap{padding:0 18px}
-      .card{padding:22px 18px}
+      .svc-card{padding:22px 18px}
       h1{font-size:1.9em}
       h2{font-size:1.4em}
       p{font-size:0.95em}
     }
   </style>
+
+  <!-- Schema.org: Servicio + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"Eduardo Espinal — Consultor de Migración",
+    "url":"https://tudominio.com/",
+    "areaServed":["DO","US","EU"],
+    "email":"mailto:eduardoespinaldeaza@gmail.com",
+    "telephone":"+1 829 442 4222",
+    "sameAs":["https://wa.me/18294424222"],
+    "offers":[
+      {"@type":"Offer","name":"Residencia y Visado Dominicano"},
+      {"@type":"Offer","name":"Residencia y Visado Europeo"},
+      {"@type":"Offer","name":"Visas de Inversión y Negocios (EE. UU.)"},
+      {"@type":"Offer","name":"Homologación de Estudios y Títulos"},
+      {"@type":"Offer","name":"Ciudadanía y Naturalización"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+   "@context":"https://schema.org",
+   "@type":"FAQPage",
+   "mainEntity":[
+    {"@type":"Question","name":"¿Cuánto tarda un proceso de residencia?",
+     "acceptedAnswer":{"@type":"Answer","text":"En RD suele demorar 3–6 meses; en EE. UU. y Europa depende del tipo de visa o residencia."}},
+    {"@type":"Question","name":"¿Puedo tramitar mi residencia desde el extranjero?",
+     "acceptedAnswer":{"@type":"Answer","text":"Sí. Se puede iniciar desde el país de origen con asistencia documental completa."}},
+    {"@type":"Question","name":"¿Ofrecen servicios en línea?",
+     "acceptedAnswer":{"@type":"Answer","text":"Sí. Evaluación y envío seguro de documentos con firma digital."}},
+    {"@type":"Question","name":"¿Qué diferencia su consultoría de otras agencias?",
+     "acceptedAnswer":{"@type":"Answer","text":"Experiencia legal, ética profesional y acompañamiento directo sin tarifas ocultas."}}
+   ]
+  }
+  </script>
 </head>
 
 <body>
@@ -150,18 +191,19 @@
         <div class="brand-title">EDUARDO ESPINAL</div>
         <div class="brand-sub">Consultor de Migración</div>
       </div>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <!-- Menú hamburguesa accesible -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
   <!-- NAV -->
-  <nav>
+  <nav role="navigation" aria-label="Principal">
     <ul id="menu">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#sobre-mi">Sobre Mí</a></li>
-      <li><a href="#contacto">Contacto</a></li>
       <li><a href="#faq">Preguntas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
@@ -175,22 +217,18 @@
       </div>
     </section>
 
-    <!-- SERVICIOS (5 tarjetas, banderas separadas, premium) -->
+    <!-- SERVICIOS (chips, sin banderas ni iconos) -->
     <section id="servicios">
       <div class="wrap">
         <h2>Soluciones Legales para tu Movilidad Global</h2>
 
-        <div class="cards">
-          <!-- RD -->
-          <article class="card">
-            <img class="flag" src="https://flagcdn.com/w40/do.png" alt="República Dominicana" loading="lazy"/>
-            <div class="card-header">
-              <span class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>
-              <h3>Residencia y Visado Dominicano</h3>
-            </div>
-            <p class="lead">Acompañamiento integral para establecerte legalmente en República Dominicana.</p>
-            <div class="sub">Incluye</div>
-            <ul>
+        <div class="svc-grid">
+          <article class="svc-card">
+            <span class="svc-chip">Dominicana</span>
+            <div class="svc-header"><h3 class="svc-title">Residencia y Visado Dominicano</h3></div>
+            <p class="svc-lead">Acompañamiento integral para establecerte legalmente en República Dominicana.</p>
+            <div class="svc-sub">Incluye</div>
+            <ul class="svc-list">
               <li>Residencia por <strong>inversión</strong>, <strong>rentista</strong> y <strong>pensionado</strong>.</li>
               <li>Visas de <strong>trabajo</strong>, negocios y reunificación familiar.</li>
               <li>Gestión de citas DGM, exámenes médicos y certificados.</li>
@@ -198,62 +236,48 @@
             </ul>
           </article>
 
-          <!-- UE -->
-          <article class="card">
-            <img class="flag" src="https://flagcdn.com/w40/eu.png" alt="Unión Europea" loading="lazy"/>
-            <div class="card-header">
-              <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span>
-              <h3>Residencia y Visado Europeo</h3>
-            </div>
-            <p class="lead">Ruta legal para vivir, estudiar o invertir en la UE.</p>
-            <div class="sub">Opciones</div>
-            <ul>
+          <article class="svc-card">
+            <span class="svc-chip">Europa</span>
+            <div class="svc-header"><h3 class="svc-title">Residencia y Visado Europeo</h3></div>
+            <p class="svc-lead">Ruta legal para vivir, estudiar o invertir en la UE.</p>
+            <div class="svc-sub">Opciones</div>
+            <ul class="svc-list">
               <li><strong>Golden Visa</strong> y <strong>Nómada Digital</strong> según país.</li>
               <li>Visas Schengen y permisos por estudios o empleo.</li>
               <li>Reagrupación familiar donde proceda.</li>
             </ul>
           </article>
 
-          <!-- EE.UU. -->
-          <article class="card">
-            <img class="flag" src="https://flagcdn.com/w40/us.png" alt="Estados Unidos" loading="lazy"/>
-            <div class="card-header">
-              <span class="icon"><svg viewBox="0 0 24 24"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 13h18"/></svg></span>
-              <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
-            </div>
-            <p class="lead">Estrategia migratoria para empresarios y ejecutivos.</p>
-            <div class="sub">Especialidades</div>
-            <ul>
+          <article class="svc-card">
+            <span class="svc-chip">EE. UU.</span>
+            <div class="svc-header"><h3 class="svc-title">Visas de Inversión y Negocios (EE. UU.)</h3></div>
+            <p class="svc-lead">Estrategia migratoria para empresarios y ejecutivos.</p>
+            <div class="svc-sub">Especialidades</div>
+            <ul class="svc-list">
               <li><strong>E-2</strong> (inversor) y <strong>L-1</strong> (transferencia ejecutiva).</li>
               <li><strong>B1/B2</strong> con enfoque en entrevista y soporte probatorio.</li>
               <li>Plan de negocio y paquete de evidencia para USCIS/Consulado.</li>
             </ul>
           </article>
 
-          <!-- Homologación -->
-          <article class="card">
-            <div class="card-header">
-              <span class="icon"><svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5-10 5-10-5z"/><path d="M12 12v10M12 22l5-3 5 3M12 22l-5-3-5 3"/></svg></span>
-              <h3>Homologación de Estudios y Títulos</h3>
-            </div>
-            <p class="lead">Reconocimiento oficial de credenciales académicas y profesionales.</p>
-            <div class="sub">Alcance</div>
-            <ul>
+          <article class="svc-card">
+            <span class="svc-chip">Títulos</span>
+            <div class="svc-header"><h3 class="svc-title">Homologación de Estudios y Títulos</h3></div>
+            <p class="svc-lead">Reconocimiento oficial de credenciales académicas y profesionales.</p>
+            <div class="svc-sub">Alcance</div>
+            <ul class="svc-list">
               <li>Equivalencia en <strong>RD</strong>, <strong>EE. UU.</strong> y <strong>Europa</strong>.</li>
               <li>Evaluaciones de credenciales y requisitos por país.</li>
               <li>Traducciones certificadas y legalizaciones.</li>
             </ul>
           </article>
 
-          <!-- Ciudadanía (destacada) -->
-          <article class="card feature">
-            <div class="card-header">
-              <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-              <h3>Procesos de Ciudadanía y Naturalización</h3>
-            </div>
-            <p class="lead">Evaluación de elegibilidad y acompañamiento completo hasta el juramento.</p>
-            <div class="sub">Vías frecuentes</div>
-            <ul>
+          <article class="svc-card feature">
+            <span class="svc-chip">Ciudadanía</span>
+            <div class="svc-header"><h3 class="svc-title">Procesos de Ciudadanía y Naturalización</h3></div>
+            <p class="svc-lead">Evaluación de elegibilidad y acompañamiento completo hasta el juramento.</p>
+            <div class="svc-sub">Vías frecuentes</div>
+            <ul class="svc-list">
               <li>Ciudadanía por <strong>inversión</strong>, <strong>matrimonio</strong> o <strong>residencia prolongada</strong>.</li>
               <li>Pruebas de presencia, buena conducta y preparación de entrevista.</li>
               <li>Coordinación documental y seguimiento de cada etapa.</li>
@@ -280,22 +304,18 @@
     <section id="faq">
       <div class="wrap">
         <h2>Preguntas Frecuentes</h2>
-
         <div class="faq-item">
           <div class="faq-question">¿Cuánto tarda un proceso de residencia?<span>+</span></div>
           <div class="faq-answer">Depende del país y la categoría. En República Dominicana puede tardar entre 3 y 6 meses; en Estados Unidos o Europa, varía según el tipo de visa o residencia solicitada.</div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">¿Puedo tramitar mi residencia desde el extranjero?<span>+</span></div>
           <div class="faq-answer">Sí. La mayoría de los países permiten iniciar el trámite desde tu país de origen. Te asistimos en la preparación de toda la documentación necesaria.</div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">¿Ofrecen servicios en línea?<span>+</span></div>
           <div class="faq-answer">Sí. Los procesos iniciales pueden realizarse de forma virtual, con firma digital y envío seguro de documentos.</div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">¿Qué diferencia su consultoría de otras agencias?<span>+</span></div>
           <div class="faq-answer">Experiencia legal, ética profesional y acompañamiento directo en cada etapa. Sin tarifas ocultas ni subcontrataciones improvisadas.</div>
@@ -316,7 +336,7 @@
     </section>
   </main>
 
-  <!-- FOOTER centrado y compacto -->
+  <!-- FOOTER -->
   <footer>
     <p>EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN</p>
     <p>© 2025 Todos los derechos reservados. | Santo Domingo, República Dominicana</p>
@@ -324,26 +344,27 @@
   </footer>
 
   <script>
-    // Menú hamburguesa
+    // Menú hamburguesa accesible
     const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('show');
-      toggle.textContent = menu.classList.contains('show') ? '✕' : '☰';
+    const menu   = document.getElementById('menu');
+    toggle.addEventListener('click', ()=>{
+      const open = menu.classList.toggle('show');
+      toggle.textContent = open ? '✕' : '☰';
+      toggle.setAttribute('aria-expanded', open);
     });
-    // Cerrar al pulsar un enlace
     document.querySelectorAll('#menu a').forEach(a=>{
-      a.addEventListener('click',()=>{
+      a.addEventListener('click', ()=>{
         if(menu.classList.contains('show')){
           menu.classList.remove('show');
           toggle.textContent='☰';
+          toggle.setAttribute('aria-expanded','false');
         }
       });
     });
 
     // FAQ
     document.querySelectorAll('.faq-question').forEach(q=>{
-      q.addEventListener('click',()=>q.parentElement.classList.toggle('active'));
+      q.addEventListener('click', ()=> q.parentElement.classList.toggle('active'));
     });
   </script>
 </body>
