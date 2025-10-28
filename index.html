@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Eduardo Espinal | Consultor de Migración Internacional</title>
 
-  <!-- SEO básico -->
+  <!-- SEO -->
   <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa.">
   <meta name="robots" content="index, follow">
 
-  <!-- Favicon EE (azul + dorado) -->
+  <!-- Favicon EE -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B3766'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial, sans-serif' font-size='55' fill='%23C49449' text-anchor='middle' font-weight='bold'%3EEE%3C/text%3E%3C/svg%3E">
 
   <!-- Fuentes -->
@@ -49,21 +49,12 @@
     .btn.primary{background:var(--azul);color:#fff}
     .btn:hover{opacity:.92}
 
-    /* ===== SERVICIOS (2 columnas + tarjeta destacada) ===== */
+    /* ===== SERVICIOS (2 columnas, última destacada) ===== */
     #servicios{background:#fff}
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(340px,1fr));
-      gap:32px;
-    }
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(340px,1fr));gap:32px}
     .card{
-      border:1px solid #e7e9ee;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px 24px 24px;
-      background:#fff;
-      position:relative;
-      transition:.2s;
+      position:relative;background:#fff;border:1px solid #e7e9ee;border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:28px 24px 24px;transition:.2s;
     }
     .card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(11,55,102,.12)}
     .card h3{font-size:1.25em;margin:2px 0 10px}
@@ -72,32 +63,38 @@
     .card ul{margin:0 0 4px 20px;list-style:disc}
     .card ul li{margin-bottom:6px}
 
-    /* icono premium */
+    /* iconos uniformes (línea dorada) */
     .icon{
-      width:50px;height:50px;display:grid;place-items:center;
-      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.08));
-      border-radius:12px;margin-bottom:12px;border:1px solid rgba(196,148,73,.35)
+      width:52px;height:52px;display:grid;place-items:center;margin-bottom:12px;
+      border-radius:12px;border:1px solid rgba(196,148,73,.4);
+      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.07));
     }
-    .icon svg{width:28px;height:28px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-    /* banderita */
-    .flag{
-      width:34px;height:22px;position:absolute;top:18px;right:20px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25)
+    .icon svg{
+      width:28px;height:28px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
     }
 
-    /* badge tipo “chip” arriba a la derecha (debajo de la bandera) */
+    /* bandera separada (arriba derecha) */
+    .flag{width:34px;height:22px;position:absolute;top:14px;right:16px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+
+    /* chip/etiqueta (arriba izquierda) */
     .badge{
-      position:absolute;top:48px;right:16px;
+      position:absolute;top:14px;left:16px;
       background:rgba(11,55,102,.06);color:var(--azul);
       border:1px solid rgba(11,55,102,.15);
       font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:20px;
     }
 
-    /* tarjeta destacada (última): ancho completo + look armonizado */
+    /* tarjeta destacada con franja dorada vertical */
     .card.feature{
       grid-column:1 / -1;
       background:linear-gradient(180deg,#ffffff 0%,#f7f9fc 100%);
       border:1.5px solid rgba(196,148,73,.45);
+      padding-left:34px;
+    }
+    .card.feature::before{
+      content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
+      background:linear-gradient(180deg,#dcb476,#c49449 60%,#b58637);
+      border-top-left-radius:var(--radius);border-bottom-left-radius:var(--radius);
     }
     .card.feature .icon{
       background:linear-gradient(135deg,rgba(11,55,102,.08),rgba(11,55,102,.05));
@@ -105,7 +102,7 @@
     }
     .card.feature h3{font-size:1.3em}
 
-    /* ===== Otras secciones ===== */
+    /* ===== SOBRE MÍ, CONTACTO, FAQ ===== */
     #sobre-mi{background:var(--azul-suave)}
     #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 20px}
     #sobre-mi ul{margin-left:20px;list-style:disc}
@@ -114,20 +111,28 @@
     #contacto p{color:var(--muted);max-width:700px;margin:0 auto 20px;text-align:center}
     #contacto .btn{margin:6px}
 
+    #faq{background:var(--azul-suave)}
+    .faq-item{background:#fff;border:1px solid #ddd;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:15px;overflow:hidden}
+    .faq-question{cursor:pointer;padding:18px 20px;font-weight:700;color:var(--azul);display:flex;justify-content:space-between;align-items:center;background:rgba(11,55,102,.04);transition:.3s}
+    .faq-question:hover{background:rgba(11,55,102,.1)}
+    .faq-answer{display:none;padding:15px 20px;color:var(--muted);font-size:.95em;border-top:1px solid #eee}
+    .faq-question span{color:var(--oro);font-size:1.3em;transition:.3s}
+    .faq-item.active .faq-answer{display:block}
+    .faq-item.active .faq-question span{transform:rotate(45deg)}
+
     footer{background:var(--azul);color:#fff;text-align:center;padding:28px 15px;font-size:.9em}
     footer .marca{color:#fff;font-weight:700;font-size:1em;margin-bottom:4px}
     footer p{text-align:center;margin:4px 0;color:#fff}
 
-    /* Responsive */
     @media (max-width:960px){
       .cards{grid-template-columns:1fr;gap:24px}
       .card{padding:24px}
+      .card.feature{padding-left:30px}
     }
     @media (max-width:768px){
       .brand-title{font-size:2em}
       h1{font-size:1.9em} h2{font-size:1.55em}
       nav ul{gap:26px}
-      .flag{top:14px;right:16px}
     }
   </style>
 </head>
@@ -146,6 +151,7 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#sobre-mi">Sobre Mí</a></li>
       <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#faq">Preguntas</a></li>
     </ul>
   </nav>
 
@@ -159,7 +165,7 @@
       </div>
     </section>
 
-    <!-- ===== SERVICIOS (2 columnas + última destacada) ===== -->
+    <!-- SERVICIOS -->
     <section id="servicios">
       <div class="wrap">
         <h2>Soluciones Legales para tu Movilidad Global</h2>
@@ -167,8 +173,8 @@
         <div class="cards">
           <!-- RD -->
           <article class="card">
-            <img src="https://flagcdn.com/w40/do.png" alt="Bandera de República Dominicana" class="flag" loading="lazy">
             <span class="badge">Dominicana</span>
+            <img src="https://flagcdn.com/w40/do.png" alt="RD" class="flag" loading="lazy">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
             </div>
@@ -185,8 +191,8 @@
 
           <!-- UE -->
           <article class="card">
-            <img src="https://flagcdn.com/w40/eu.png" alt="Bandera de la Unión Europea" class="flag" loading="lazy">
             <span class="badge">Europa</span>
+            <img src="https://flagcdn.com/w40/eu.png" alt="UE" class="flag" loading="lazy">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
             </div>
@@ -202,8 +208,8 @@
 
           <!-- EE.UU. -->
           <article class="card">
-            <img src="https://flagcdn.com/w40/us.png" alt="Bandera de Estados Unidos" class="flag" loading="lazy">
             <span class="badge">EE. UU.</span>
+            <img src="https://flagcdn.com/w40/us.png" alt="EE.UU" class="flag" loading="lazy">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 13h18"/></svg>
             </div>
@@ -233,7 +239,7 @@
             </ul>
           </article>
 
-          <!-- Ciudadanía (DESTACADA, ancho completo) -->
+          <!-- Ciudadanía (DESTACADA) -->
           <article class="card feature">
             <span class="badge">Destacado</span>
             <div class="icon" aria-hidden="true">
@@ -265,6 +271,33 @@
       </div>
     </section>
 
+    <!-- FAQ (se mantiene) -->
+    <section id="faq">
+      <div class="wrap">
+        <h2>Preguntas Frecuentes</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">¿Cuánto tarda un proceso de residencia?<span>+</span></div>
+          <div class="faq-answer">Depende del país y la categoría. En República Dominicana puede tardar entre 3 y 6 meses; en Estados Unidos o Europa, varía según el tipo de visa o residencia solicitada.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">¿Puedo tramitar mi residencia desde el extranjero?<span>+</span></div>
+          <div class="faq-answer">Sí. La mayoría de los países permiten iniciar el trámite desde tu país de origen. Te asistimos en la preparación de toda la documentación necesaria.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">¿Ofrecen servicios en línea?<span>+</span></div>
+          <div class="faq-answer">Sí. Los procesos iniciales pueden realizarse de forma virtual, con firma digital y envío seguro de documentos.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">¿Qué diferencia su consultoría de otras agencias?<span>+</span></div>
+          <div class="faq-answer">Experiencia legal, ética profesional y acompañamiento directo en cada etapa. Sin tarifas ocultas ni subcontrataciones improvisadas.</div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACTO -->
     <section id="contacto">
       <div class="wrap">
@@ -283,5 +316,11 @@
     <p>&copy; 2025 Todos los derechos reservados. | Santo Domingo, República Dominicana</p>
     <p><small>Asesoría en Visas · Residencias · Homologación · Ciudadanía</small></p>
   </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q=>{
+      q.addEventListener('click',()=>q.parentElement.classList.toggle('active'));
+    });
+  </script>
 </body>
 </html>
