@@ -24,8 +24,7 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:var(--b);color:var(--texto);background:#fff;line-height:1.7}
-    a{color:var(--azul);text-decoration:none}
-    a:hover{color:var(--oro)}
+    a{color:var(--azul);text-decoration:none} a:hover{color:var(--oro)}
     .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
     h1,h2,h3{font-family:var(--h);color:var(--azul)}
     h1{text-align:center;font-size:2.6em;margin-bottom:.4em}
@@ -34,7 +33,7 @@
 
     header{text-align:center;border-bottom:3px solid var(--azul);background:#fdfdfd;padding:25px 0}
     .brand-title{font:700 2.4em var(--h);color:var(--azul)}
-    .brand-sub{letter-spacing:.1em;color:var(--muted);font-size:.9em;margin-top:6px;text-transform:uppercase;font-weight:700}
+    .brand-sub{text-transform:uppercase;font-weight:700;letter-spacing:.1em;color:var(--muted);font-size:.9em;margin-top:6px}
 
     nav{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff}
     nav ul{display:flex;justify-content:center;gap:60px;list-style:none;padding:10px 0;flex-wrap:wrap}
@@ -47,58 +46,56 @@
     .btn{display:inline-block;padding:12px 24px;border-radius:10px;border:1.5px solid var(--azul);font-weight:700;text-transform:uppercase}
     .btn.primary{background:var(--azul);color:#fff}
 
-    /* ====== SERVICIOS (rediseño elegante como la imagen) ====== */
+    /* ===== SERVICIOS (premium sobrio, sin chips) ===== */
     #servicios{background:#fff}
-    .cards{
-      display:grid;grid-template-columns:repeat(2,minmax(340px,1fr));gap:28px;
-    }
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(340px,1fr));gap:28px}
     .card{
-      position:relative;background:#fff;border:1px solid #e9ecf3;border-radius:var(--r);
-      box-shadow:var(--s);padding:26px 24px 24px;transition:.2s;
+      position:relative;background:#fff;border-radius:var(--r);
+      padding:26px 24px 24px;
+      border:1px solid #e9ecf3;
+      box-shadow:var(--s);
+      transition:.25s ease;
+      overflow:hidden;
+    }
+    /* borde suave tipo “glass” para premium */
+    .card::after{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      border-radius:calc(var(--r) - 1px);
+      box-shadow:inset 0 0 0 1px rgba(11,55,102,.04);
     }
     .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(11,55,102,.12)}
-    .card h3{font-size:1.18em;margin:8px 0 10px}
-    .card p.lead{color:var(--muted);margin:0 0 12px}
+
+    /* cabecera de tarjeta: icono + título alineados */
+    .card-header{display:flex;align-items:center;gap:14px;margin:4px 0 8px}
+    .icon{
+      width:52px;height:52px;border-radius:12px;flex:0 0 52px;
+      display:grid;place-items:center;
+      border:1px solid rgba(196,148,73,.42);
+      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.07));
+    }
+    .icon svg{width:28px;height:28px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{font-size:1.18em;margin:0}
+
+    .card p.lead{color:var(--muted);margin:8px 0 12px}
     .sub{font-weight:700;color:var(--azul);margin:12px 0 6px}
     .card ul{margin:0 0 4px 20px;list-style:disc}
     .card ul li{margin-bottom:6px}
 
-    /* Chip elegante arriba a la izquierda */
-    .chip{
-      position:absolute;top:12px;left:14px;display:inline-flex;align-items:center;gap:8px;
-      padding:6px 12px;border-radius:18px;background:#f6f8fc;border:1px solid #d9e0eb;
-      box-shadow:0 2px 6px rgba(11,55,102,.06);color:var(--azul);font-weight:800;font-size:.8rem;
-    }
-    .chip .miniicon{
-      width:22px;height:22px;border-radius:50%;
-      display:grid;place-items:center;border:1px solid rgba(196,148,73,.45);
-      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.06));
-    }
-    .chip .miniicon svg{width:14px;height:14px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-    /* Icono principal uniforme (mismo patrón) */
-    .icon{
-      width:52px;height:52px;border-radius:12px;margin-top:26px;margin-bottom:12px;
-      display:grid;place-items:center;border:1px solid rgba(196,148,73,.42);
-      background:linear-gradient(135deg,rgba(196,148,73,.14),rgba(196,148,73,.07));
-    }
-    .icon svg{width:28px;height:28px;stroke:var(--oro);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-    /* Bandera separada arriba derecha */
+    /* bandera separada arriba derecha */
     .flag{
       width:34px;height:22px;position:absolute;top:12px;right:14px;border-radius:4px;
       box-shadow:0 1px 3px rgba(0,0,0,.25)
     }
 
-    /* Tarjeta destacada con franja dorada vertical */
-    .card.feature{grid-column:1 / -1;background:#fff8;padding-left:36px;border:1.5px solid rgba(196,148,73,.45)}
+    /* Tarjeta destacada con franja dorada vertical sobria */
+    .card.feature{grid-column:1 / -1;border:1.5px solid rgba(196,148,73,.45);padding-left:36px}
     .card.feature::before{
       content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
       background:linear-gradient(180deg,#dcb476,#c49449 60%,#b58637);
       border-top-left-radius:var(--r);border-bottom-left-radius:var(--r);
     }
 
-    /* ===== otras secciones ===== */
+    /* ===== Otras secciones (sin cambios) ===== */
     #sobre-mi{background:var(--azul-suave)}
     #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 20px}
     #sobre-mi ul{margin-left:20px;list-style:disc}
@@ -130,7 +127,7 @@
 </head>
 
 <body>
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header>
     <div class="wrap">
       <div class="brand-title">EDUARDO ESPINAL</div>
@@ -138,7 +135,7 @@
     </div>
   </header>
 
-  <!-- ===== NAV ===== -->
+  <!-- NAV -->
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
@@ -150,7 +147,7 @@
   </nav>
 
   <main>
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section id="inicio">
       <div class="wrap">
         <h1>Tu Estrategia Migratoria Global Comienza Aquí</h1>
@@ -159,7 +156,7 @@
       </div>
     </section>
 
-    <!-- ===== SERVICIOS (rediseñado como la imagen) ===== -->
+    <!-- SERVICIOS (premium, sin chips, banderas visibles) -->
     <section id="servicios">
       <div class="wrap">
         <h2>Soluciones Legales para tu Movilidad Global</h2>
@@ -167,19 +164,14 @@
         <div class="cards">
           <!-- RD -->
           <article class="card">
-            <div class="chip">
-              <span class="miniicon">
-                <!-- sello/pasaporte mini -->
-                <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
-              </span>
-              Dominicana
-            </div>
             <img class="flag" src="https://flagcdn.com/w40/do.png" alt="RD" loading="lazy"/>
-            <div class="icon" aria-hidden="true">
-              <!-- pasaporte -->
-              <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+            <div class="card-header">
+              <span class="icon" aria-hidden="true">
+                <!-- pasaporte -->
+                <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+              </span>
+              <h3>Residencia y Visado Dominicano</h3>
             </div>
-            <h3>Residencia y Visado Dominicano</h3>
             <p class="lead">Acompañamiento integral para establecerte legalmente en República Dominicana.</p>
             <div class="sub">Incluye</div>
             <ul>
@@ -192,19 +184,14 @@
 
           <!-- UE -->
           <article class="card">
-            <div class="chip">
-              <span class="miniicon">
-                <!-- globo mini -->
+            <img class="flag" src="https://flagcdn.com/w40/eu.png" alt="UE" loading="lazy"/>
+            <div class="card-header">
+              <span class="icon" aria-hidden="true">
+                <!-- globo -->
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
               </span>
-              Europa
+              <h3>Residencia y Visado Europeo</h3>
             </div>
-            <img class="flag" src="https://flagcdn.com/w40/eu.png" alt="UE" loading="lazy"/>
-            <div class="icon" aria-hidden="true">
-              <!-- globo -->
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
-            </div>
-            <h3>Residencia y Visado Europeo</h3>
             <p class="lead">Ruta legal para vivir, estudiar o invertir en la UE.</p>
             <div class="sub">Opciones</div>
             <ul>
@@ -216,19 +203,14 @@
 
           <!-- EE.UU. -->
           <article class="card">
-            <div class="chip">
-              <span class="miniicon">
-                <!-- maletín mini -->
+            <img class="flag" src="https://flagcdn.com/w40/us.png" alt="US" loading="lazy"/>
+            <div class="card-header">
+              <span class="icon" aria-hidden="true">
+                <!-- maletín -->
                 <svg viewBox="0 0 24 24"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 13h18"/></svg>
               </span>
-              EE. UU.
+              <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
             </div>
-            <img class="flag" src="https://flagcdn.com/w40/us.png" alt="US" loading="lazy"/>
-            <div class="icon" aria-hidden="true">
-              <!-- maletín -->
-              <svg viewBox="0 0 24 24"><path d="M10 6h4V4a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2z"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 13h18"/></svg>
-            </div>
-            <h3>Visas de Inversión y Negocios (EE. UU.)</h3>
             <p class="lead">Estrategia migratoria para empresarios y ejecutivos.</p>
             <div class="sub">Especialidades</div>
             <ul>
@@ -240,18 +222,13 @@
 
           <!-- Homologación -->
           <article class="card">
-            <div class="chip">
-              <span class="miniicon">
-                <!-- diploma mini -->
+            <div class="card-header">
+              <span class="icon" aria-hidden="true">
+                <!-- diploma -->
                 <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5-10 5-10-5z"/><path d="M12 12v10M12 22l5-3 5 3M12 22l-5-3-5 3"/></svg>
               </span>
-              Títulos
+              <h3>Homologación de Estudios y Títulos</h3>
             </div>
-            <div class="icon" aria-hidden="true">
-              <!-- diploma -->
-              <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5-10 5-10-5z"/><path d="M12 12v10M12 22l5-3 5 3M12 22l-5-3-5 3"/></svg>
-            </div>
-            <h3>Homologación de Estudios y Títulos</h3>
             <p class="lead">Reconocimiento oficial de credenciales académicas y profesionales.</p>
             <div class="sub">Alcance</div>
             <ul>
@@ -263,18 +240,13 @@
 
           <!-- Ciudadanía (destacada) -->
           <article class="card feature">
-            <div class="chip">
-              <span class="miniicon">
-                <!-- escudo mini -->
+            <div class="card-header">
+              <span class="icon" aria-hidden="true">
+                <!-- escudo -->
                 <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </span>
-              Destacado
+              <h3>Procesos de Ciudadanía y Naturalización</h3>
             </div>
-            <div class="icon" aria-hidden="true">
-              <!-- escudo -->
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3>Procesos de Ciudadanía y Naturalización</h3>
             <p class="lead">Evaluación de elegibilidad y acompañamiento completo hasta el juramento.</p>
             <div class="sub">Vías frecuentes</div>
             <ul>
@@ -287,7 +259,7 @@
       </div>
     </section>
 
-    <!-- ===== SOBRE MÍ (se mantiene) ===== -->
+    <!-- SOBRE MÍ (sin cambios) -->
     <section id="sobre-mi">
       <div class="wrap">
         <h2>Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
@@ -300,7 +272,7 @@
       </div>
     </section>
 
-    <!-- ===== FAQ (se mantiene) ===== -->
+    <!-- FAQ (sin cambios) -->
     <section id="faq">
       <div class="wrap">
         <h2>Preguntas Frecuentes</h2>
@@ -327,7 +299,7 @@
       </div>
     </section>
 
-    <!-- ===== CONTACTO (se mantiene) ===== -->
+    <!-- CONTACTO (sin cambios) -->
     <section id="contacto">
       <div class="wrap">
         <h2>Hablemos de tu Próximo Destino</h2>
