@@ -1,65 +1,648 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduardo Espinal | Consultor de Migración Internacional</title>
+  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-export const About: React.FC = () => {
-  return (
-    <section id="sobre-mi" className="py-20 bg-brand-light relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          
-          {/* Image Content */}
-          <div className="w-full lg:w-1/2 order-2 lg:order-1">
-            <div className="relative">
-               <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-brand-gold"></div>
-               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-brand-navy"></div>
-               
-               {/* Imagen de Asesoría Legal / Firma */}
-               <img 
-                 src="https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=800&q=80" 
-                 alt="Consultoría Legal y Firma de Documentos" 
-                 className="w-full h-auto rounded-lg shadow-2xl transition-all duration-700 object-cover"
-               />
-               
-               <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-brand-navy/90 to-transparent p-8">
-                  <p className="text-white font-serif italic text-xl">"La migración ordenada es un derecho y una oportunidad de crecimiento."</p>
-               </div>
+  <!-- Configuración de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0B3766',
+              gold: '#C49449',
+              goldLight: '#E5B768',
+              paper: '#FDFBF7', // Tono papel suave
+              light: '#EAF0F7',
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 60s linear infinite',
+          },
+          backgroundImage: {
+            'paper-texture': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React & Babel -->
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.300.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    /* Estilos base */
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    
+    /* Efecto Sello Seco (Embossed) para Texto/Iconos */
+    .embossed-bg {
+      background-color: #FDFBF7; /* Mismo color que el fondo */
+      box-shadow: 
+        -6px -6px 14px rgba(255, 255, 255, 0.9), 
+        6px 6px 10px rgba(11, 55, 102, 0.08);
+    }
+
+    .embossed-text {
+      color: #FDFBF7;
+      text-shadow: 
+        -1px -1px 1px rgba(255,255,255,0.5), 
+        1px 1px 1px rgba(0,0,0,0.1);
+    }
+
+    /* Efecto Hundido (Engraved) */
+    .engraved-bg {
+      background-color: #FDFBF7;
+      box-shadow: 
+        inset 3px 3px 7px rgba(11, 55, 102, 0.1), 
+        inset -3px -3px 7px rgba(255, 255, 255, 0.9);
+    }
+
+    /* Para los SVGs de fondo simulando sello seco */
+    .dry-seal-svg {
+      fill: #FDFBF7; /* Color del fondo */
+      filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1)) drop-shadow(-2px -2px 2px rgba(255,255,255,1));
+    }
+  </style>
+</head>
+<body class="bg-brand-paper text-slate-800 antialiased selection:bg-brand-gold selection:text-white relative">
+  <!-- Textura de papel global -->
+  <div class="fixed inset-0 bg-paper-texture pointer-events-none z-50 opacity-40"></div>
+
+  <div id="root"></div>
+
+  <script type="text/babel" data-type="module">
+    import React, { useState, useEffect } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { 
+      Menu, X, ArrowRight, CheckCircle, MapPin, Globe, 
+      Briefcase, GraduationCap, BadgeCheck, Check, 
+      Plus, Minus, Mail, MessageCircle, Phone 
+    } from 'lucide-react';
+
+    // --- DATOS ---
+
+    const navLinks = [
+      { name: 'Inicio', href: '#inicio' },
+      { name: 'Servicios', href: '#servicios' },
+      { name: 'Sobre Mí', href: '#sobre-mi' },
+      { name: 'Preguntas', href: '#faq' },
+      { name: 'Contacto', href: '#contacto' },
+    ];
+
+    const services = [
+      {
+        id: 'do',
+        title: 'Residencia Dominicana',
+        description: 'Establece tu hogar o negocio legalmente en el Caribe.',
+        tag: 'República Dominicana',
+        details: ['Inversión, Rentista y Pensionado', 'Visas de Trabajo y Negocios', 'Citas DGM y Exámenes Médicos', 'Apostillas y Traducciones'],
+        icon: MapPin,
+      },
+      {
+        id: 'eu',
+        title: 'Residencia Europea',
+        description: 'Tu puerta de entrada a la Unión Europea para vivir o estudiar.',
+        tag: 'Europa',
+        details: ['Golden Visa y Nómada Digital', 'Visas Schengen', 'Permisos de estudios', 'Reagrupación Familiar'],
+        icon: Globe,
+      },
+      {
+        id: 'us',
+        title: 'Visas de Negocios USA',
+        description: 'Estrategia migratoria sólida para empresarios y ejecutivos.',
+        tag: 'Estados Unidos',
+        details: ['Visas E-2 (Inversor) y L-1', 'Asesoría para Visa B1/B2', 'Planes de Negocio Migratorios', 'Paquetes de Evidencia USCIS'],
+        icon: Briefcase,
+      },
+      {
+        id: 'edu',
+        title: 'Homologación de Títulos',
+        description: 'Valida tu esfuerzo académico internacionalmente.',
+        tag: 'Global',
+        details: ['Equivalencia en RD, USA y Europa', 'Evaluación de Credenciales', 'Legalizaciones Ministeriales', 'Trámites Universitarios'],
+        icon: GraduationCap,
+      },
+      {
+        id: 'citizen',
+        title: 'Ciudadanía y Naturalización',
+        description: 'Te acompañamos hasta el juramento de tu nueva nacionalidad.',
+        tag: 'Premium',
+        details: ['Ciudadanía por Inversión', 'Naturalización por Matrimonio', 'Pruebas de Presencia Física', 'Preparación de Entrevista'],
+        icon: BadgeCheck,
+        featured: true,
+      },
+    ];
+
+    const faqs = [
+      {
+        question: '¿Cuánto tarda un proceso de residencia?',
+        answer: 'Los tiempos varían considerablemente. En República Dominicana, un proceso estándar suele demorar entre 3 y 6 meses una vez sometido el expediente. En Estados Unidos y Europa, los plazos dependen de la carga consular y la categoría específica (estudios, trabajo, inversión), oscilando desde semanas hasta varios meses.'
+      },
+      {
+        question: '¿Puedo tramitar mi residencia desde el extranjero?',
+        answer: 'Sí, absolutamente. La gran mayoría de los procesos migratorios modernos están diseñados para iniciarse desde el país de origen. Nosotros nos encargamos de la preparación integral del expediente y te guiamos sobre cuándo y cómo debes presentarte ante el consulado correspondiente.'
+      },
+      {
+        question: '¿Ofrecen servicios completamente en línea?',
+        answer: 'Sí. Adaptados a los nuevos tiempos, ofrecemos consultas por videollamada, gestión documental digital y uso de firmas electrónicas seguras. Solo tendrás que desplazarte para los trámites que requieran estrictamente tu presencia física (como la toma de huellas o entrevistas consulares).'
+      },
+      {
+        question: '¿Qué diferencia su consultoría de otras agencias?',
+        answer: 'Nos diferenciamos por el rigor jurídico. No somos "llenadores de formularios". Somos consultores legales que analizan la viabilidad de tu caso, anticipan posibles rechazos y preparan una defensa documental sólida. Además, garantizamos transparencia total en costos desde el primer día.'
+      }
+    ];
+
+    // --- COMPONENTES GRÁFICOS (SELLO SECO) ---
+
+    const SealIconNY = () => (
+      <svg viewBox="0 0 100 100" className="w-full h-full dry-seal-svg">
+        <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" fill="none" className="text-slate-300" />
+        <path d="M50 20 L55 35 L65 30 L60 40 L75 45 L60 55 L50 90 L40 55 L25 45 L40 40 L35 30 L45 35 Z" fill="currentColor" className="text-brand-paper" />
+        <text x="50" y="80" fontSize="8" textAnchor="middle" className="fill-slate-400 font-serif uppercase tracking-widest">New York</text>
+      </svg>
+    );
+
+    const SealIconEU = () => (
+      <svg viewBox="0 0 100 100" className="w-full h-full dry-seal-svg">
+        <rect x="20" y="20" width="60" height="60" rx="5" stroke="currentColor" strokeWidth="2" fill="none" className="text-slate-300" />
+        {/* Columna Romana Abstracta */}
+        <rect x="30" y="80" width="40" height="5" fill="currentColor" className="text-brand-paper" />
+        <rect x="35" y="30" width="5" height="50" fill="currentColor" className="text-brand-paper" />
+        <rect x="45" y="30" width="5" height="50" fill="currentColor" className="text-brand-paper" />
+        <rect x="55" y="30" width="5" height="50" fill="currentColor" className="text-brand-paper" />
+        <rect x="25" y="25" width="50" height="5" fill="currentColor" className="text-brand-paper" />
+        <text x="50" y="60" fontSize="8" textAnchor="middle" className="fill-slate-400 font-serif uppercase tracking-widest rotate-90">MADRID</text>
+      </svg>
+    );
+
+    const SealIconCanada = () => (
+      <svg viewBox="0 0 100 100" className="w-full h-full dry-seal-svg">
+        <path d="M50 15 L55 30 L70 25 L65 45 L85 40 L70 60 L75 80 L50 70 L25 80 L30 60 L15 40 L35 45 L30 25 L45 30 Z" fill="currentColor" className="text-brand-paper" />
+        <text x="50" y="90" fontSize="8" textAnchor="middle" className="fill-slate-400 font-serif uppercase tracking-widest">CANADA</text>
+      </svg>
+    );
+
+    const ScalesOfJustice = () => (
+      <svg viewBox="0 0 200 200" className="w-full h-full dry-seal-svg opacity-50">
+        <rect x="95" y="20" width="10" height="140" fill="currentColor" className="text-brand-paper" />
+        <rect x="40" y="40" width="120" height="5" fill="currentColor" className="text-brand-paper" />
+        <path d="M40 40 L20 100 A 20 20 0 0 0 60 100 L40 40" fill="none" stroke="currentColor" strokeWidth="3" className="text-brand-paper" />
+        <path d="M160 40 L140 100 A 20 20 0 0 0 180 100 L160 40" fill="none" stroke="currentColor" strokeWidth="3" className="text-brand-paper" />
+        <circle cx="100" cy="160" r="15" fill="currentColor" className="text-brand-paper" />
+      </svg>
+    );
+
+    // --- COMPONENTES DE SECCIONES ---
+
+    const Navbar = () => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [scrolled, setScrolled] = useState(false);
+
+      useEffect(() => {
+        const handleScroll = () => {
+          setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      return (
+        <header 
+          className={`fixed top-0 w-full z-40 transition-all duration-300 ${
+            scrolled 
+              ? 'bg-brand-paper/95 backdrop-blur-sm shadow-md py-3' 
+              : 'bg-brand-paper py-5 border-b border-slate-200/50'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center">
+              {/* Logo - Texto Limpio */}
+              <div className="flex flex-col leading-tight group cursor-pointer" onClick={() => window.location.href = '#'}>
+                <span className="font-serif font-bold text-2xl text-brand-navy tracking-wide group-hover:text-brand-gold transition-colors">
+                  EDUARDO ESPINAL
+                </span>
+                <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-400 group-hover:text-brand-navy transition-colors">
+                  Consultor de Migración
+                </span>
+              </div>
+
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex items-center space-x-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm font-bold uppercase tracking-wider text-brand-navy hover:text-brand-gold transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <a 
+                  href="#contacto" 
+                  className="px-6 py-2.5 bg-brand-navy text-white text-sm font-bold uppercase tracking-wide rounded shadow-lg hover:bg-brand-gold transition-all duration-300"
+                >
+                  Consulta
+                </a>
+              </nav>
+
+              {/* Mobile Toggle */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden p-2 text-brand-navy hover:text-brand-gold transition-colors"
+              >
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="w-full lg:w-1/2 order-1 lg:order-2">
-            <h2 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">El Consultor</h2>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-6">
-              Eduardo Espinal: <br />
-              Confianza, Claridad y Rigor Legal
+          {/* Mobile Nav */}
+          <div 
+            className={`md:hidden absolute top-full left-0 w-full bg-brand-paper border-t border-slate-100 shadow-xl transition-all duration-300 ease-in-out transform origin-top ${
+              isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+            }`}
+          >
+            <div className="px-4 py-6 flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-base font-bold text-brand-navy hover:text-brand-gold px-4 py-3 rounded-lg hover:bg-slate-50 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </header>
+      );
+    };
+
+    const Hero = () => {
+      return (
+        <section id="inicio" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-paper">
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              
+              {/* Text Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="inline-block px-4 py-2 rounded border border-brand-gold/30 bg-white/50 mb-6">
+                   <span className="text-xs font-bold text-brand-navy uppercase tracking-[0.2em]">Asesoría Legal Certificada</span>
+                </div>
+                
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-navy leading-[1.1] mb-6">
+                  Tu Estrategia Migratoria <br />
+                  <span className="text-brand-gold italic">Global Comienza Aquí</span>
+                </h1>
+                
+                <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                  Consultoría profesional especializada en Visas, Residencias y Ciudadanía. 
+                  Soluciones migratorias para RD, EE. UU. y Europa.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                  <a 
+                    href="#contacto" 
+                    className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-bold uppercase tracking-wider text-sm rounded shadow-xl hover:bg-brand-gold transition-all duration-300"
+                  >
+                    Agenda tu Consulta
+                  </a>
+                  <a 
+                    href="#servicios" 
+                    className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-brand-navy border border-brand-navy font-bold uppercase tracking-wider text-sm rounded hover:bg-brand-light transition-all duration-300"
+                  >
+                    Ver Servicios
+                  </a>
+                </div>
+              </div>
+
+              {/* Visual Composition (No Photo, Embossed Vector Art) */}
+              <div className="flex-1 w-full flex justify-center lg:justify-end relative">
+                {/* Contenedor del "Documento/Pasaporte" */}
+                <div className="relative w-80 h-[450px] md:w-96 md:h-[500px] bg-brand-paper rounded-sm shadow-2xl transform rotate-3 border border-slate-100 flex flex-col p-8 overflow-hidden">
+                  
+                  {/* Marco decorativo interno */}
+                  <div className="absolute inset-4 border-2 border-slate-200/50 rounded-sm pointer-events-none"></div>
+                  
+                  {/* SELLOS SECOS (Marca de agua en relieve) */}
+                  <div className="absolute top-10 right-10 w-32 h-32 opacity-60 transform rotate-12">
+                    <SealIconNY />
+                  </div>
+                  
+                  <div className="absolute bottom-20 left-8 w-28 h-28 opacity-60 transform -rotate-6">
+                    <SealIconEU />
+                  </div>
+                  
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 opacity-40">
+                    <SealIconCanada />
+                  </div>
+
+                  {/* Texto simulado en el documento */}
+                  <div className="mt-auto z-10">
+                    <div className="h-1 w-20 bg-slate-200 mb-2"></div>
+                    <div className="h-1 w-32 bg-slate-200 mb-4"></div>
+                    <div className="h-px w-full bg-slate-100 mb-2"></div>
+                    <div className="h-px w-full bg-slate-100 mb-2"></div>
+                    <div className="h-px w-2/3 bg-slate-100"></div>
+                  </div>
+                  
+                  {/* Logo EE Sello Seco Pequeño en esquina inferior */}
+                  <div className="absolute bottom-6 right-6 w-16 h-16 rounded-full engraved-bg flex items-center justify-center opacity-80">
+                    <span className="font-serif font-bold text-slate-300 text-xl">EE</span>
+                  </div>
+                </div>
+                
+                {/* Elemento decorativo trasero */}
+                <div className="absolute top-4 right-4 md:right-12 w-80 h-[450px] md:w-96 md:h-[500px] border-2 border-brand-gold/20 rounded-sm -z-10 transform -rotate-2"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Services = () => {
+      return (
+        <section id="servicios" className="py-24 bg-white relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <span className="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs block mb-4">Nuestra Expertise</span>
+              <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-navy">
+                Soluciones Legales para tu <br /> Movilidad Internacional
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service) => (
+                <div 
+                  key={service.id}
+                  className={`relative group rounded p-10 transition-all duration-500 ${
+                    service.featured 
+                      ? 'bg-brand-navy text-white shadow-2xl transform lg:-translate-y-4' 
+                      : 'bg-brand-paper embossed-bg hover:-translate-y-2'
+                  }`}
+                >
+                  {service.featured && (
+                    <div className="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-4 py-1 uppercase tracking-widest">
+                      Recomendado
+                    </div>
+                  )}
+
+                  <div className="mb-6 opacity-90">
+                    <service.icon size={32} strokeWidth={1} className={service.featured ? 'text-brand-gold' : 'text-brand-navy'} />
+                  </div>
+
+                  <h4 className={`text-xl font-serif font-bold mb-4 ${service.featured ? 'text-white' : 'text-brand-navy'}`}>
+                    {service.title}
+                  </h4>
+                  
+                  <p className={`mb-6 text-sm leading-relaxed ${service.featured ? 'text-slate-300' : 'text-slate-500'}`}>
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {service.details.map((item, idx) => (
+                      <li key={idx} className="flex items-start text-xs uppercase tracking-wide font-medium">
+                        <Check className={`w-4 h-4 mr-3 flex-shrink-0 ${service.featured ? 'text-brand-gold' : 'text-brand-gold'}`} />
+                        <span className={service.featured ? 'text-slate-200' : 'text-slate-600'}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* Marca de agua de fondo en tarjetas */}
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 opacity-5 pointer-events-none transform rotate-12">
+                     <service.icon className="w-full h-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => {
+      return (
+        <section id="sobre-mi" className="py-24 bg-brand-paper overflow-hidden relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              
+              {/* Visual (Scales of Justice Embossed) */}
+              <div className="w-full lg:w-1/2 order-2 lg:order-1 relative h-[400px] flex items-center justify-center">
+                {/* Marco Engraved */}
+                <div className="absolute inset-0 border-[1px] border-slate-200/60 m-8"></div>
+                
+                {/* Ilustración "Grabada" en el fondo */}
+                <div className="w-64 h-64 relative">
+                  <div className="absolute inset-0 engraved-bg rounded-full opacity-50 blur-xl"></div>
+                  <ScalesOfJustice />
+                </div>
+                
+                <div className="absolute bottom-0 right-10 bg-white p-6 shadow-lg max-w-xs border-l-4 border-brand-gold">
+                  <p className="font-serif italic text-brand-navy text-lg">"La migración ordenada es un derecho y una oportunidad de crecimiento."</p>
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                <span className="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs block mb-4">El Consultor</span>
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-8">
+                  Eduardo Espinal <br />
+                  <span className="text-slate-400 text-2xl">Confianza & Rigor Legal</span>
+                </h3>
+                
+                <div className="space-y-6 text-slate-600 text-lg font-light leading-relaxed text-justify">
+                  <p>
+                    En un mundo interconectado, los trámites migratorios son la llave a nuevas oportunidades. Como abogado y consultor, mi misión es derribar barreras mediante una <strong>estrategia jurídica clara</strong>.
+                  </p>
+                  <p>
+                    No gestionamos simples papeles; gestionamos proyectos de vida. Mi enfoque se distingue por la honestidad: evaluamos la viabilidad real de tu caso antes de iniciar cualquier proceso.
+                  </p>
+                </div>
+
+                <div className="mt-12 flex gap-12 border-t border-slate-200 pt-8">
+                  <div>
+                    <span className="block font-serif font-bold text-3xl text-brand-navy">10+</span>
+                    <span className="text-[10px] uppercase tracking-widest text-slate-500">Años Exp.</span>
+                  </div>
+                  <div>
+                    <span className="block font-serif font-bold text-3xl text-brand-navy">3</span>
+                    <span className="text-[10px] uppercase tracking-widest text-slate-500">Continentes</span>
+                  </div>
+                  <div>
+                    <span className="block font-serif font-bold text-3xl text-brand-navy">100%</span>
+                    <span className="text-[10px] uppercase tracking-widest text-slate-500">Ética</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const FAQ = () => {
+      const [openIndex, setOpenIndex] = useState(0);
+
+      return (
+        <section id="faq" className="py-24 bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs block mb-4">Dudas Comunes</span>
+              <h3 className="text-3xl font-serif font-bold text-brand-navy">Preguntas Frecuentes</h3>
+            </div>
+
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div 
+                  key={index} 
+                  className="border-b border-slate-100 pb-6"
+                >
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full flex justify-between items-center text-left focus:outline-none group"
+                  >
+                    <span className={`font-serif font-bold text-lg transition-colors ${openIndex === index ? 'text-brand-gold' : 'text-brand-navy group-hover:text-brand-gold'}`}>
+                      {faq.question}
+                    </span>
+                    <span className={`transition-transform duration-300 ${openIndex === index ? 'rotate-45 text-brand-gold' : 'text-slate-300'}`}>
+                      <Plus size={24} strokeWidth={1} />
+                    </span>
+                  </button>
+                  
+                  <div 
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      openIndex === index ? 'max-h-48 opacity-100 mt-4' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <p className="text-slate-600 font-light leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Contact = () => {
+      return (
+        <section id="contacto" className="py-24 bg-brand-navy relative overflow-hidden text-center">
+          {/* Sello Seco Gigante de fondo */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] pointer-events-none">
+            <SealIconNY />
+          </div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <span className="text-brand-gold font-bold uppercase tracking-[0.2em] text-xs block mb-6">Inicia tu Proceso</span>
+            <h3 className="text-4xl md:text-6xl font-serif font-bold text-white mb-8">
+              Hablemos de tu Futuro
             </h3>
-            
-            <div className="space-y-6 text-slate-700 text-lg leading-relaxed">
-              <p>
-                En un mundo cada vez más interconectado, los trámites migratorios pueden convertirse en barreras complejas. Como abogado y consultor, mi misión es derribar esas barreras mediante una <strong>asesoría jurídica transparente</strong> y estratégica.
-              </p>
-              <p>
-                No gestionamos simples papeles; gestionamos proyectos de vida. Mi enfoque se distingue por eliminar la incertidumbre, ofreciendo un acompañamiento directo sin intermediarios innecesarios.
-              </p>
+            <p className="text-slate-300 text-lg mb-12 max-w-2xl mx-auto font-light">
+              Contáctame hoy para una evaluación inicial. Definamos juntos la mejor estrategia legal para ti y tu familia.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a 
+                href="https://wa.me/18294424222" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto min-w-[200px] flex items-center justify-center px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold rounded shadow-lg transition-transform hover:-translate-y-1"
+              >
+                <MessageCircle className="mr-3 w-5 h-5" />
+                WhatsApp
+              </a>
+              
+              <a 
+                href="mailto:eduardoespinaldeaza@gmail.com" 
+                className="w-full sm:w-auto min-w-[200px] flex items-center justify-center px-8 py-4 bg-brand-gold hover:bg-brand-goldLight text-brand-navy font-bold rounded shadow-lg transition-transform hover:-translate-y-1"
+              >
+                <Mail className="mr-3 w-5 h-5" />
+                Email
+              </a>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-slate-300 pt-8">
-              <div>
-                <h4 className="font-serif font-bold text-2xl text-brand-navy">10+</h4>
-                <p className="text-sm text-slate-500 uppercase tracking-wide">Años de Experiencia</p>
+            <div className="mt-16 flex flex-col md:flex-row justify-center items-center gap-8 text-slate-400 text-xs uppercase tracking-widest">
+              <div className="flex items-center">
+                <Phone className="w-4 h-4 mr-3 text-brand-gold" /> +1 829 442 4222
               </div>
-              <div>
-                <h4 className="font-serif font-bold text-2xl text-brand-navy">3</h4>
-                <p className="text-sm text-slate-500 uppercase tracking-wide">Continentes</p>
-              </div>
-              <div>
-                <h4 className="font-serif font-bold text-2xl text-brand-navy">100%</h4>
-                <p className="text-sm text-slate-500 uppercase tracking-wide">Compromiso Ético</p>
+              <div className="flex items-center">
+                <MapPin className="w-4 h-4 mr-3 text-brand-gold" /> Santo Domingo / Global
               </div>
             </div>
           </div>
-          
+        </section>
+      );
+    };
+
+    const Footer = () => {
+      return (
+        <footer className="bg-slate-900 text-slate-500 py-10 border-t border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-center md:text-left">
+              <p className="font-serif text-slate-300 font-bold text-xl tracking-wide">EDUARDO ESPINAL</p>
+            </div>
+            
+            <div className="text-center md:text-right text-xs">
+              <p className="mb-1">&copy; {new Date().getFullYear()} Todos los derechos reservados.</p>
+              <p className="uppercase tracking-wider">Visas · Residencias · Ciudadanía</p>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    const App = () => {
+      return (
+        <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-brand-paper">
+          <Navbar />
+          <main className="flex-grow">
+            <Hero />
+            <Services />
+            <About />
+            <FAQ />
+            <Contact />
+          </main>
+          <Footer />
         </div>
-      </div>
-    </section>
-  );
-};
+      );
+    };
+
+    // --- RENDERIZADO ---
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
