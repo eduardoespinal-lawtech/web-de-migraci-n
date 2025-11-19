@@ -1,387 +1,109 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eduardo Espinal | Consultor de Migración Internacional</title>
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
-  <!-- SEO básico -->
-  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa. Asesoría legal rigurosa y personalizada." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tudominio.com/" />
+const navLinks = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Servicios', href: '#servicios' },
+  { name: 'Sobre Mí', href: '#sobre-mi' },
+  { name: 'Preguntas', href: '#faq' },
+  { name: 'Contacto', href: '#contacto' },
+];
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Eduardo Espinal | Consultor de Migración Internacional" />
-  <meta property="og:description" content="Visas, Residencias, Homologación de Estudios y Ciudadanía en RD, EE. UU. y Europa." />
-  <meta property="og:url" content="https://tudominio.com/" />
-  <meta property="og:image" content="https://tudominio.com/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Eduardo Espinal | Consultor de Migración Internacional" />
-  <meta name="twitter:description" content="Asesoría migratoria profesional para RD, EE. UU. y Europa." />
-  <meta name="twitter:image" content="https://tudominio.com/og-image.jpg" />
+export const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  <!-- iPhone / Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="theme-color" content="#0B3766" />
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  <!-- Favicon EE -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B3766'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial, sans-serif' font-size='55' fill='%23C49449' text-anchor='middle' font-weight='bold'%3EEE%3C/text%3E%3C/svg%3E">
+  return (
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/90 backdrop-blur-md shadow-md py-3' 
+          : 'bg-white py-5 border-b border-slate-100'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          {/* Logo with Mini Seal */}
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = '#'}>
+            <div className="relative w-10 h-10 flex items-center justify-center border-2 border-brand-navy rounded-full">
+               <span className="font-serif font-bold text-brand-navy text-sm">EE</span>
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className="font-serif font-bold text-xl md:text-2xl text-brand-navy tracking-wide group-hover:text-brand-gold transition-colors">
+                EDUARDO ESPINAL
+              </span>
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-brand-navy transition-colors">
+                Consultor de Migración
+              </span>
+            </div>
+          </div>
 
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-bold uppercase tracking-wider text-brand-navy hover:text-brand-gold transition-colors duration-200"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a 
+              href="#contacto" 
+              className="px-5 py-2.5 bg-brand-navy text-white text-sm font-bold uppercase tracking-wide rounded-md hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Consulta
+            </a>
+          </nav>
 
-  <style>
-    :root{
-      --azul:#0B3766; --oro:#C49449; --azul-suave:#EAF0F7;
-      --texto:#2B2F33; --muted:#5A6673;
-      --h:'Merriweather',serif; --b:'Inter',sans-serif;
-      --r:14px; --s:0 10px 24px rgba(11,55,102,.08);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--b);color:var(--texto);background:#fff;line-height:1.7}
-    a{color:var(--azul);text-decoration:none}
-    a:hover{color:var(--oro)}
-    img{max-width:100%;height:auto;display:block}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
-    h1,h2,h3{font-family:var(--h);color:var(--azul)}
-    h1{text-align:center;font-size:2.6em;margin-bottom:.4em}
-    h2{text-align:center;font-size:2em;margin-bottom:.8em}
-    p{text-align:justify}
-
-    /* Header + menú */
-    header{position:sticky;top:0;z-index:1000;background:#fdfdfd;border-bottom:3px solid var(--azul)}
-    .header-inner{display:flex;align-items:center;justify-content:center;gap:16px;padding:18px 30px;position:relative}
-    .brand-title{font:700 2.2em var(--h);color:var(--azul);text-align:center}
-    .brand-sub{text-transform:uppercase;font-weight:700;letter-spacing:.1em;color:var(--muted);font-size:.9em;text-align:center}
-
-    nav{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff}
-    nav ul{display:flex;justify-content:center;gap:60px;list-style:none;padding:10px 0;flex-wrap:wrap;transition:all .3s ease}
-    nav a{font-weight:700;text-transform:uppercase;font-size:.9em;color:var(--azul)}
-    nav a:hover{color:var(--oro)}
-
-    .menu-toggle{
-      position:absolute;right:20px;top:50%;transform:translateY(-50%);
-      display:none;background:none;border:none;color:var(--azul);font-size:1.9em;cursor:pointer
-    }
-    @media (max-width:768px){
-      .menu-toggle{display:block}
-      nav ul{flex-direction:column;gap:0;padding:0;margin:0;display:none;background:#fff}
-      nav ul.show{display:flex}
-      nav li{border-top:1px solid #e6e6e6;text-align:center;padding:12px 0}
-    }
-
-    /* Secciones */
-    section{padding:70px 0}
-    #inicio{background:linear-gradient(180deg,#fff,var(--azul-suave))}
-    #inicio p{text-align:center;max-width:800px;margin:0 auto 22px;color:var(--muted)}
-    .cta{text-align:center;margin-top:26px}
-    .btn{display:inline-block;padding:12px 24px;border-radius:10px;border:1.5px solid var(--azul);font-weight:700;text-transform:uppercase}
-    .btn.primary{background:var(--azul);color:#fff}
-
-    /* === SERVICIOS (chips, sin banderas ni iconos) === */
-    #servicios{background:#fff}
-    #servicios h2{margin-bottom:.8em}
-    .svc-grid{max-width:1080px;margin:0 auto;padding:0 30px;display:grid;grid-template-columns:repeat(2,minmax(320px,1fr));gap:28px}
-    @media (max-width:960px){.svc-grid{grid-template-columns:1fr;padding:0 18px}}
-    .svc-card{
-      position:relative;background:#fff;border:1px solid #e9ecf3;border-radius:var(--r);
-      padding:26px 24px 24px;box-shadow:var(--s);transition:.25s ease;overflow:hidden
-    }
-    .svc-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(11,55,102,.12)}
-    .svc-card::after{content:"";position:absolute;inset:0;border-radius:calc(var(--r) - 1px);box-shadow:inset 0 0 0 1px rgba(11,55,102,.04);pointer-events:none}
-
-    /* CHIP */
-    .svc-chip{
-      position:absolute;top:12px;left:14px;display:inline-flex;align-items:center;
-      padding:6px 12px;border-radius:18px;background:#f8fafc;color:var(--azul);
-      border:1px solid rgba(196,148,73,.55);box-shadow:0 2px 6px rgba(11,55,102,.06);
-      font:700 .8rem/1 "Inter",sans-serif;letter-spacing:.02em
-    }
-
-    .svc-header{margin:30px 0 8px}
-    .svc-title{margin:0;font:700 1.18em var(--h);color:var(--azul)}
-    .svc-lead{color:#5A6673;margin:8px 0 12px;text-align:justify}
-    .svc-sub{font-weight:700;color:var(--azul);margin:12px 0 6px}
-    .svc-list{margin:0 0 4px 20px;list-style:disc}
-    .svc-list li{margin-bottom:6px}
-
-    /* destacada a ancho completo */
-    .svc-card.feature{grid-column:1/-1;border:1.5px solid rgba(196,148,73,.45);padding-left:36px}
-    .svc-card.feature::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
-      background:linear-gradient(180deg,#dcb476,#c49449 60%,#b58637);
-      border-top-left-radius:var(--r);border-bottom-left-radius:var(--r)}
-
-    /* Sobre mí */
-    #sobre-mi{background:var(--azul-suave)}
-    #sobre-mi p{text-align:center;max-width:900px;margin:0 auto 20px}
-    #sobre-mi ul{margin-left:20px;list-style:disc}
-
-    /* FAQ */
-    #faq{background:var(--azul-suave)}
-    .faq-item{background:#fff;border:1px solid #e9ecf3;border-radius:var(--r);box-shadow:var(--s);margin-bottom:15px;overflow:hidden}
-    .faq-question{cursor:pointer;padding:18px 20px;font-weight:800;color:var(--azul);display:flex;justify-content:space-between;align-items:center;background:#f6f8fc}
-    .faq-answer{display:none;padding:15px 20px;color:#5A6673;font-size:.95em;border-top:1px solid #eef2f7}
-    .faq-item.active .faq-answer{display:block}
-
-    /* Contacto y footer */
-    #contacto{text-align:center}
-    #contacto p{color:#5A6673;max-width:700px;margin:0 auto 20px}
-    #contacto .btn{margin:6px}
-    footer{background:#0B3766;color:#fff;text-align:center;padding:25px 20px}
-    footer p{margin:3px 0;color:#fff;font-size:0.95em}
-    footer p:first-child{font-weight:700;font-size:1.05em}
-
-    /* iPhone pequeño */
-    @media (max-width:480px){
-      .wrap{padding:0 18px}
-      .svc-card{padding:22px 18px}
-      h1{font-size:1.9em}
-      h2{font-size:1.4em}
-      p{font-size:0.95em}
-    }
-  </style>
-
-  <!-- Schema.org: Servicio + FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ProfessionalService",
-    "name":"Eduardo Espinal — Consultor de Migración",
-    "url":"https://tudominio.com/",
-    "areaServed":["DO","US","EU"],
-    "email":"mailto:eduardoespinaldeaza@gmail.com",
-    "telephone":"+1 829 442 4222",
-    "sameAs":["https://wa.me/18294424222"],
-    "offers":[
-      {"@type":"Offer","name":"Residencia y Visado Dominicano"},
-      {"@type":"Offer","name":"Residencia y Visado Europeo"},
-      {"@type":"Offer","name":"Visas de Inversión y Negocios (EE. UU.)"},
-      {"@type":"Offer","name":"Homologación de Estudios y Títulos"},
-      {"@type":"Offer","name":"Ciudadanía y Naturalización"}
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-   "@context":"https://schema.org",
-   "@type":"FAQPage",
-   "mainEntity":[
-    {"@type":"Question","name":"¿Cuánto tarda un proceso de residencia?",
-     "acceptedAnswer":{"@type":"Answer","text":"En RD suele demorar 3–6 meses; en EE. UU. y Europa depende del tipo de visa o residencia."}},
-    {"@type":"Question","name":"¿Puedo tramitar mi residencia desde el extranjero?",
-     "acceptedAnswer":{"@type":"Answer","text":"Sí. Se puede iniciar desde el país de origen con asistencia documental completa."}},
-    {"@type":"Question","name":"¿Ofrecen servicios en línea?",
-     "acceptedAnswer":{"@type":"Answer","text":"Sí. Evaluación y envío seguro de documentos con firma digital."}},
-    {"@type":"Question","name":"¿Qué diferencia su consultoría de otras agencias?",
-     "acceptedAnswer":{"@type":"Answer","text":"Experiencia legal, ética profesional y acompañamiento directo sin tarifas ocultas."}}
-   ]
-  }
-  </script>
-</head>
-
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner wrap">
-      <div>
-        <div class="brand-title">EDUARDO ESPINAL</div>
-        <div class="brand-sub">Consultor de Migración</div>
-      </div>
-      <!-- Menú hamburguesa accesible -->
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
-
-  <!-- NAV -->
-  <nav role="navigation" aria-label="Principal">
-    <ul id="menu">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#sobre-mi">Sobre Mí</a></li>
-      <li><a href="#faq">Preguntas</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <!-- HERO -->
-    <section id="inicio">
-      <div class="wrap">
-        <h1>Tu Estrategia Migratoria Global Comienza Aquí</h1>
-        <p>Consultoría migratoria profesional en <strong>Visas, Residencias, Homologación de Estudios y Ciudadanía</strong> con asesoría personalizada en <strong>República Dominicana, Europa</strong> y <strong>Estados Unidos</strong>.</p>
-        <div class="cta"><a href="#contacto" class="btn primary">Agenda tu Consulta</a></div>
-      </div>
-    </section>
-
-    <!-- SERVICIOS (chips, sin banderas ni iconos) -->
-    <section id="servicios">
-      <div class="wrap">
-        <h2>Soluciones Legales para tu Movilidad Global</h2>
-
-        <div class="svc-grid">
-          <article class="svc-card">
-            <span class="svc-chip">Dominicana</span>
-            <div class="svc-header"><h3 class="svc-title">Residencia y Visado Dominicano</h3></div>
-            <p class="svc-lead">Acompañamiento integral para establecerte legalmente en República Dominicana.</p>
-            <div class="svc-sub">Incluye</div>
-            <ul class="svc-list">
-              <li>Residencia por <strong>inversión</strong>, <strong>rentista</strong> y <strong>pensionado</strong>.</li>
-              <li>Visas de <strong>trabajo</strong>, negocios y reunificación familiar.</li>
-              <li>Gestión de citas DGM, exámenes médicos y certificados.</li>
-              <li><strong>Apostillas</strong> y <strong>traducciones juradas</strong>.</li>
-            </ul>
-          </article>
-
-          <article class="svc-card">
-            <span class="svc-chip">Europa</span>
-            <div class="svc-header"><h3 class="svc-title">Residencia y Visado Europeo</h3></div>
-            <p class="svc-lead">Ruta legal para vivir, estudiar o invertir en la UE.</p>
-            <div class="svc-sub">Opciones</div>
-            <ul class="svc-list">
-              <li><strong>Golden Visa</strong> y <strong>Nómada Digital</strong> según país.</li>
-              <li>Visas Schengen y permisos por estudios o empleo.</li>
-              <li>Reagrupación familiar donde proceda.</li>
-            </ul>
-          </article>
-
-          <article class="svc-card">
-            <span class="svc-chip">EE. UU.</span>
-            <div class="svc-header"><h3 class="svc-title">Visas de Inversión y Negocios (EE. UU.)</h3></div>
-            <p class="svc-lead">Estrategia migratoria para empresarios y ejecutivos.</p>
-            <div class="svc-sub">Especialidades</div>
-            <ul class="svc-list">
-              <li><strong>E-2</strong> (inversor) y <strong>L-1</strong> (transferencia ejecutiva).</li>
-              <li><strong>B1/B2</strong> con enfoque en entrevista y soporte probatorio.</li>
-              <li>Plan de negocio y paquete de evidencia para USCIS/Consulado.</li>
-            </ul>
-          </article>
-
-          <article class="svc-card">
-            <span class="svc-chip">Títulos</span>
-            <div class="svc-header"><h3 class="svc-title">Homologación de Estudios y Títulos</h3></div>
-            <p class="svc-lead">Reconocimiento oficial de credenciales académicas y profesionales.</p>
-            <div class="svc-sub">Alcance</div>
-            <ul class="svc-list">
-              <li>Equivalencia en <strong>RD</strong>, <strong>EE. UU.</strong> y <strong>Europa</strong>.</li>
-              <li>Evaluaciones de credenciales y requisitos por país.</li>
-              <li>Traducciones certificadas y legalizaciones.</li>
-            </ul>
-          </article>
-
-          <article class="svc-card feature">
-            <span class="svc-chip">Ciudadanía</span>
-            <div class="svc-header"><h3 class="svc-title">Procesos de Ciudadanía y Naturalización</h3></div>
-            <p class="svc-lead">Evaluación de elegibilidad y acompañamiento completo hasta el juramento.</p>
-            <div class="svc-sub">Vías frecuentes</div>
-            <ul class="svc-list">
-              <li>Ciudadanía por <strong>inversión</strong>, <strong>matrimonio</strong> o <strong>residencia prolongada</strong>.</li>
-              <li>Pruebas de presencia, buena conducta y preparación de entrevista.</li>
-              <li>Coordinación documental y seguimiento de cada etapa.</li>
-            </ul>
-          </article>
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-brand-navy hover:text-brand-gold transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </div>
-    </section>
 
-    <!-- SOBRE MÍ -->
-    <section id="sobre-mi">
-      <div class="wrap">
-        <h2>Eduardo Espinal: Confianza, Claridad y Rigor Legal</h2>
-        <p>Como abogado y consultor migratorio, ofrezco una <strong>asesoría jurídica transparente</strong> que optimiza tu proceso migratorio internacional. Mi objetivo es acompañarte legalmente hasta lograr tu residencia o ciudadanía, con cumplimiento y eficiencia.</p>
-        <ul>
-          <li><strong>Estrategia Personalizada:</strong> análisis de tu perfil y objetivos.</li>
-          <li><strong>Transparencia:</strong> costos y tiempos claros desde el inicio.</li>
-          <li><strong>Atención Directa:</strong> trato profesional y continuo con tu consultor.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <div class="wrap">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="faq-item">
-          <div class="faq-question">¿Cuánto tarda un proceso de residencia?<span>+</span></div>
-          <div class="faq-answer">Depende del país y la categoría. En República Dominicana puede tardar entre 3 y 6 meses; en Estados Unidos o Europa, varía según el tipo de visa o residencia solicitada.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">¿Puedo tramitar mi residencia desde el extranjero?<span>+</span></div>
-          <div class="faq-answer">Sí. La mayoría de los países permiten iniciar el trámite desde tu país de origen. Te asistimos en la preparación de toda la documentación necesaria.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">¿Ofrecen servicios en línea?<span>+</span></div>
-          <div class="faq-answer">Sí. Los procesos iniciales pueden realizarse de forma virtual, con firma digital y envío seguro de documentos.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">¿Qué diferencia su consultoría de otras agencias?<span>+</span></div>
-          <div class="faq-answer">Experiencia legal, ética profesional y acompañamiento directo en cada etapa. Sin tarifas ocultas ni subcontrataciones improvisadas.</div>
+      {/* Mobile Nav */}
+      <div 
+        className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl transition-all duration-300 ease-in-out transform origin-top ${
+          isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+        }`}
+      >
+        <div className="px-4 py-6 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="text-base font-bold text-brand-navy hover:text-brand-gold hover:bg-slate-50 px-4 py-3 rounded-lg transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+          <div className="pt-4 border-t border-slate-100 px-4">
+            <a 
+              href="#contacto"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center bg-brand-navy text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform"
+            >
+              Agendar Consulta
+            </a>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <div class="wrap">
-        <h2>Hablemos de tu Próximo Destino</h2>
-        <p>Contáctame para una consulta legal personalizada sobre tu proceso migratorio. Atención a clientes en República Dominicana, Estados Unidos y Europa.</p>
-        <div class="cta">
-          <a href="https://wa.me/18294424222" target="_blank" class="btn">WhatsApp</a>
-          <a href="mailto:eduardoespinaldeaza@gmail.com" class="btn primary">Correo</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-<footer style="
-  background:#0B3766;
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:22px 15px;
-  line-height:1.5;
-">
-  <p style="font-weight:700;font-size:1.05em;margin:3px 0;">
-    EDUARDO ESPINAL · CONSULTOR DE MIGRACIÓN
-  </p>
-  <p style="font-size:0.9em;margin:2px 0;">
-    © 2025 Todos los derechos reservados. | Santo Domingo, República Dominicana
-  </p>
-  <p style="font-size:0.9em;margin:2px 0;">
-    Asesoría en Visas · Residencias · Homologación · Ciudadanía
-  </p>
-</footer>
-
-  <script>
-    // Menú hamburguesa accesible
-    const toggle = document.getElementById('menu-toggle');
-    const menu   = document.getElementById('menu');
-    toggle.addEventListener('click', ()=>{
-      const open = menu.classList.toggle('show');
-      toggle.textContent = open ? '✕' : '☰';
-      toggle.setAttribute('aria-expanded', open);
-    });
-    document.querySelectorAll('#menu a').forEach(a=>{
-      a.addEventListener('click', ()=>{
-        if(menu.classList.contains('show')){
-          menu.classList.remove('show');
-          toggle.textContent='☰';
-          toggle.setAttribute('aria-expanded','false');
-        }
-      });
-    });
-
-    // FAQ
-    document.querySelectorAll('.faq-question').forEach(q=>{
-      q.addEventListener('click', ()=> q.parentElement.classList.toggle('active'));
-    });
-  </script>
-</body>
-</html>
+    </header>
+  );
+};
