@@ -1,109 +1,702 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduardo Espinal | Consultor de Migración Internacional</title>
+  <meta name="description" content="Consultoría migratoria profesional. Visas, Residencias, Homologación de Estudios y Ciudadanía en República Dominicana, Estados Unidos y Europa." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-const navLinks = [
-  { name: 'Inicio', href: '#inicio' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Sobre Mí', href: '#sobre-mi' },
-  { name: 'Preguntas', href: '#faq' },
-  { name: 'Contacto', href: '#contacto' },
-];
+  <!-- Configuración de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0B3766',
+              gold: '#C49449',
+              goldLight: '#E5B768',
+              light: '#EAF0F7',
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 60s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
 
-export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  <!-- React & Babel -->
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.300.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  <style>
+    /* Estilos base */
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    
+    /* Efecto Sello Seco (Embossed) */
+    .dry-seal {
+      box-shadow: 
+        inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+        5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-gold selection:text-white">
+  <div id="root"></div>
 
-  return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-md py-3' 
-          : 'bg-white py-5 border-b border-slate-100'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Logo with Mini Seal */}
-          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = '#'}>
-            <div className="relative w-10 h-10 flex items-center justify-center border-2 border-brand-navy rounded-full">
-               <span className="font-serif font-bold text-brand-navy text-sm">EE</span>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-serif font-bold text-xl md:text-2xl text-brand-navy tracking-wide group-hover:text-brand-gold transition-colors">
-                EDUARDO ESPINAL
-              </span>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-brand-navy transition-colors">
-                Consultor de Migración
-              </span>
-            </div>
-          </div>
+  <script type="text/babel" data-type="module">
+    import React, { useState, useEffect } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { 
+      Menu, X, ArrowRight, CheckCircle, MapPin, Globe, 
+      Briefcase, GraduationCap, BadgeCheck, Check, 
+      Plus, Minus, Mail, MessageCircle, Phone 
+    } from 'lucide-react';
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-bold uppercase tracking-wider text-brand-navy hover:text-brand-gold transition-colors duration-200"
+    // --- DATOS ---
+
+    const navLinks = [
+      { name: 'Inicio', href: '#inicio' },
+      { name: 'Servicios', href: '#servicios' },
+      { name: 'Sobre Mí', href: '#sobre-mi' },
+      { name: 'Preguntas', href: '#faq' },
+      { name: 'Contacto', href: '#contacto' },
+    ];
+
+    const services = [
+      {
+        id: 'do',
+        title: 'Residencia Dominicana',
+        description: 'Establece tu hogar o negocio legalmente en el Caribe.',
+        tag: 'República Dominicana',
+        details: ['Inversión, Rentista y Pensionado', 'Visas de Trabajo y Negocios', 'Citas DGM y Exámenes Médicos', 'Apostillas y Traducciones'],
+        icon: MapPin,
+      },
+      {
+        id: 'eu',
+        title: 'Residencia Europea',
+        description: 'Tu puerta de entrada a la Unión Europea para vivir o estudiar.',
+        tag: 'Europa',
+        details: ['Golden Visa y Nómada Digital', 'Visas Schengen', 'Permisos de estudios', 'Reagrupación Familiar'],
+        icon: Globe,
+      },
+      {
+        id: 'us',
+        title: 'Visas de Negocios USA',
+        description: 'Estrategia migratoria sólida para empresarios y ejecutivos.',
+        tag: 'Estados Unidos',
+        details: ['Visas E-2 (Inversor) y L-1', 'Asesoría para Visa B1/B2', 'Planes de Negocio Migratorios', 'Paquetes de Evidencia USCIS'],
+        icon: Briefcase,
+      },
+      {
+        id: 'edu',
+        title: 'Homologación de Títulos',
+        description: 'Valida tu esfuerzo académico internacionalmente.',
+        tag: 'Global',
+        details: ['Equivalencia en RD, USA y Europa', 'Evaluación de Credenciales', 'Legalizaciones Ministeriales', 'Trámites Universitarios'],
+        icon: GraduationCap,
+      },
+      {
+        id: 'citizen',
+        title: 'Ciudadanía y Naturalización',
+        description: 'Te acompañamos hasta el juramento de tu nueva nacionalidad.',
+        tag: 'Premium',
+        details: ['Ciudadanía por Inversión', 'Naturalización por Matrimonio', 'Pruebas de Presencia Física', 'Preparación de Entrevista'],
+        icon: BadgeCheck,
+        featured: true,
+      },
+    ];
+
+    const faqs = [
+      {
+        question: '¿Cuánto tarda un proceso de residencia?',
+        answer: 'Los tiempos varían considerablemente. En República Dominicana, un proceso estándar suele demorar entre 3 y 6 meses una vez sometido el expediente. En Estados Unidos y Europa, los plazos dependen de la carga consular y la categoría específica (estudios, trabajo, inversión), oscilando desde semanas hasta varios meses.'
+      },
+      {
+        question: '¿Puedo tramitar mi residencia desde el extranjero?',
+        answer: 'Sí, absolutamente. La gran mayoría de los procesos migratorios modernos están diseñados para iniciarse desde el país de origen. Nosotros nos encargamos de la preparación integral del expediente y te guiamos sobre cuándo y cómo debes presentarte ante el consulado correspondiente.'
+      },
+      {
+        question: '¿Ofrecen servicios completamente en línea?',
+        answer: 'Sí. Adaptados a los nuevos tiempos, ofrecemos consultas por videollamada, gestión documental digital y uso de firmas electrónicas seguras. Solo tendrás que desplazarte para los trámites que requieran estrictamente tu presencia física (como la toma de huellas o entrevistas consulares).'
+      },
+      {
+        question: '¿Qué diferencia su consultoría de otras agencias?',
+        answer: 'Nos diferenciamos por el rigor jurídico. No somos "llenadores de formularios". Somos consultores legales que analizan la viabilidad de tu caso, anticipan posibles rechazos y preparan una defensa documental sólida. Además, garantizamos transparencia total en costos desde el primer día.'
+      }
+    ];
+
+    // --- COMPONENTES ---
+
+    const Navbar = () => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [scrolled, setScrolled] = useState(false);
+
+      useEffect(() => {
+        const handleScroll = () => {
+          setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      return (
+        <header 
+          className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+            scrolled 
+              ? 'bg-white/90 backdrop-blur-md shadow-md py-3' 
+              : 'bg-white py-5 border-b border-slate-100'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center">
+              {/* Logo with Mini Seal */}
+              <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = '#'}>
+                <div className="relative w-10 h-10 flex items-center justify-center rounded-full bg-brand-navy shadow-inner overflow-hidden">
+                    {/* Mini Seal Effect */}
+                    <div className="absolute inset-0 border-2 border-brand-gold opacity-50 rounded-full"></div>
+                    <span className="font-serif font-bold text-brand-gold text-sm z-10">EE</span>
+                </div>
+                <div className="flex flex-col leading-tight">
+                  <span className="font-serif font-bold text-xl md:text-2xl text-brand-navy tracking-wide group-hover:text-brand-gold transition-colors">
+                    EDUARDO ESPINAL
+                  </span>
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-brand-navy transition-colors">
+                    Consultor de Migración
+                  </span>
+                </div>
+              </div>
+
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex items-center space-x-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm font-bold uppercase tracking-wider text-brand-navy hover:text-brand-gold transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <a 
+                  href="#contacto" 
+                  className="px-5 py-2.5 bg-brand-navy text-white text-sm font-bold uppercase tracking-wide rounded-md hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  Consulta
+                </a>
+              </nav>
+
+              {/* Mobile Toggle */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden p-2 text-brand-navy hover:text-brand-gold transition-colors"
+                aria-label="Toggle menu"
               >
-                {link.name}
-              </a>
-            ))}
-            <a 
-              href="#contacto" 
-              className="px-5 py-2.5 bg-brand-navy text-white text-sm font-bold uppercase tracking-wide rounded-md hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Consulta
-            </a>
-          </nav>
-
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-brand-navy hover:text-brand-gold transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Nav */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl transition-all duration-300 ease-in-out transform origin-top ${
-          isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
-        }`}
-      >
-        <div className="px-4 py-6 flex flex-col space-y-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="text-base font-bold text-brand-navy hover:text-brand-gold hover:bg-slate-50 px-4 py-3 rounded-lg transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-4 border-t border-slate-100 px-4">
-            <a 
-              href="#contacto"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-center bg-brand-navy text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform"
-            >
-              Agendar Consulta
-            </a>
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Nav */}
+          <div 
+            className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl transition-all duration-300 ease-in-out transform origin-top ${
+              isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+            }`}
+          >
+            <div className="px-4 py-6 flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-base font-bold text-brand-navy hover:text-brand-gold hover:bg-slate-50 px-4 py-3 rounded-lg transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="pt-4 border-t border-slate-100 px-4">
+                <a 
+                  href="#contacto"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center bg-brand-navy text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform"
+                >
+                  Agendar Consulta
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+      );
+    };
+
+    const Hero = () => {
+      return (
+        <section id="inicio" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-light">
+          {/* Background decorative elements */}
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-gold/10 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-navy/5 blur-3xl"></div>
+          
+          {/* Sello Seco Gigante de Fondo (Watermark) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] opacity-[0.03] pointer-events-none z-0 rotate-12 select-none">
+            <svg className="w-full h-full text-brand-navy" viewBox="0 0 400 400">
+                 <defs>
+                   <path id="textCircleLarge" d="M 200, 200 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
+                 </defs>
+                 <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" strokeWidth="2" />
+                 <circle cx="200" cy="200" r="170" fill="none" stroke="currentColor" strokeWidth="1" />
+                 <text className="fill-current font-serif font-bold text-[32px] uppercase tracking-[0.25em]">
+                    <textPath href="#textCircleLarge" startOffset="50%" textAnchor="middle">
+                      Eduardo Espinal • Consultoría Internacional •
+                    </textPath>
+                 </text>
+                 <text x="200" y="260" textAnchor="middle" className="font-serif font-bold text-[160px] fill-current opacity-50">EE</text>
+            </svg>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              
+              {/* Text Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                  <span className="w-2 h-2 rounded-full bg-brand-gold mr-2 animate-pulse"></span>
+                  <span className="text-xs font-bold text-brand-navy uppercase tracking-widest">Asesoría Legal Certificada</span>
+                </div>
+                
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-navy leading-tight mb-6">
+                  Tu Estrategia Migratoria <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">
+                    Global Comienza Aquí
+                  </span>
+                </h1>
+                
+                <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  Consultoría profesional en <strong>Visas, Residencias y Ciudadanía</strong>. 
+                  Simplificamos procesos complejos para República Dominicana, Estados Unidos y Europa con rigor jurídico y trato personalizado.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <a 
+                    href="#contacto" 
+                    className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-bold rounded-lg shadow-lg hover:bg-slate-800 hover:shadow-brand-navy/30 transition-all duration-300 group"
+                  >
+                    Agenda tu Consulta
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a 
+                    href="#servicios" 
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-navy border border-slate-200 font-bold rounded-lg shadow-sm hover:bg-slate-50 hover:border-brand-gold/50 transition-all duration-300"
+                  >
+                    Explorar Servicios
+                  </a>
+                </div>
+
+                <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-medium text-slate-500">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-brand-gold mr-2" /> Trámites Transparentes
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-brand-gold mr-2" /> Asesoría Remota
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-brand-gold mr-2" /> Soporte Integral
+                  </div>
+                </div>
+              </div>
+
+              {/* Image/Visual Content */}
+              <div className="flex-1 w-full max-w-lg lg:max-w-none relative group">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-[8px] border-white aspect-[4/5] lg:aspect-square transform lg:rotate-2 transition-all duration-500 hover:rotate-0 hover:scale-[1.01]">
+                  <img 
+                    src="https://picsum.photos/800/800?random=10" 
+                    alt="Global Travel and Business" 
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/20 to-transparent flex flex-col justify-end p-8">
+                    <div className="text-white relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      <p className="font-serif text-2xl font-bold">Movilidad Sin Fronteras</p>
+                      <p className="text-white/80 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Expertos en conectar tus objetivos con el mundo.</p>
+                    </div>
+                  </div>
+
+                  {/* SELLO SECO (DRY SEAL) - Overlay en la imagen */}
+                  <div className="absolute bottom-8 right-8 w-40 h-40 md:w-48 md:h-48 pointer-events-none z-20 opacity-90">
+                     <div className="relative w-full h-full">
+                        {/* Círculo exterior "frosted glass" */}
+                        <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-[2px] border border-white/40 shadow-inner dry-seal"></div>
+                        
+                        {/* Contenido SVG del sello */}
+                        <svg className="w-full h-full absolute inset-0 text-white drop-shadow-md animate-spin-slow" viewBox="0 0 200 200">
+                          <defs>
+                            <path id="sealCurveTop" d="M 25,100 A 75,75 0 0,1 175,100" fill="none" />
+                            <path id="sealCurveBot" d="M 25,100 A 75,75 0 0,0 175,100" fill="none" />
+                          </defs>
+                          <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1" opacity="0.5" fill="none"/>
+                          <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="2" opacity="0.8" fill="none"/>
+                          
+                          <text className="font-serif font-bold text-[16px] uppercase fill-current tracking-widest opacity-90" textAnchor="middle">
+                            <textPath href="#sealCurveTop" startOffset="50%">Eduardo Espinal</textPath>
+                          </text>
+                          <text className="font-serif font-medium text-[12px] uppercase fill-current tracking-[0.2em] opacity-80" textAnchor="middle">
+                            <textPath href="#sealCurveBot" startOffset="50%">Consultor Legal</textPath>
+                          </text>
+                        </svg>
+                        
+                        {/* Iniciales en relieve */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="font-serif font-bold text-5xl text-white/90 tracking-tighter drop-shadow-[1px_1px_2px_rgba(0,0,0,0.3)]">EE</span>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+                
+                {/* Floating badge */}
+                <div className="absolute -top-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 max-w-xs hidden sm:block transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
+                   <div className="flex items-center gap-3">
+                     <div className="bg-green-100 p-2 rounded-full">
+                       <CheckCircle className="w-6 h-6 text-green-600" />
+                     </div>
+                     <div>
+                       <p className="font-bold text-slate-800 text-sm">Alta Tasa de Éxito</p>
+                       <p className="text-xs text-slate-500">Gestión documental rigurosa</p>
+                     </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Services = () => {
+      return (
+        <section id="servicios" className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Nuestra Expertise</h2>
+              <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-6">
+                Soluciones Legales para tu <br /> Movilidad Internacional
+              </h3>
+              <p className="text-slate-600 text-lg">
+                Diseñamos hojas de ruta personalizadas para cada perfil, garantizando el cumplimiento normativo en cada etapa del proceso.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service) => (
+                <div 
+                  key={service.id}
+                  className={`relative group rounded-2xl p-8 transition-all duration-300 border overflow-hidden ${
+                    service.featured 
+                      ? 'bg-brand-navy text-white border-brand-navy shadow-xl md:col-span-2 lg:col-span-1' 
+                      : 'bg-white text-slate-800 border-slate-100 hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1'
+                  }`}
+                >
+                  {/* Watermark Seal on Featured Card */}
+                  {service.featured && (
+                    <div className="absolute -bottom-16 -right-16 opacity-10 pointer-events-none rotate-12 transform scale-150">
+                      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" className="text-white">
+                        <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="4" />
+                        <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1" />
+                        <text x="100" y="115" textAnchor="middle" fontSize="60" fontFamily="serif" fontWeight="bold" fill="currentColor">EE</text>
+                      </svg>
+                    </div>
+                  )}
+
+                  {service.featured && (
+                    <div className="absolute top-0 right-0 bg-brand-gold text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-wider z-10">
+                      Recomendado
+                    </div>
+                  )}
+
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors relative z-10 ${
+                    service.featured ? 'bg-white/10 text-brand-gold' : 'bg-brand-light text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold'
+                  }`}>
+                    <service.icon size={28} strokeWidth={1.5} />
+                  </div>
+
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 relative z-10 ${
+                    service.featured ? 'bg-white/10 text-brand-gold' : 'bg-slate-100 text-slate-500'
+                  }`}>
+                    {service.tag}
+                  </span>
+
+                  <h4 className={`text-xl font-serif font-bold mb-3 relative z-10 ${service.featured ? 'text-white' : 'text-brand-navy'}`}>
+                    {service.title}
+                  </h4>
+                  
+                  <p className={`mb-6 text-sm leading-relaxed relative z-10 ${service.featured ? 'text-slate-300' : 'text-slate-600'}`}>
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2 relative z-10">
+                    {service.details.map((item, idx) => (
+                      <li key={idx} className="flex items-start text-sm">
+                        <Check className={`w-4 h-4 mr-2 mt-0.5 flex-shrink-0 ${
+                          service.featured ? 'text-brand-gold' : 'text-brand-gold'
+                        }`} />
+                        <span className={service.featured ? 'text-slate-200' : 'text-slate-700'}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => {
+      return (
+        <section id="sobre-mi" className="py-20 bg-brand-light relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              
+              {/* Image Content */}
+              <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                <div className="relative">
+                   <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-brand-gold"></div>
+                   <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-brand-navy"></div>
+                   
+                   <img 
+                     src="https://picsum.photos/800/600?random=2" 
+                     alt="Eduardo Espinal Working" 
+                     className="w-full h-auto rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 object-cover"
+                   />
+                   
+                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-brand-navy/90 to-transparent p-8">
+                      <p className="text-white font-serif italic text-xl">"La migración ordenada es un derecho y una oportunidad de crecimiento."</p>
+                   </div>
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                <h2 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">El Consultor</h2>
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-6">
+                  Eduardo Espinal: <br />
+                  Confianza, Claridad y Rigor Legal
+                </h3>
+                
+                <div className="space-y-6 text-slate-700 text-lg leading-relaxed">
+                  <p>
+                    En un mundo cada vez más interconectado, los trámites migratorios pueden convertirse en barreras complejas. Como abogado y consultor, mi misión es derribar esas barreras mediante una <strong>asesoría jurídica transparente</strong> y estratégica.
+                  </p>
+                  <p>
+                    No gestionamos simples papeles; gestionamos proyectos de vida. Mi enfoque se distingue por eliminar la incertidumbre, ofreciendo un acompañamiento directo sin intermediarios innecesarios.
+                  </p>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-slate-300 pt-8">
+                  <div>
+                    <h4 className="font-serif font-bold text-2xl text-brand-navy">10+</h4>
+                    <p className="text-sm text-slate-500 uppercase tracking-wide">Años de Experiencia</p>
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-2xl text-brand-navy">3</h4>
+                    <p className="text-sm text-slate-500 uppercase tracking-wide">Continentes</p>
+                  </div>
+                  <div>
+                    <h4 className="font-serif font-bold text-2xl text-brand-navy">100%</h4>
+                    <p className="text-sm text-slate-500 uppercase tracking-wide">Compromiso Ético</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const FAQ = () => {
+      const [openIndex, setOpenIndex] = useState(0);
+
+      const toggleFAQ = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+      };
+
+      return (
+        <section id="faq" className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Dudas Comunes</h2>
+              <h3 className="text-3xl font-serif font-bold text-brand-navy">Preguntas Frecuentes</h3>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div 
+                  key={index} 
+                  className={`border rounded-lg transition-all duration-200 ${
+                    openIndex === index ? 'border-brand-gold/50 bg-brand-light/30' : 'border-slate-200 hover:border-slate-300'
+                  }`}
+                >
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full flex justify-between items-center p-5 text-left focus:outline-none"
+                  >
+                    <span className={`font-bold text-lg ${openIndex === index ? 'text-brand-navy' : 'text-slate-700'}`}>
+                      {faq.question}
+                    </span>
+                    <span className={`ml-4 p-1 rounded-full ${openIndex === index ? 'bg-brand-navy text-white' : 'bg-slate-100 text-slate-500'}`}>
+                      {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
+                    </span>
+                  </button>
+                  
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="p-5 pt-0 text-slate-600 leading-relaxed border-t border-transparent">
+                      {faq.answer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Contact = () => {
+      const MapPinIcon = ({ className }) => (
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className={className}
+        >
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      );
+
+      return (
+        <section id="contacto" className="py-20 bg-brand-navy relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
+            backgroundImage: `radial-gradient(#C49449 1px, transparent 1px)`,
+            backgroundSize: '30px 30px'
+          }}></div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-4">Inicia tu Proceso</h2>
+            <h3 className="text-3xl md:text-5xl font-serif font-bold text-white mb-8">
+              Hablemos de tu Próximo Destino
+            </h3>
+            <p className="text-slate-300 text-lg mb-12 max-w-2xl mx-auto">
+              Cada caso es único. Contáctame hoy para una evaluación inicial y definamos juntos la mejor estrategia legal para ti y tu familia.
+            </p>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+              <a 
+                href="https://wa.me/18294424222" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full md:w-auto flex items-center justify-center px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold rounded-lg shadow-lg transition-all transform hover:-translate-y-1"
+              >
+                <MessageCircle className="mr-2 w-6 h-6" />
+                WhatsApp Directo
+              </a>
+              
+              <a 
+                href="mailto:eduardoespinaldeaza@gmail.com" 
+                className="w-full md:w-auto flex items-center justify-center px-8 py-4 bg-brand-gold hover:bg-brand-goldLight text-brand-navy font-bold rounded-lg shadow-lg transition-all transform hover:-translate-y-1"
+              >
+                <Mail className="mr-2 w-6 h-6" />
+                Enviar Correo
+              </a>
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-8 text-slate-400 text-sm">
+              <div className="flex items-center">
+                <Phone className="w-4 h-4 mr-2" /> +1 829 442 4222
+              </div>
+              <div className="flex items-center">
+                <MapPinIcon className="w-4 h-4 mr-2" /> Santo Domingo, Rep. Dom. / Online Global
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Footer = () => {
+      return (
+        <footer className="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-center md:text-left">
+              <p className="font-serif text-white font-bold text-lg">EDUARDO ESPINAL</p>
+              <p className="text-xs uppercase tracking-widest mt-1">Consultor de Migración</p>
+            </div>
+            
+            <div className="text-center md:text-right text-sm">
+              <p>&copy; {new Date().getFullYear()} Todos los derechos reservados.</p>
+              <p className="mt-1">Asesoría en Visas · Residencias · Homologación · Ciudadanía</p>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    const App = () => {
+      return (
+        <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+          <Navbar />
+          <main className="flex-grow">
+            <Hero />
+            <Services />
+            <About />
+            <FAQ />
+            <Contact />
+          </main>
+          <Footer />
         </div>
-      </div>
-    </header>
-  );
-};
+      );
+    };
+
+    // --- RENDERIZADO ---
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
